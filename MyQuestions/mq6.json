@@ -4,7 +4,7 @@
     "prompt": "What is the primary purpose of an IRB interface on an EX Series switch?",
     "options": [
       "To forward Layer 2 frames within a VLAN",
-      "To provide a default gateway for devices in a VLAN",
+      "to enable Inter-VLAN routing",
       "To replace VLAN tagging",
       "To create additional broadcast domains"
     ],
@@ -94,25 +94,5 @@
     "prompt": "True or False: All EX Series switches are capable of performing IRB and other Layer 3 routing tasks.",
     "tfCorrect": true,
     "explanation": "True. All EX Series switches are equipped to handle IRB and other Layer 3 routing functions. Module 6: Configuring Virtual Networks"
-  },
-  {
-    "type": "match",
-    "prompt": "Match the concept to its correct description.",
-    "match": {
-      "statements": [
-        "IRB",
-        "VLAN",
-        "VRF",
-        "inet.0"
-      ],
-      "answers": [
-        "Layer 3 gateway interface for a VLAN",
-        "Separate Layer 2 broadcast domain",
-        "Creates isolated routing tables on a device",
-        "Default main routing table"
-      ],
-      "mapping": ["A", "B", "C", "D"]
-    },
-    "explanation": "IRB provides Layer 3 gateway functionality, VLAN defines a Layer 2 broadcast domain, VRF creates isolated routing tables, and inet.0 is the default routing table. Module 6: Configuring Virtual Networks"
   }
 ]

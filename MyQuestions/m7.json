@@ -1,0 +1,574 @@
+[
+  {
+    "id": "q_b230da463c8bf_19c7737c850",
+    "type": "single",
+    "prompt": "What is the primary objective of High Availability (HA)?",
+    "explanation": "High Availability ensures continuous access to systems and services for users, minimising service disruption. Module 7: High Availability",
+    "options": [
+      "To increase interface bandwidth only",
+      "To ensure continuous access to systems and services",
+      "To eliminate the need for routing protocols",
+      "To maximise CPU utilisation"
+    ],
+    "correct": 1
+  },
+  {
+    "id": "q_9e8bd21154d87_19c7737c850",
+    "type": "single",
+    "prompt": "Which statement correctly describes the difference between uptime and availability?",
+    "explanation": "Uptime does not always equal availability. A system may be running but still not usable, meaning it is not fully available. Module 7: High Availability",
+    "options": [
+      "They are identical terms",
+      "Availability measures CPU usage while uptime measures memory usage",
+      "A system can be running (uptime) but still not usable (availability)",
+      "Availability only applies to Layer 2 networks"
+    ],
+    "correct": 2
+  },
+  {
+    "id": "q_539b46fe40b1a_19c7737c850",
+    "type": "single",
+    "prompt": "What is the main benefit of configuring a LAG?",
+    "explanation": "LAG combines multiple Ethernet interfaces into one logical link, increasing bandwidth and providing redundancy. Module 7: High Availability",
+    "options": [
+      "Separates routing tables",
+      "Combines multiple interfaces into one logical link for bandwidth and redundancy",
+      "Synchronises routing protocols between REs",
+      "Creates separate broadcast domains"
+    ],
+    "correct": 1
+  },
+  {
+    "id": "q_9e4df2a6ba01a8_19c7737c850",
+    "type": "single",
+    "prompt": "Which feature maintains Layer 3 routing operations during a Routing Engine failover?",
+    "explanation": "NSR (Nonstop Active Routing) maintains Layer 3 routing operations during Routing Engine failover by synchronising routing information. Module 7: High Availability",
+    "options": [
+      "NSB",
+      "LAG",
+      "NSR",
+      "MC-LAG"
+    ],
+    "correct": 2
+  },
+  {
+    "id": "q_2eb791c6c286a_19c7737c850",
+    "type": "multi",
+    "prompt": "Which features improve uptime and availability in EX Series switches? (Select all that apply.)",
+    "explanation": "LAG, MC-LAG, GRES, and NSR are all listed as features that improve uptime and availability in EX Series switches. Module 7: High Availability",
+    "options": [
+      "LAG",
+      "MC-LAG",
+      "GRES",
+      "NSR"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "id": "q_3d168f1bd96818_19c7737c850",
+    "type": "multi",
+    "prompt": "Which statements correctly describe MC-LAG? (Select all that apply.)",
+    "explanation": "MC-LAG extends LAG across multiple switches, provides high availability, and supports link aggregation from WAN to core. Kernel and PFE synchronisation relates to GRES. Module 7: High Availability",
+    "options": [
+      "Extends LAG functionality across multiple switches",
+      "Provides high availability across chassis",
+      "Synchronises kernel and PFE state",
+      "Supports link aggregation from WAN to core"
+    ],
+    "correct": [
+      0,
+      1,
+      3
+    ]
+  },
+  {
+    "id": "q_9626310b0e4c1_19c7737c850",
+    "type": "multi",
+    "prompt": "Which statements apply to GRES? (Select all that apply.)",
+    "explanation": "GRES enables smooth switchover between Routing Engines by synchronising kernel and PFE state, reducing disruption. Module 7: High Availability",
+    "options": [
+      "Enables smooth transition between Routing Engines",
+      "Synchronises kernel and PFE state",
+      "Maintains Layer 2 bridging information",
+      "Reduces disruption during RE failover"
+    ],
+    "correct": [
+      0,
+      1,
+      3
+    ]
+  },
+  {
+    "id": "q_ca1f54c25f7ed8_19c7737c850",
+    "type": "tf",
+    "prompt": "True or False: Higher availability percentages indicate less downtime.",
+    "explanation": "True. Higher availability percentages (e.g., 99.9%) mean less downtime over time. Module 7: High Availability",
+    "tfCorrect": true
+  },
+  {
+    "id": "q_be9041c552144_19c7737c850",
+    "type": "tf",
+    "prompt": "True or False: NSB maintains Layer 2 switching operations during Routing Engine failover.",
+    "explanation": "True. NSB (Nonstop Bridging) synchronises bridging and switching information to maintain Layer 2 operations during failover. Module 7: High Availability",
+    "tfCorrect": true
+  },
+  {
+    "id": "q_9e3649d572cd7_19c7737c850",
+    "type": "match",
+    "prompt": "Match the HA feature to its function.",
+    "explanation": "LAG aggregates links, MC-LAG extends aggregation across chassis, NSR maintains Layer 3 routing, and NSB maintains Layer 2 switching during failover. Module 7: High Availability",
+    "match": {
+      "statements": [
+        "LAG",
+        "MC-LAG",
+        "NSR",
+        "NSB"
+      ],
+      "answers": [
+        "Combines multiple interfaces into one logical link",
+        "Extends link aggregation across multiple switches",
+        "Maintains Layer 3 routing during failover",
+        "Maintains Layer 2 switching during failover"
+      ],
+      "mapping": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ]
+    }
+  },
+  {
+    "id": "q_57b824ee3c791_19c7737c850",
+    "type": "single",
+    "prompt": "What is the primary purpose of a Link Aggregation Group (LAG)?",
+    "explanation": "A LAG combines multiple Ethernet interfaces into a single logical link (bundle), increasing bandwidth and redundancy. Module 7: High Availability - LAG ",
+    "options": [
+      "To create multiple broadcast domains",
+      "To combine multiple Ethernet interfaces into one logical link",
+      "To replace VLAN tagging",
+      "To separate routing tables"
+    ],
+    "correct": 1
+  },
+  {
+    "id": "q_5f5e6d2da0c988_19c7737c850",
+    "type": "single",
+    "prompt": "In a LAG configuration where spine1 has two links to leaf1, how are those links presented logically?",
+    "explanation": "When using LAG, multiple physical links are seen as one logical link or bundle. Module 7: High Availability - LAG ",
+    "options": [
+      "As two independent routed links",
+      "As a single logical link (bundle)",
+      "As separate VLANs",
+      "As a trunk and an access link"
+    ],
+    "correct": 1
+  },
+  {
+    "id": "q_c37971973e786_19c7737c850",
+    "type": "single",
+    "prompt": "Which condition must be met for a LAG to form using LACP?",
+    "explanation": "At least one side must be configured as active for LACP to form the LAG. If both sides are passive, the link will not come up. Module 7: High Availability - LAG ",
+    "options": [
+      "Both sides must be passive",
+      "Both sides must be active",
+      "At least one side must be active",
+      "Both sides must use STP"
+    ],
+    "correct": 2
+  },
+  {
+    "id": "q_8ebfc225312178_19c7737c850",
+    "type": "single",
+    "prompt": "What happens if one member link in a LAG fails?",
+    "explanation": "LAG provides redundancy. If one link fails, traffic continues across the remaining member links. Module 7: High Availability - LAG ",
+    "options": [
+      "All traffic stops immediately",
+      "Traffic continues on the remaining member links",
+      "The VLAN is deleted",
+      "The Routing Engine restarts"
+    ],
+    "correct": 1
+  },
+  {
+    "id": "q_cde71d004310e_19c7737c850",
+    "type": "multi",
+    "prompt": "Which benefits are provided by LAG? (Select all that apply.)",
+    "explanation": "LAG increases bandwidth, distributes traffic across links, and provides redundancy if a link fails. Module 7: High Availability - LAG ",
+    "options": [
+      "Increased bandwidth",
+      "Load balancing",
+      "Redundancy",
+      "Elimination of routing protocols"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ]
+  },
+  {
+    "id": "q_e7cb2b4927abe_19c7737c850",
+    "type": "multi",
+    "prompt": "Which statements are true about LAG member link requirements? (Select all that apply.)",
+    "explanation": "Member links must match in speed and duplex. Up to 64 links are supported. Contiguous placement is recommended but not required. Module 7: High Availability - LAG ",
+    "options": [
+      "All member links must have matching duplex settings",
+      "All member links must have matching link speed",
+      "Member links must be contiguous",
+      "Up to 64 member links are supported"
+    ],
+    "correct": [
+      0,
+      1,
+      3
+    ]
+  },
+  {
+    "id": "q_3df8c22fa9c29_19c7737c850",
+    "type": "multi",
+    "prompt": "Which statements describe traffic processing in a LAG? (Select all that apply.)",
+    "explanation": "IP traffic is load-balanced using hashing (default Layer 2), non-IP traffic uses MAC-based hashing, and RE traffic uses the lowest-numbered link. Module 7: High Availability - LAG ",
+    "options": [
+      "IP traffic uses hashing (default Layer 2)",
+      "Non-IP traffic uses source and destination MAC addresses",
+      "Routing Engine traffic uses the lowest-numbered member link",
+      "All traffic always uses the same single link"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ]
+  },
+  {
+    "id": "q_9ba2b4832261e_19c7737c850",
+    "type": "tf",
+    "prompt": "True or False: If both sides of a LAG are configured in passive LACP mode, the LAG will form successfully.",
+    "explanation": "False. If both sides are passive, LACP PDUs are not initiated and the LAG will not form. Module 7: High Availability - LAG ",
+    "tfCorrect": false
+  },
+  {
+    "id": "q_0ef44b515cdde8_19c7737c850",
+    "type": "tf",
+    "prompt": "True or False: MC-LAG allows a single logical LAG to span across two separate switches.",
+    "explanation": "True. MC-LAG creates one logical LAG across two separate peer switches using ICCP. Module 7: High Availability - LAG ",
+    "tfCorrect": true
+  },
+  {
+    "id": "q_ccb33cb3cb139_19c7737c850",
+    "type": "match",
+    "prompt": "Match the LAG-related feature to its description.",
+    "explanation": "LAG bundles links, MC-LAG spans two switches, ESI-LAG connects clients through combined interfaces in advanced networks, and active LACP mode sends PDUs to establish the link. Module 7: High Availability - LAG ",
+    "match": {
+      "statements": [
+        "LAG",
+        "MC-LAG",
+        "ESI-LAG",
+        "LACP Active Mode"
+      ],
+      "answers": [
+        "Single logical link from multiple physical links",
+        "Logical LAG across two separate switches",
+        "Connects client device to peer devices using a combined interface",
+        "Sends LACP PDUs to establish aggregation"
+      ],
+      "mapping": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ]
+    }
+  },
+  {
+    "id": "q_a9d32ad7287848_19c7737c850",
+    "type": "single",
+    "prompt": "On which platforms is GRES typically used?",
+    "explanation": "GRES is used on switches with dual Routing Engines (REs) or in a Virtual Chassis environment to provide failover capability. Module 7: High Availability - GRESS ",
+    "options": [
+      "Single Routing Engine switches only",
+      "Switches with dual Routing Engines or Virtual Chassis",
+      "Access points with no routing capability",
+      "Standalone Layer 2 hubs"
+    ],
+    "correct": 1
+  },
+  {
+    "id": "q_91ce8be95d5e28_19c7737c850",
+    "type": "single",
+    "prompt": "What happens to the Packet Forwarding Engine (PFE) during a GRES switchover?",
+    "explanation": "During GRES, the PFE does not restart. It continues forwarding traffic and reconnects to the new primary RE. Module 7: High Availability - GRESS ",
+    "options": [
+      "It restarts completely",
+      "It shuts down temporarily",
+      "It continues running without restart",
+      "It resets all interface configurations"
+    ],
+    "correct": 2
+  },
+  {
+    "id": "q_0e85fa6d308ef_19c7737c850",
+    "type": "single",
+    "prompt": "What occurs if GRES is enabled but NSR is not?",
+    "explanation": "GRES does not preserve the control plane. Without NSR enabled, routing protocols (rpd) restart and must relearn routes. Module 7: High Availability - GRESS ",
+    "options": [
+      "Routing protocols continue without interruption",
+      "Routing protocols restart and must relearn routes",
+      "The PFE restarts",
+      "The VLAN database is deleted"
+    ],
+    "correct": 1
+  },
+  {
+    "id": "q_55de21952a3f68_19c7737c850",
+    "type": "single",
+    "prompt": "Which command manually triggers a Routing Engine switchover?",
+    "explanation": "The command 'request chassis routing-engine master switch' manually triggers a Routing Engine switchover. Module 7: High Availability - GRESS ",
+    "options": [
+      "show system switchover",
+      "request chassis routing-engine master switch",
+      "clear chassis routing-engine",
+      "restart routing-engine"
+    ],
+    "correct": 1
+  },
+  {
+    "id": "q_17c9fa992419b_19c7737c850",
+    "type": "multi",
+    "prompt": "Which states are replicated between primary and backup RE during GRES synchronisation? (Select all that apply.)",
+    "explanation": "During GRES, the configuration database, kernel state (via ksyncd), and PFE state are replicated between REs. Module 7: High Availability - GRESS ",
+    "options": [
+      "Configuration database",
+      "Kernel state",
+      "PFE state",
+      "External DNS cache"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ]
+  },
+  {
+    "id": "q_1dcbd6bfb85978_19c7737c850",
+    "type": "multi",
+    "prompt": "Which processes rely on the configuration database? (Select all that apply.)",
+    "explanation": "The configuration database is used by dcd (interfaces), chassisd (hardware), and rpd (routing protocols). ksyncd replicates kernel state. Module 7: High Availability - GRESS ",
+    "options": [
+      "dcd",
+      "chassisd",
+      "rpd",
+      "ksyncd"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ]
+  },
+  {
+    "id": "q_dcc5bbad8f2518_19c7737c850",
+    "type": "multi",
+    "prompt": "Which statements describe GRES switchover operations? (Select all that apply.)",
+    "explanation": "During GRES, REs exchange keepalives, the backup assumes control if keepalives stop, and the PFE reconnects without restarting. Module 7: High Availability - GRESS ",
+    "options": [
+      "Primary and backup RE exchange keepalive messages",
+      "Backup RE becomes primary if keepalives stop",
+      "PFE disconnects from old primary and reconnects to new primary",
+      "The PFE always restarts during failover"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ]
+  },
+  {
+    "id": "q_f2a8ec674dc388_19c7737c850",
+    "type": "tf",
+    "prompt": "True or False: GRES preserves the control plane state by default.",
+    "explanation": "False. GRES does not preserve the control plane. Routing protocols restart unless NSR is enabled. Module 7: High Availability - GRESS ",
+    "tfCorrect": false
+  },
+  {
+    "id": "q_35765e36363de8_19c7737c850",
+    "type": "tf",
+    "prompt": "True or False: The command 'show system switchover' is used to monitor GRES status.",
+    "explanation": "True. The 'show system switchover' command is used to monitor GRES status. Module 7: High Availability - GRESS ",
+    "tfCorrect": true
+  },
+  {
+    "id": "q_0d15099597b048_19c7737c850",
+    "type": "match",
+    "prompt": "Match the GRES component or function to its description.",
+    "explanation": "GRES provides RE failover with minimal disruption, NSR preserves routing protocol state, ksyncd replicates kernel state, and the PFE continues forwarding during switchover. Module 7: High Availability - GRESS ",
+    "match": {
+      "statements": [
+        "GRES",
+        "NSR",
+        "ksyncd",
+        "PFE during switchover"
+      ],
+      "answers": [
+        "Provides minimal-disruption RE failover",
+        "Preserves routing protocol state",
+        "Replicates kernel state between REs",
+        "Continues forwarding without restart"
+      ],
+      "mapping": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ]
+    }
+  },
+  {
+    "id": "q_29a9882395876_19c7737c850",
+    "type": "single",
+    "prompt": "What is EVPN multihoming?",
+    "explanation": "EVPN multihoming connects a customer edge (CE) device to more than one provider edge (PE) router to provide redundancy. Module 7: High Availability - System-ID and Multihoming ",
+    "options": [
+      "Connecting a CE device to multiple VLANs on one switch",
+      "Connecting a CE device to more than one PE router for redundancy",
+      "Running multiple routing protocols on a single PE",
+      "Connecting two PEs together without a CE"
+    ],
+    "correct": 1
+  },
+  {
+    "id": "q_d9a741fa37a43_19c7737c850",
+    "type": "single",
+    "prompt": "How is EVPN information shared between Provider Edge (PE) routers?",
+    "explanation": "EVPN information is shared between PEs using BGP in an MPLS network environment. Module 7: High Availability - System-ID and Multihoming ",
+    "options": [
+      "Using OSPF",
+      "Using static routes",
+      "Using BGP",
+      "Using STP"
+    ],
+    "correct": 2
+  },
+  {
+    "id": "q_dce5f259d6876_19c7737c850",
+    "type": "single",
+    "prompt": "Which EVPN multihoming mode allows all connected PEs to forward traffic simultaneously?",
+    "explanation": "Active/Active mode allows all connected PEs to forward traffic at the same time, providing better performance and redundancy. Module 7: High Availability - System-ID and Multihoming ",
+    "options": [
+      "Single-Homed",
+      "Active/Standby",
+      "Active/Active",
+      "Passive/Passive"
+    ],
+    "correct": 2
+  },
+  {
+    "id": "q_deaed3b7d8c5_19c7737c850",
+    "type": "single",
+    "prompt": "Which EVPN multihoming mode requires ESI configuration?",
+    "explanation": "Active/Standby (Single-Active) mode requires ESI configuration to manage redundancy between multiple PEs. Module 7: High Availability - System-ID and Multihoming ",
+    "options": [
+      "Single-Homed",
+      "Active/Standby (Single-Active)",
+      "Active/Active",
+      "Standalone"
+    ],
+    "correct": 1
+  },
+  {
+    "id": "q_5813a4b4b1089_19c7737c850",
+    "type": "multi",
+    "prompt": "Why is EVPN multihoming used? (Select all that apply.)",
+    "explanation": "EVPN multihoming provides redundancy, keeps traffic flowing if one PE fails, and in Active/Active mode includes built-in loop prevention. It does not eliminate BGP. Module 7: High Availability - System-ID and Multihoming ",
+    "options": [
+      "Provides redundancy",
+      "Maintains traffic flow if one PE fails",
+      "Improves loop prevention",
+      "Eliminates the need for BGP"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ]
+  },
+  {
+    "id": "q_f383f4ea7d814_19c7737c850",
+    "type": "multi",
+    "prompt": "Which connectivity options are supported for a CE device in EVPN multihoming? (Select all that apply.)",
+    "explanation": "A CE device can connect to multiple PEs or use multiple links to one PE. Module 7: High Availability - System-ID and Multihoming ",
+    "options": [
+      "Connect to multiple PEs",
+      "Use multiple links to one PE",
+      "Connect only through a single VLAN",
+      "Operate without any PE connection"
+    ],
+    "correct": [
+      0,
+      1
+    ]
+  },
+  {
+    "id": "q_01739555c721f8_19c7737c850",
+    "type": "multi",
+    "prompt": "Which statements describe Active/Standby (Single-Active) mode? (Select all that apply.)",
+    "explanation": "In Active/Standby mode, one PE forwards traffic while the other waits as backup and takes over if the active PE fails. Module 7: High Availability - System-ID and Multihoming ",
+    "options": [
+      "One PE forwards traffic",
+      "Another PE waits as backup",
+      "All PEs forward traffic simultaneously",
+      "Backup takes over if the active PE fails"
+    ],
+    "correct": [
+      0,
+      1,
+      3
+    ]
+  },
+  {
+    "id": "q_162c0bc9b82618_19c7737c850",
+    "type": "tf",
+    "prompt": "True or False: Single-Homed mode provides redundancy because the CE connects to multiple PEs.",
+    "explanation": "False. In Single-Homed mode, the CE connects to only one PE and has no redundancy. Module 7: High Availability - System-ID and Multihoming ",
+    "tfCorrect": false
+  },
+  {
+    "id": "q_0fd55a31159e08_19c7737c850",
+    "type": "tf",
+    "prompt": "True or False: Active/Active is the default EVPN multihoming mode in Juniper.",
+    "explanation": "True. Active/Active is the default EVPN multihoming mode in Juniper and allows all PEs to forward traffic simultaneously. Module 7: High Availability - System-ID and Multihoming ",
+    "tfCorrect": true
+  },
+  {
+    "id": "q_c3622bb536ed6_19c7737c850",
+    "type": "match",
+    "prompt": "Match the EVPN multihoming mode to its characteristics.",
+    "explanation": "Single-Homed has no redundancy, Active/Standby uses one active and one backup PE, Active/Active forwards on all PEs, and ESI is required in Single-Active mode. Module 7: High Availability - System-ID and Multihoming ",
+    "match": {
+      "statements": [
+        "Single-Homed",
+        "Active/Standby",
+        "Active/Active",
+        "ESI Requirement"
+      ],
+      "answers": [
+        "No redundancy",
+        "One PE forwards, one waits",
+        "All PEs forward simultaneously",
+        "Required in Single-Active mode"
+      ],
+      "mapping": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ]
+    }
+  }
+]

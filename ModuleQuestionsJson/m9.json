@@ -1,0 +1,382 @@
+[
+  {
+    "type": "single",
+    "prompt": "In Junos, what is a routing instance?",
+    "options": [
+      "A physical router with multiple power supplies",
+      "A virtual router within a device with its own routing table, interfaces, and protocol settings",
+      "A VLAN that provides Layer 3 routing",
+      "A single BGP neighbour group"
+    ],
+    "correct": 1,
+    "explanation": "A routing instance is a virtual router on a Junos device that maintains its own routing tables, interfaces, and protocol settings."
+  },
+  {
+    "type": "single",
+    "prompt": "Under which hierarchy are user-defined routing instances configured?",
+    "options": [
+      "[edit routing-options]",
+      "[edit routing-instances]",
+      "[edit protocols]",
+      "[edit interfaces]"
+    ],
+    "correct": 1,
+    "explanation": "User-defined routing instances are configured under the [edit routing-instances] hierarchy."
+  },
+  {
+    "type": "single",
+    "prompt": "What is the name of the default routing instance?",
+    "options": [
+      "inet.0",
+      "primary routing instance",
+      "vrf-default",
+      "master instance"
+    ],
+    "correct": 1,
+    "explanation": "The default routing instance is referred to as the primary routing instance and includes inet.0 (and possibly inet6.0)."
+  },
+  {
+    "type": "single",
+    "prompt": "Which table is commonly included in the default (primary) routing instance for IPv4 unicast routes?",
+    "options": [
+      "inet.0",
+      "mpls.0",
+      "bgp.inet.0",
+      "l2vpn.0"
+    ],
+    "correct": 0,
+    "explanation": "The primary routing instance includes the inet.0 routing table for IPv4."
+  },
+  {
+    "type": "single",
+    "prompt": "Which routing instance type is used for Layer 3 VPN implementations?",
+    "options": [
+      "virtual-router",
+      "vrf",
+      "vpls",
+      "no-forwarding"
+    ],
+    "correct": 1,
+    "explanation": "The vrf routing instance type is used for Layer 3 VPN implementations."
+  },
+  {
+    "type": "single",
+    "prompt": "Which routing instance type is used for point-to-multipoint Layer 2 VPNs extending LANs across sites?",
+    "options": [
+      "vpls",
+      "l2vpn",
+      "forwarding",
+      "virtual-router"
+    ],
+    "correct": 0,
+    "explanation": "VPLS is used for point-to-multipoint Layer 2 VPNs, extending LANs across sites."
+  },
+  {
+    "type": "single",
+    "prompt": "Which routing instance type creates a separate routing table for administrative separation but does not forward traffic independently?",
+    "options": [
+      "no-forwarding",
+      "forwarding",
+      "virtual-router",
+      "vrf"
+    ],
+    "correct": 0,
+    "explanation": "no-forwarding creates separate routing tables for administrative separation but does not forward traffic independently."
+  },
+  {
+    "type": "single",
+    "prompt": "Which command lists all routing instances on a Junos device?",
+    "options": [
+      "show route instance",
+      "show routing-instances",
+      "show interfaces terse routing-instances",
+      "show route table all"
+    ],
+    "correct": 0,
+    "explanation": "The notes specify 'show route instance' to list routing instances."
+  },
+  {
+    "type": "single",
+    "prompt": "Which command shows all routes within a specific routing instance routing table?",
+    "options": [
+      "show route table <instance-name.inet.0>",
+      "show route instance <instance-name>",
+      "show interfaces terse <instance-name>",
+      "show configuration routing-instances"
+    ],
+    "correct": 0,
+    "explanation": "To view all routes in an instance table, use 'show route table <user-instance-name.inet.0>'."
+  },
+  {
+    "type": "single",
+    "prompt": "When using ping, how do you test from a specific routing instance?",
+    "options": [
+      "ping <IP> instance <name>",
+      "ping <IP> table <name>",
+      "ping <IP> routing-instance <instance-name>",
+      "ping <IP> vrf <instance-name>"
+    ],
+    "correct": 2,
+    "explanation": "The notes specify 'ping <IP> routing-instance <instance-name>' to test connectivity from a specific instance."
+  },
+  {
+    "type": "single",
+    "prompt": "Which loopback interface unit is always part of the default routing instance?",
+    "options": [
+      "lo0.0",
+      "lo0.1",
+      "lo0.10",
+      "Any lo0 unit automatically"
+    ],
+    "correct": 0,
+    "explanation": "lo0.0 is always in the default routing instance; other loopback units must be explicitly linked."
+  },
+  {
+    "type": "single",
+    "prompt": "Which routing instance type is commonly used to implement Filter-Based Forwarding (FBF)?",
+    "options": [
+      "forwarding",
+      "vrf",
+      "vpls",
+      "l2vpn"
+    ],
+    "correct": 0,
+    "explanation": "The 'forwarding' instance type is used to implement Filter-Based Forwarding (FBF), commonly at the access layer."
+  },
+
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Which are Junos-supported routing instance types mentioned in the content?",
+    "options": [
+      "VRF",
+      "Virtual Router (VR)",
+      "L2VPN",
+      "OSPF"
+    ],
+    "correct": [0,1,2],
+    "explanation": "The notes list VRF, Virtual Router, and L2VPN (and also VPLS) as supported types. OSPF is a protocol, not an instance type."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Why are routing instances considered vital in data centres (per the notes)?",
+    "options": [
+      "Managing traffic between spine nodes",
+      "Supporting multiple sites and backup data centres",
+      "Supporting microsegmentation and traffic isolation",
+      "Replacing VLAN tagging on trunk ports"
+    ],
+    "correct": [0,1,2],
+    "explanation": "Routing instances support separation and isolation, useful for spine traffic, multi-site designs, and microsegmentation. They do not replace VLAN tagging."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Which features are listed as use cases for user-defined routing instances?",
+    "options": [
+      "Filter-Based Forwarding (FBF)",
+      "VPN services",
+      "Micro-segmentation",
+      "Link Aggregation (LAG)"
+    ],
+    "correct": [0,1,2],
+    "explanation": "User-defined routing instances are used for FBF, VPN services, and micro-segmentation. LAG is a switching/HA feature, not a routing instance use case."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Which commands help view routing information across instances?",
+    "options": [
+      "show route",
+      "show route summary",
+      "show route instance",
+      "show vlans"
+    ],
+    "correct": [0,1,2],
+    "explanation": "show route displays routes (including across instances), show route summary provides an overview, and show route instance lists instances. show vlans is unrelated."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: RIB groups are configured under which hierarchy and used for what purpose?",
+    "options": [
+      "Configured under [edit routing-options]",
+      "Used to share routes between routing tables",
+      "Configured under [edit routing-instances]",
+      "Used to create VLANs"
+    ],
+    "correct": [0,1],
+    "explanation": "RIB groups are configured under [edit routing-options] and are used to organise multiple routing tables and share routes between them."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: The notes mention route sharing between routing instances can also be done using:",
+    "options": [
+      "instance-import",
+      "instance-export",
+      "auto-export",
+      "native-vlan-id"
+    ],
+    "correct": [0,1,2],
+    "explanation": "instance-import, instance-export, and auto-export are listed as methods to share routes without requiring RIB groups for every instance."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Routing instances can communicate by:",
+    "options": [
+      "Sharing routes (RIB groups)",
+      "Logical/physical connection using lt- interfaces",
+      "Using only VLAN trunking",
+      "Using MAC learning tables"
+    ],
+    "correct": [0,1],
+    "explanation": "Instances communicate by sharing routes (commonly via RIB groups) or via logical/physical connectivity using logical tunnel (lt-) interfaces."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Which are requirements for logical tunnel (lt-) interfaces in this module?",
+    "options": [
+      "Both ends must reference the same tunnel interface",
+      "Each logical unit can have only one peer",
+      "Must define encapsulation and protocol family",
+      "Must enable BGP for the tunnel to be active"
+    ],
+    "correct": [0,1,2],
+    "explanation": "The module lists same tunnel reference, one peer per logical unit, and defining encapsulation and protocol family as requirements. BGP is not required."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Which encapsulation types are listed as examples for logical tunnels?",
+    "options": [
+      "Ethernet",
+      "VLAN",
+      "Frame Relay",
+      "VXLAN"
+    ],
+    "correct": [0,1,2],
+    "explanation": "The notes list Ethernet, VLAN, Frame Relay, and VPLS as encapsulation examples. VXLAN is not listed here."
+  },
+
+  {
+    "type": "tf",
+    "prompt": "True or False: Each routing instance keeps its routing information separate from others.",
+    "tfCorrect": true,
+    "explanation": "Routing instances maintain separate routing tables and settings, allowing one device to act as multiple virtual routers."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: The default routing instance is also called the primary routing instance.",
+    "tfCorrect": true,
+    "explanation": "The content states the default routing instance is known as the primary routing instance."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: For the primary routing instance, you must always specify the instance name when viewing routes.",
+    "tfCorrect": false,
+    "explanation": "For the default (primary) instance, Junos uses it automatically; you typically do not need to specify the instance name."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: lo0.1 is automatically part of the default routing instance.",
+    "tfCorrect": false,
+    "explanation": "Only lo0.0 is always in the default routing instance; other loopback units must be explicitly linked to an instance."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: RIB groups are configured under [edit routing-instances].",
+    "tfCorrect": false,
+    "explanation": "RIB groups are configured under [edit routing-options], not under routing-instances."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: A logical tunnel requires at least one physical interface statement to activate.",
+    "tfCorrect": true,
+    "explanation": "The module notes that at least one physical interface statement is required to activate a logical tunnel."
+  },
+
+  {
+    "type": "match",
+    "prompt": "Match the routing instance type with its described use.",
+    "match": {
+      "statements": [
+        "forwarding",
+        "virtual-router",
+        "vrf",
+        "vpls"
+      ],
+      "answers": [
+        "Layer 3 VPN implementation",
+        "Filter-Based Forwarding (FBF)",
+        "Independent routing table for non-VPN use cases (e.g., micro-segmentation)",
+        "Point-to-multipoint Layer 2 VPN extending LANs across sites"
+      ],
+      "mapping": ["B","C","A","D"]
+    },
+    "explanation": "forwarding is for FBF; virtual-router is independent routing for non-VPN; vrf is L3 VPN; vpls is P2MP L2 VPN."
+  },
+  {
+    "type": "match",
+    "prompt": "Match the task with the most appropriate operational command from the notes.",
+    "match": {
+      "statements": [
+        "List all routing instances",
+        "View routes in a specific instance table",
+        "Show which interfaces belong to a routing instance",
+        "Ping from a specific routing instance"
+      ],
+      "answers": [
+        "show interfaces terse routing instances <instance-name>",
+        "show route instance",
+        "ping <IP> routing-instance <instance-name>",
+        "show route table <instance-name.inet.0>"
+      ],
+      "mapping": ["B","D","A","C"]
+    },
+    "explanation": "The module provides specific CLI commands for listing instances, viewing per-instance routes, filtering interface membership by instance, and sourcing ping from a routing instance."
+  },
+
+  {
+    "type": "single",
+    "prompt": "Which is the most common method mentioned for sharing routes between routing instances?",
+    "options": [
+      "VLAN tagging",
+      "RIB groups",
+      "MAC learning",
+      "Virtual Chassis Port (VCP)"
+    ],
+    "correct": 1,
+    "explanation": "The notes state that sharing routes using RIB groups is the most common method."
+  },
+  {
+    "type": "single",
+    "prompt": "What is the naming format described for an IPv4 unicast routing table for an instance?",
+    "options": [
+      "inet.0 only",
+      "<instance-name>.inet.0",
+      "<instance-name>.bridge.0",
+      "<instance-name>.mpls.0"
+    ],
+    "correct": 1,
+    "explanation": "The notes indicate that for IPv4, the routing table follows the instance-name format such as <instance-name>.inet.0."
+  },
+  {
+    "type": "single",
+    "prompt": "Which interface format is used to reference logical tunnel interfaces?",
+    "options": [
+      "ae-fpc/pic/port",
+      "irb.fpc/pic/port",
+      "lt-fpc/pic/port",
+      "ge-fpc/pic/port.unit"
+    ],
+    "correct": 2,
+    "explanation": "Logical tunnel interfaces are configured using the format lt-fpc/pic/port."
+  },
+  {
+    "type": "single",
+    "prompt": "Which statement best describes how logical tunnels connect routing instances?",
+    "options": [
+      "They provide point-to-multipoint connectivity between instances",
+      "They create point-to-point links between instances using peer units",
+      "They replace RIB groups for route sharing only",
+      "They require VPLS encapsulation exclusively"
+    ],
+    "correct": 1,
+    "explanation": "Logical tunnel interfaces (lt-) create point-to-point links between routing instances where each logical unit has a single peer."
+  }
+]

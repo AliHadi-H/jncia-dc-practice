@@ -1,0 +1,470 @@
+[
+  {
+    "type": "single",
+    "prompt": "How do you determine whether a BGP session is iBGP or eBGP?",
+    "options": [
+      "If the peers use TCP, it is iBGP; if they use UDP, it is eBGP",
+      "If both peers are in the same AS, it is iBGP; otherwise it is eBGP",
+      "If the session uses loopbacks, it is eBGP; if it uses interfaces, it is iBGP",
+      "If next-hop is preserved, it is eBGP; if next-hop is changed, it is iBGP"
+    ],
+    "correct": 1,
+    "explanation": "Per the content, iBGP peers are in the same Autonomous System (AS). If the peers are in different ASs, the session is eBGP."
+  },
+  {
+    "type": "single",
+    "prompt": "What is a key best practice for advertising eBGP-learned routes into an iBGP domain?",
+    "options": [
+      "Always enable advertise-inactive",
+      "Always use a next-hop self policy for internal BGP peers",
+      "Always disable export policies at the group level",
+      "Always redistribute external links into the IGP"
+    ],
+    "correct": 1,
+    "explanation": "The notes state best practice is to use a next-hop self policy for internal BGP peers so internal routers can reach the next hop."
+  },
+  {
+    "type": "single",
+    "prompt": "When creating a next-hop self policy, what is the recommended approach for the policy actions?",
+    "options": [
+      "Combine next-hop and accept in the same term to reduce configuration",
+      "Use next-hop in one term and accept in a separate term to avoid unintended matches",
+      "Use only accept; next-hop will be changed automatically",
+      "Use reject after setting next-hop to prevent loops"
+    ],
+    "correct": 1,
+    "explanation": "The content warns not to combine the accept action with the next-hop action in the same term because it could unintentionally match and advertise all routes."
+  },
+  {
+    "type": "single",
+    "prompt": "Why are loopback interfaces commonly used for iBGP peering (per the content)?",
+    "options": [
+      "They remove the need for any routing protocol",
+      "They help maintain reachability even when the topology changes (with IGP support)",
+      "They force BGP to use TTL=1",
+      "They automatically rewrite next-hop values"
+    ],
+    "correct": 1,
+    "explanation": "The content states an IGP is used to maintain reachability between loopback addresses even when the topology changes."
+  },
+  {
+    "type": "single",
+    "prompt": "In a typical directly connected eBGP design, which addresses are used to form the BGP session?",
+    "options": [
+      "Loopback addresses on both routers",
+      "The IP addresses on the shared subnet between them",
+      "Multicast addresses used for neighbor discovery",
+      "Any reachable address in inet.0"
+    ],
+    "correct": 1,
+    "explanation": "The notes state directly connected eBGP peers typically form sessions using IPs on the shared subnet between them."
+  },
+  {
+    "type": "single",
+    "prompt": "Which is NOT listed as a benefit of directly connected eBGP peering using the shared subnet addresses?",
+    "options": [
+      "No extra routing needed to reach the neighbor",
+      "Each AS does not need to carry additional routes to maintain the BGP session",
+      "Traffic flows directly over the shared link without relying on other paths",
+      "iBGP peers automatically reflect routes between each other"
+    ],
+    "correct": 3,
+    "explanation": "The listed benefits relate to direct connectivity and avoiding additional routing. Route reflection is not mentioned, and iBGP does not automatically re-advertise iBGP-learned routes."
+  },
+  {
+    "type": "single",
+    "prompt": "Which statement best describes iBGP route propagation rules (per the content)?",
+    "options": [
+      "iBGP peers advertise routes learned from iBGP peers to other iBGP peers by default",
+      "iBGP peers advertise routes learned from eBGP peers to other iBGP peers, but not iBGP-learned routes",
+      "iBGP peers never advertise eBGP-learned routes",
+      "iBGP peers only advertise inactive routes by default"
+    ],
+    "correct": 1,
+    "explanation": "The content states iBGP speakers send routes received from eBGP, but do not send routes learned from other iBGP peers to other iBGP peers."
+  },
+  {
+    "type": "single",
+    "prompt": "By default, which routes are shared between BGP peers (per the content)?",
+    "options": [
+      "Only active BGP routes",
+      "All BGP routes including hidden routes",
+      "Only inactive BGP routes",
+      "Only routes learned via iBGP"
+    ],
+    "correct": 0,
+    "explanation": "The notes explicitly state that by default, routers only share active BGP routes with each other."
+  },
+  {
+    "type": "single",
+    "prompt": "Which statement describes the default behavior when an eBGP router advertises eBGP-learned routes to iBGP peers?",
+    "options": [
+      "It always changes the next-hop to itself",
+      "It does not change the next-hop attribute",
+      "It removes the next-hop attribute entirely",
+      "It sets the next-hop to the receiving iBGP peer"
+    ],
+    "correct": 1,
+    "explanation": "The content says that by default, when an eBGP router advertises routes learned via eBGP to iBGP peers, it does not change the next-hop attribute."
+  },
+  {
+    "type": "single",
+    "prompt": "Why can iBGP-learned routes become unusable inside the AS if next-hop is not handled properly?",
+    "options": [
+      "Because iBGP uses UDP and may drop packets",
+      "Because internal routers may not have reachability to the external next hop",
+      "Because iBGP requires multicast to function",
+      "Because export policies only apply to neighbors"
+    ],
+    "correct": 1,
+    "explanation": "If iBGP preserves the external next hop and internal routers cannot reach that next hop (via IGP/static), the route cannot be used."
+  },
+  {
+    "type": "single",
+    "prompt": "What is the primary purpose of a next-hop self policy in the scenario described?",
+    "options": [
+      "To advertise inactive routes to all peers",
+      "To rewrite next hop to the advertising router so internal peers can reach it",
+      "To prevent any routes from being exported",
+      "To force eBGP to use loopback peering"
+    ],
+    "correct": 1,
+    "explanation": "Next-hop self rewrites the next-hop to the advertising router’s address so internal routers already have reachability to that next hop."
+  },
+  {
+    "type": "single",
+    "prompt": "In the described scenario, what does the next-hop self policy change the next hop to?",
+    "options": [
+      "R1’s eBGP peer address on the shared subnet",
+      "R1’s loopback address used for iBGP peering",
+      "The destination prefix address",
+      "The IGP default gateway address"
+    ],
+    "correct": 1,
+    "explanation": "The content states the policy modifies the next hop to match R1’s loopback address used for iBGP peering."
+  },
+  {
+    "type": "single",
+    "prompt": "At which BGP policy level does Junos choose the most specific policy when multiple are configured?",
+    "options": [
+      "Protocol level",
+      "Group level",
+      "Neighbor level",
+      "All levels are applied in order regardless of specificity"
+    ],
+    "correct": 2,
+    "explanation": "The notes state policies can be applied at protocol, group, or neighbor level, and Junos uses the most specific (lowest-level) policy configured."
+  },
+  {
+    "type": "single",
+    "prompt": "What do BGP import policies control (per the content)?",
+    "options": [
+      "How routes are exported out of the RIB to peers",
+      "How routes are imported into the RIB before being placed there",
+      "Only how inactive routes are advertised",
+      "Only how next hop is rewritten"
+    ],
+    "correct": 1,
+    "explanation": "Import policies control how routes are imported into the RIB, with rules applied before routes are placed in the RIB."
+  },
+  {
+    "type": "single",
+    "prompt": "Which statement is correct about BGP export policies (per the content)?",
+    "options": [
+      "They apply before routes are placed in the RIB",
+      "They export only active routes by default",
+      "They only apply at the protocol level",
+      "They control OSPF neighbor formation"
+    ],
+    "correct": 1,
+    "explanation": "Export policies control how routes are exported out of the RIB. Only active routes can be exported by default."
+  },
+  {
+    "type": "single",
+    "prompt": "Which configuration option can change the default behavior of exporting only active routes?",
+    "options": [
+      "next-hop self",
+      "advertise-inactive",
+      "multihop",
+      "local-as"
+    ],
+    "correct": 1,
+    "explanation": "The content states export of only active routes can be changed using the advertise-inactive configuration option."
+  },
+
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Which are listed default BGP advertisement rules?",
+    "options": [
+      "iBGP peers share routes learned from eBGP peers with other iBGP peers",
+      "eBGP peers share routes learned from iBGP or eBGP peers with other eBGP peers",
+      "iBGP peers share iBGP-learned routes with other iBGP peers by default",
+      "Routers only share active BGP routes by default"
+    ],
+    "correct": [0,1,3],
+    "explanation": "The content lists: active routes are shared by default; iBGP advertises eBGP-learned routes to other iBGP peers; eBGP advertises routes learned from iBGP/eBGP to other eBGP peers; iBGP does not re-advertise iBGP-learned routes to other iBGP peers."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: What are benefits of directly connected eBGP peering using shared subnet IPs (per the content)?",
+    "options": [
+      "No extra routing is needed to reach the neighbour",
+      "Each AS does not need to carry additional routes just to maintain the BGP session",
+      "Traffic flows directly over the shared link without relying on other paths",
+      "It forces next-hop to be rewritten automatically for iBGP peers"
+    ],
+    "correct": [0,1,2],
+    "explanation": "The notes list the first three as benefits. Next-hop rewriting for iBGP requires next-hop self policy; it is not automatic."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Which statements about iBGP next-hop propagation are true (per the content)?",
+    "options": [
+      "eBGP sets the next-hop attribute",
+      "iBGP preserves the next-hop attribute by default",
+      "If the next hop is not reachable internally, the route cannot be used",
+      "next-hop self rewrites the next hop to the external peer"
+    ],
+    "correct": [0,1,2],
+    "explanation": "The key idea stated: eBGP sets next hop, iBGP preserves it, and unreachable next hop makes the route unusable. next-hop self rewrites next hop to the advertising router (not the external peer)."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: At which levels can BGP import/export policies be applied (per the content)?",
+    "options": [
+      "Protocol level",
+      "Group level",
+      "Neighbor level",
+      "Interface level"
+    ],
+    "correct": [0,1,2],
+    "explanation": "The content lists protocol, group, and neighbor level. Interface level is not listed here."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Which commands are listed for monitoring BGP operation?",
+    "options": [
+      "show bgp summary",
+      "show bgp neighbor",
+      "show bgp group",
+      "show route advertising-protocol bgp NEIGHBOR_IP"
+    ],
+    "correct": [0,1,2,3],
+    "explanation": "All four commands appear in the provided BGP commands section."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Which commands in the content relate to viewing BGP routes and how they are exchanged?",
+    "options": [
+      "show route protocol bgp",
+      "show route receive-protocol bgp NEIGHBOR_IP",
+      "show route advertising-protocol bgp NEIGHBOR_IP",
+      "show ospf neighbor"
+    ],
+    "correct": [0,1,2],
+    "explanation": "The content lists the three show route ... bgp commands. show ospf neighbor is not part of this BGP section."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Which statements about next-hop self policy are true (per the content)?",
+    "options": [
+      "It is typically applied as an export policy to the iBGP group",
+      "It can rewrite the next hop to the advertising router’s loopback used for iBGP peering",
+      "It avoids needing to advertise external links into the IGP",
+      "It requires advertise-inactive to function"
+    ],
+    "correct": [0,1,2],
+    "explanation": "The content states it is applied as an export policy to the iBGP group, rewrites next hop to the router’s address (loopback in the scenario), and avoids advertising external links into the IGP. advertise-inactive is unrelated to next-hop self."
+  },
+
+  {
+    "type": "tf",
+    "prompt": "True or False: If both peers are in the same AS, the session is iBGP.",
+    "tfCorrect": true,
+    "explanation": "The content defines iBGP as internal BGP when both networks/peers are in the same AS."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: iBGP peers will, by default, advertise routes learned from one iBGP peer to another iBGP peer.",
+    "tfCorrect": false,
+    "explanation": "The notes state iBGP peers do not share routes received from other iBGP peers with other iBGP peers by default."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: By default, routers only share active BGP routes with each other.",
+    "tfCorrect": true,
+    "explanation": "This is explicitly stated in the 'Default BGP Advertisement Rules' section."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: When advertising eBGP-learned routes into iBGP, the advertising router changes next-hop by default.",
+    "tfCorrect": false,
+    "explanation": "The content states that by default, the eBGP router does not change the next-hop attribute when advertising to iBGP peers."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: A next-hop self policy can help avoid advertising external links into the IGP.",
+    "tfCorrect": true,
+    "explanation": "By rewriting next hop to an internal, reachable address (e.g., R1), internal routers can use the route without learning external link reachability via IGP."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: BGP export policies control how routes are imported into the RIB before being placed there.",
+    "tfCorrect": false,
+    "explanation": "Import policies affect how routes enter the RIB; export policies affect how routes are exported out of the RIB. The statement describes import policies."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: Junos applies the most specific (lowest-level) policy when policies exist at protocol, group, and neighbor levels.",
+    "tfCorrect": true,
+    "explanation": "The content states Junos uses the most specific policy configured."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: The advertise-inactive option can change the behavior so that more than only active routes can be exported.",
+    "tfCorrect": true,
+    "explanation": "The export policy section states only active routes can be exported, and this can be changed using advertise-inactive."
+  },
+
+  {
+    "type": "match",
+    "prompt": "Match the item to its definition (per the content).",
+    "match": {
+      "statements": [
+        "iBGP",
+        "eBGP",
+        "IGP role for iBGP loopbacks",
+        "Directly connected eBGP peering address choice"
+      ],
+      "answers": [
+        "Used between different ASs",
+        "Used within the same AS",
+        "Maintains reachability between loopback addresses as topology changes",
+        "Uses IPs on the shared subnet to form the session"
+      ],
+      "mapping": ["B","A","C","D"]
+    },
+    "explanation": "iBGP is within an AS; eBGP is between ASs; IGP maintains loopback reachability; directly connected eBGP typically uses shared subnet interface IPs."
+  },
+  {
+    "type": "match",
+    "prompt": "Match the BGP policy concept to what it controls (per the content).",
+    "match": {
+      "statements": [
+        "Import policy",
+        "Export policy",
+        "Most specific policy selection",
+        "advertise-inactive"
+      ],
+      "answers": [
+        "Allows exporting routes beyond only active routes",
+        "Rules applied before routes are placed in the RIB",
+        "Neighbor-level overrides group/protocol when present",
+        "Controls how routes are exported out of the RIB"
+      ],
+      "mapping": ["B","D","C","A"]
+    },
+    "explanation": "Import policies affect routes before entering the RIB; export policies affect outbound advertisement from the RIB; Junos uses the most specific configured policy; advertise-inactive changes the default active-only export behavior."
+  },
+  {
+    "type": "match",
+    "prompt": "Match the show command to what it displays (per the content).",
+    "match": {
+      "statements": [
+        "show bgp summary",
+        "show bgp neighbor",
+        "show route receive-protocol bgp NEIGHBOR_IP",
+        "show route advertising-protocol bgp NEIGHBOR_IP"
+      ],
+      "answers": [
+        "Routes as received from a specific BGP neighbor",
+        "Overview of system BGP information",
+        "BGP neighbor information",
+        "Routing information as prepared for advertisement to the specified neighbor"
+      ],
+      "mapping": ["B","C","A","D"]
+    },
+    "explanation": "The content provides these command descriptions directly."
+  },
+  {
+    "type": "match",
+    "prompt": "Match the next-hop behavior statement to the correct idea (per the content).",
+    "match": {
+      "statements": [
+        "Default behavior advertising eBGP routes into iBGP",
+        "Problem if next hop is unreachable internally",
+        "Solution: next-hop self",
+        "Key idea summary"
+      ],
+      "answers": [
+        "Rewrites next hop to the advertising router to ensure internal reachability",
+        "Route becomes unusable because internal routers cannot reach the external next hop",
+        "eBGP sets the next hop; iBGP preserves it",
+        "Does not change the next-hop attribute by default"
+      ],
+      "mapping": ["D","B","A","C"]
+    },
+    "explanation": "By default, next hop is preserved into iBGP; unreachable next hop breaks usability; next-hop self rewrites it to the advertising router; overall: eBGP sets next hop and iBGP preserves it."
+  },
+
+  {
+    "type": "single",
+    "prompt": "Which command displays BGP group information (per the content)?",
+    "options": [
+      "show bgp group",
+      "show bgp database",
+      "show route bgp group",
+      "show interfaces terse"
+    ],
+    "correct": 0,
+    "explanation": "The content lists 'show bgp group' as the command to view BGP group information."
+  },
+  {
+    "type": "single",
+    "prompt": "Which command displays the entries in the RIB table for routes learned via BGP (per the content)?",
+    "options": [
+      "show route protocol bgp",
+      "show bgp protocol route",
+      "show route hidden",
+      "show bgp route-table"
+    ],
+    "correct": 0,
+    "explanation": "The notes list 'show route protocol bgp' to display entries in the RIB table."
+  },
+  {
+    "type": "single",
+    "prompt": "Which command shows routes as received from a specific BGP neighbor?",
+    "options": [
+      "show route protocol bgp",
+      "show route receive-protocol bgp NEIGHBOR_IP",
+      "show route advertising-protocol bgp NEIGHBOR_IP",
+      "show bgp neighbor extensive"
+    ],
+    "correct": 1,
+    "explanation": "The content explicitly states 'show route receive-protocol bgp NEIGHBOR_IP' shows routes as received from a specific BGP neighbor."
+  },
+  {
+    "type": "single",
+    "prompt": "Which command shows the routing information as prepared for advertisement to a specified BGP neighbor?",
+    "options": [
+      "show bgp summary",
+      "show route advertising-protocol bgp NEIGHBOR_IP",
+      "show route receive-protocol bgp NEIGHBOR_IP",
+      "show bgp group"
+    ],
+    "correct": 1,
+    "explanation": "The content states 'show route advertising-protocol bgp NEIGHBOR_IP' displays routing information prepared for advertisement to that neighbor."
+  },
+  {
+    "type": "single",
+    "prompt": "Which statement best explains why combining accept and next-hop actions in a single policy term can be risky?",
+    "options": [
+      "It prevents the policy from being applied at the neighbor level",
+      "It can unintentionally match and advertise all routes to iBGP peers",
+      "It forces advertise-inactive to be enabled",
+      "It disables iBGP route propagation from eBGP"
+    ],
+    "correct": 1,
+    "explanation": "The content warns that combining accept with next-hop in the same term could unintentionally match and advertise all routes to iBGP peers."
+  }
+]

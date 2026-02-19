@@ -1,0 +1,119 @@
+[
+    {
+      "type": "single",
+      "prompt": "What is the primary purpose of implementing VLANs in a data centre?",
+      "options": [
+        "To increase collision domains",
+        "To create separate broadcast domains for easier management",
+        "To eliminate the need for routing",
+        "To combine all devices into one logical network"
+      ],
+      "correct": 1,
+      "explanation": "VLANs segregate the network into smaller logical groups, creating separate broadcast domains that are easier to manage. Module 5: Virtual Networks Overview"
+    },
+    {
+      "type": "single",
+      "prompt": "How is a VLAN best defined?",
+      "options": [
+        "A physical grouping of switches in a rack",
+        "A collection of network nodes logically grouped into a separate broadcast domain",
+        "A routing protocol used between switches",
+        "A security feature that replaces firewalls"
+      ],
+      "correct": 1,
+      "explanation": "A VLAN is defined as a collection of network nodes logically grouped together to form a separate broadcast domain, regardless of physical location. Module 5: Virtual Networks Overview"
+    },
+    {
+      "type": "single",
+      "prompt": "Which port mode is typically used to connect end-user devices such as laptops or servers?",
+      "options": [
+        "Trunk (Tagged)",
+        "Access (Untagged)",
+        "Native",
+        "Hybrid"
+      ],
+      "correct": 1,
+      "explanation": "Access (untagged) ports typically connect to end-user devices and belong to a single VLAN. Module 5: Virtual Networks Overview"
+    },
+    {
+      "type": "single",
+      "prompt": "What configuration option allows a trunk port to carry untagged traffic?",
+      "options": [
+        "family ethernet-switching",
+        "native-vlan-id",
+        "interface-range",
+        "vlan-tagging disable"
+      ],
+      "correct": 1,
+      "explanation": "The native-vlan-id configuration option allows trunk ports to send and receive untagged traffic. Module 5: Virtual Networks Overview"
+    },
+    {
+      "type": "multi",
+      "prompt": "Which statements correctly describe trunk (tagged) ports? (Select all that apply.)",
+      "options": [
+        "They can carry traffic for multiple VLANs",
+        "They are typically used between switches or edge routers",
+        "They tag frames with a VLAN ID",
+        "They only support a single VLAN"
+      ],
+      "correct": [0, 1, 2],
+      "explanation": "Trunk ports support multiple VLANs, are typically used between switches or routers, and separate traffic by tagging frames with a VLAN ID. Module 5: Virtual Networks Overview"
+    },
+    {
+      "type": "multi",
+      "prompt": "Which statements are true about access (untagged) ports? (Select all that apply.)",
+      "options": [
+        "They usually belong to a single VLAN",
+        "They connect to end-user devices",
+        "They send and receive untagged frames",
+        "They tag all frames by default"
+      ],
+      "correct": [0, 1, 2],
+      "explanation": "Access ports typically belong to one VLAN, connect to end-user devices, and handle untagged Ethernet frames. Module 5: Virtual Networks Overview"
+    },
+    {
+      "type": "multi",
+      "prompt": "Which fields are part of the VLAN Tag Control Information (TCI)? (Select all that apply.)",
+      "options": [
+        "PCP (Priority Code Point)",
+        "DEI (Drop Eligible Indicator)",
+        "VID (VLAN Identifier)",
+        "TTL (Time to Live)"
+      ],
+      "correct": [0, 1, 2],
+      "explanation": "The TCI contains PCP (3 bits), DEI (1 bit), and VID (12 bits). TTL is not part of VLAN tagging. Module 5: Virtual Networks Overview"
+    },
+    {
+      "type": "tf",
+      "prompt": "True or False: By default, all EX Series switch ports are configured as access ports and assigned to the default VLAN.",
+      "tfCorrect": true,
+      "explanation": "True. By default, all switch ports are set to access mode and assigned to the default VLAN. Module 5: Virtual Networks Overview"
+    },
+    {
+      "type": "tf",
+      "prompt": "True or False: VLAN tagging inserts 4 bytes into an Ethernet frame.",
+      "tfCorrect": true,
+      "explanation": "True. VLAN tagging inserts 4 bytes into the Ethernet frame, which includes the TPID and TCI fields. Module 5: Virtual Networks Overview"
+    },
+    {
+      "type": "match",
+      "prompt": "Match the VLAN tagging field to its function.",
+      "match": {
+        "statements": [
+          "PCP",
+          "DEI",
+          "VID",
+          "native-vlan-id"
+        ],
+        "answers": [
+          "Defines frame priority",
+          "Indicates drop eligibility during congestion",
+          "Identifies the VLAN the frame belongs to",
+          "Allows untagged traffic on a trunk port"
+        ],
+        "mapping": ["A", "B", "C", "D"]
+      },
+      "explanation": "PCP defines priority, DEI indicates drop eligibility, VID identifies the VLAN, and native-vlan-id allows untagged traffic on trunk ports. Module 5: Virtual Networks Overview"
+    }
+  ]
+  

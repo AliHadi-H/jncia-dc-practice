@@ -1,0 +1,618 @@
+[
+  {
+    "type": "single",
+    "prompt": "Which statement best describes BGP?",
+    "options": [
+      "A link-state IGP used within an AS",
+      "A path-vector routing protocol used for inter-domain routing",
+      "A distance-vector protocol used for LAN routing",
+      "A Layer 2 control protocol for VLANs"
+    ],
+    "correct": 1,
+    "explanation": "The content states BGP is a path-vector routing protocol used between Autonomous Systems (inter-domain routing)."
+  },
+  {
+    "type": "single",
+    "prompt": "What does an Autonomous System (AS) represent?",
+    "options": [
+      "A single router running BGP",
+      "A set of routers under the same administrative control",
+      "A group of VLANs in a data centre",
+      "A set of interfaces on a single device"
+    ],
+    "correct": 1,
+    "explanation": "The notes define an AS as a set of routers under the same administrative control."
+  },
+  {
+    "type": "single",
+    "prompt": "Which transport protocol and port does BGP rely on?",
+    "options": [
+      "UDP 520",
+      "TCP 179",
+      "TCP 22",
+      "UDP 179"
+    ],
+    "correct": 1,
+    "explanation": "The content states BGP relies on TCP connections using port 179."
+  },
+  {
+    "type": "single",
+    "prompt": "Which RFC defines BGP-4 (per the content)?",
+    "options": [
+      "RFC 2328",
+      "RFC 4271",
+      "RFC 1918",
+      "RFC 2547"
+    ],
+    "correct": 1,
+    "explanation": "The notes state BGP is defined in RFC 4271."
+  },
+  {
+    "type": "single",
+    "prompt": "Which session type is used between BGP peers in different Autonomous Systems?",
+    "options": [
+      "iBGP",
+      "eBGP",
+      "OSPF adjacency",
+      "LDP"
+    ],
+    "correct": 1,
+    "explanation": "Peers in different ASs use external BGP (eBGP) sessions."
+  },
+  {
+    "type": "single",
+    "prompt": "Which statement is correct about iBGP peers (per the content)?",
+    "options": [
+      "They must be directly connected by default because TTL=1",
+      "They exchange routes within the same AS",
+      "They do not require any internal reachability mechanism",
+      "They only work for IPv6 routes"
+    ],
+    "correct": 1,
+    "explanation": "iBGP is used to exchange routes within the same AS."
+  },
+  {
+    "type": "single",
+    "prompt": "Why are loopback interfaces commonly used for iBGP sessions?",
+    "options": [
+      "They automatically discover neighbors",
+      "They are always alive unless the router itself fails, improving stability",
+      "They eliminate the need for TCP",
+      "They force a TTL of 1"
+    ],
+    "correct": 1,
+    "explanation": "The content states iBGP sessions are commonly established using loopbacks for stability (always alive unless the router dies)."
+  },
+  {
+    "type": "single",
+    "prompt": "What does BGP require within an AS to ensure iBGP peers can establish TCP sessions using the routing table?",
+    "options": [
+      "An IGP for internal reachability",
+      "A DR/BDR election",
+      "STP convergence",
+      "LACP negotiation"
+    ],
+    "correct": 0,
+    "explanation": "The notes say an IGP is required within the AS to ensure reachability so BGP can establish TCP sessions using the RIB."
+  },
+  {
+    "type": "single",
+    "prompt": "By default, why must eBGP peers be directly connected?",
+    "options": [
+      "eBGP uses UDP",
+      "eBGP packets have a TTL of 1",
+      "eBGP requires multicast",
+      "eBGP uses link-state flooding"
+    ],
+    "correct": 1,
+    "explanation": "The content states eBGP peers must be directly connected by default because eBGP packets have TTL=1."
+  },
+  {
+    "type": "single",
+    "prompt": "If eBGP peers are more than one hop away, what must be configured?",
+    "options": [
+      "OSPF virtual links",
+      "Multihop eBGP",
+      "BFD",
+      "Route refresh"
+    ],
+    "correct": 1,
+    "explanation": "The notes state multihop eBGP must be configured when peers are more than one hop away."
+  },
+  {
+    "type": "single",
+    "prompt": "In an eBGP fabric leaf–spine design, which connections are NOT permitted (per the content)?",
+    "options": [
+      "Leaf-to-spine",
+      "Leaf-to-leaf and spine-to-spine",
+      "Leaf-to-ISP",
+      "Spine-to-WAN"
+    ],
+    "correct": 1,
+    "explanation": "The content states leaf-to-leaf and spine-to-spine connections are not permitted in an eBGP fabric leaf–spine architecture."
+  },
+  {
+    "type": "single",
+    "prompt": "What private AS number range is commonly used in eBGP fabrics (per the content)?",
+    "options": [
+      "1–65535",
+      "64512–65535",
+      "100–200",
+      "4200000000–4294967295"
+    ],
+    "correct": 1,
+    "explanation": "The notes list the private AS number range as 64512–65535."
+  },
+  {
+    "type": "single",
+    "prompt": "In an eBGP fabric, what must be configured to support multipath across multiple ASs (per the content)?",
+    "options": [
+      "A spanning-tree root",
+      "A forwarding information base (FIB) and a load-balancing policy",
+      "Hello/dead timers",
+      "A DR election priority"
+    ],
+    "correct": 1,
+    "explanation": "The notes state all routers must be configured for multipath across multiple ASs, requiring a FIB and a load-balancing policy."
+  },
+  {
+    "type": "single",
+    "prompt": "If you do not specify a TTL value for multihop eBGP sessions, what default TTL is used (per the content)?",
+    "options": [
+      "1",
+      "16",
+      "64",
+      "255"
+    ],
+    "correct": 2,
+    "explanation": "The content states the system uses the maximum default TTL value of 64 for multihop eBGP sessions if not specified."
+  },
+  {
+    "type": "single",
+    "prompt": "Which best describes how BGP peering sessions are formed?",
+    "options": [
+      "They are discovered automatically via multicast Hello packets",
+      "They are manually defined; there is no automatic neighbor discovery",
+      "They are created by VLAN membership",
+      "They require STP to be enabled"
+    ],
+    "correct": 1,
+    "explanation": "The content states BGP sessions are manually defined and there is no automatic neighbor discovery."
+  },
+  {
+    "type": "single",
+    "prompt": "In the simplified BGP state progression, which state indicates the session is up and routes are exchanged?",
+    "options": [
+      "Idle",
+      "OpenSent",
+      "Established",
+      "Active"
+    ],
+    "correct": 2,
+    "explanation": "Established indicates the session is up and routes are exchanged."
+  },
+  {
+    "type": "single",
+    "prompt": "Which BGP message is sent after the TCP three-way handshake to initiate the BGP session?",
+    "options": [
+      "UPDATE",
+      "OPEN",
+      "KEEPALIVE",
+      "NOTIFICATION"
+    ],
+    "correct": 1,
+    "explanation": "The OPEN message is sent after the TCP handshake and initiates the BGP session."
+  },
+  {
+    "type": "single",
+    "prompt": "Which BGP message type is used to exchange routing information?",
+    "options": [
+      "OPEN",
+      "UPDATE",
+      "KEEPALIVE",
+      "ROUTE-REFRESH"
+    ],
+    "correct": 1,
+    "explanation": "UPDATE messages are used to exchange routing information."
+  },
+  {
+    "type": "single",
+    "prompt": "Which BGP message consists only of the fixed 19-byte header (no additional data)?",
+    "options": [
+      "KEEPALIVE",
+      "OPEN",
+      "UPDATE",
+      "NOTIFICATION"
+    ],
+    "correct": 0,
+    "explanation": "The content states KEEPALIVE contains only the 19-byte header."
+  },
+  {
+    "type": "single",
+    "prompt": "Which BGP message is sent when an error is detected and causes the BGP session to be closed?",
+    "options": [
+      "KEEPALIVE",
+      "UPDATE",
+      "NOTIFICATION",
+      "ROUTE-REFRESH"
+    ],
+    "correct": 2,
+    "explanation": "NOTIFICATION is sent on errors (unsupported options/invalid routes) and closes the session."
+  },
+  {
+    "type": "single",
+    "prompt": "What is the minimum size of a BGP message (per the content)?",
+    "options": [
+      "16 bytes",
+      "19 bytes",
+      "64 bytes",
+      "4096 bytes"
+    ],
+    "correct": 1,
+    "explanation": "The content states the minimum BGP message size is 19 octets (header only)."
+  },
+  {
+    "type": "single",
+    "prompt": "What is the maximum size of a BGP message (per the content)?",
+    "options": [
+      "1500 bytes",
+      "2048 bytes",
+      "4096 bytes",
+      "8192 bytes"
+    ],
+    "correct": 2,
+    "explanation": "The content states the maximum BGP message size is 4096 octets."
+  },
+  {
+    "type": "single",
+    "prompt": "What is the purpose of the ROUTE-REFRESH message (per the content)?",
+    "options": [
+      "Elect a designated router",
+      "Request readvertisement of previously sent routes (soft clearing)",
+      "Change the TCP port used by BGP",
+      "Update TTL to 1"
+    ],
+    "correct": 1,
+    "explanation": "Route-refresh requests readvertisements of previously sent routes and enables soft clearing (commonly in MPLS VPN environments)."
+  },
+
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Which are listed reasons to use BGP?",
+    "options": [
+      "Multiple upstream connections (one or more ISPs)",
+      "Policy-based routing decisions / traffic control",
+      "To eliminate the need for TCP reliability",
+      "To advertise provider-independent (portable) addresses to the Internet"
+    ],
+    "correct": [0,1,3],
+    "explanation": "The notes list multiple upstream connections, policy control of inbound/outbound traffic, and portable address advertisement/route injection use cases."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Which statements about iBGP are true (per the content)?",
+    "options": [
+      "Used to exchange routes within the same AS",
+      "Commonly established using loopback interfaces for stability",
+      "Requires an IGP within the AS for reachability to establish TCP sessions",
+      "Requires peers to be directly connected because TTL=1"
+    ],
+    "correct": [0,1,2],
+    "explanation": "The content states iBGP is within the same AS, often uses loopbacks, and relies on IGP for internal reachability. TTL=1 direct-connect is described for eBGP by default."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Which statements about eBGP are true (per the content)?",
+    "options": [
+      "Used to exchange routes between different ASs",
+      "By default peers must be directly connected due to TTL=1",
+      "Peering does not depend on an IGP",
+      "By default the next hop remains unchanged"
+    ],
+    "correct": [0,1,2],
+    "explanation": "The notes state eBGP is between ASs, TTL=1 requires direct connectivity unless multihop is configured, and eBGP does not depend on an IGP. Next hop behavior differs: eBGP updates next hop."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Which BGP message types are listed in the content?",
+    "options": [
+      "OPEN",
+      "UPDATE",
+      "KEEPALIVE",
+      "ROUTE-REFRESH"
+    ],
+    "correct": [0,1,2,3],
+    "explanation": "The content lists OPEN, UPDATE, KEEPALIVE, NOTIFICATION, and ROUTE-REFRESH."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Which address families are listed as being supported by MP-BGP in the content?",
+    "options": [
+      "IPv6 unicast routing",
+      "Multicast routing for IPv4 and IPv6",
+      "L2VPN information (e.g., EVPN)",
+      "L3VPN routing information"
+    ],
+    "correct": [0,1,2,3],
+    "explanation": "The MP-BGP section lists IPv6 unicast, multicast (v4/v6), L2VPN (e.g., EVPN), and L3VPN."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Which attributes are listed as well-known mandatory?",
+    "options": [
+      "AS Path",
+      "Origin",
+      "Next Hop",
+      "MED"
+    ],
+    "correct": [0,1,2],
+    "explanation": "Well-known mandatory attributes listed are AS Path, Origin, and Next Hop. MED is optional non-transitive."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Which attributes are listed as well-known discretionary?",
+    "options": [
+      "Local Preference",
+      "Atomic Aggregate",
+      "Community",
+      "AS Path"
+    ],
+    "correct": [0,1],
+    "explanation": "Well-known discretionary attributes listed are Local Preference and Atomic Aggregate."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Which attributes are listed as optional transitive?",
+    "options": [
+      "Community",
+      "Aggregator",
+      "Local Preference",
+      "Originator ID"
+    ],
+    "correct": [0,1],
+    "explanation": "Optional transitive attributes listed are Community and Aggregator."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Which attributes are listed as optional non-transitive?",
+    "options": [
+      "MED",
+      "Cluster List",
+      "Originator ID",
+      "Next Hop"
+    ],
+    "correct": [0,1,2],
+    "explanation": "Optional non-transitive attributes listed are MED, Cluster List, and Originator ID. Next Hop is well-known mandatory."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Which statements about the Next Hop attribute are true (per the content)?",
+    "options": [
+      "A route is active only if the Next Hop is reachable",
+      "If the Next Hop is unreachable, the route can become hidden",
+      "In eBGP the next hop is updated",
+      "In iBGP the next hop is updated by default"
+    ],
+    "correct": [0,1,2],
+    "explanation": "The content says routes require reachable next hop; unreachable next hop can make routes hidden (viewable with show route hidden). It also states eBGP updates next hop while iBGP keeps it unchanged."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Which statements about Local Preference are true (per the content)?",
+    "options": [
+      "Higher value is preferred",
+      "It determines the preferred path out of the AS",
+      "It is advertised across eBGP links by default",
+      "If both BGP config and routing policy set it in Junos, policy takes priority"
+    ],
+    "correct": [0,1,3],
+    "explanation": "Local Preference is higher-is-better, used within an AS to choose the preferred exit, and Junos policy overrides config if both set it. It is not advertised across eBGP per the content."
+  },
+
+  {
+    "type": "tf",
+    "prompt": "True or False: BGP is the core routing protocol of the Internet (per the content).",
+    "tfCorrect": true,
+    "explanation": "The notes explicitly describe BGP as the core routing protocol of the Internet."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: BGP peering includes automatic neighbor discovery.",
+    "tfCorrect": false,
+    "explanation": "The content states BGP peering sessions are manually defined and there is no automatic neighbor discovery."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: BGP relies on TCP for reliable communication.",
+    "tfCorrect": true,
+    "explanation": "The notes state BGP relies on TCP connections (port 179) for reliable communication."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: eBGP peering depends on an IGP for internal reachability.",
+    "tfCorrect": false,
+    "explanation": "The content states eBGP peering does not depend on an IGP."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: If a BGP route’s next hop is unreachable, Junos can mark the route as hidden and it can be viewed with 'show route hidden'.",
+    "tfCorrect": true,
+    "explanation": "The notes state routes become hidden if the next hop is unreachable, and hidden routes can be viewed with show route hidden."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: In iBGP, the next hop attribute remains unchanged (per the content).",
+    "tfCorrect": true,
+    "explanation": "The content states that in iBGP the next hop remains unchanged."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: BGP uses timers for automatic route refresh in the same way IGPs do.",
+    "tfCorrect": false,
+    "explanation": "The content states that unlike IGPs, BGP does not use timers for automatic route refresh."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: If MED is missing on a route, BGP determines the MED value to be 0 (per the content).",
+    "tfCorrect": true,
+    "explanation": "The MED section states if MED is missing, BGP treats it as 0."
+  },
+
+  {
+    "type": "match",
+    "prompt": "Match the BGP message type to its primary function (per the content).",
+    "match": {
+      "statements": [
+        "OPEN",
+        "UPDATE",
+        "KEEPALIVE",
+        "NOTIFICATION"
+      ],
+      "answers": [
+        "Exchange routing information (NLRI and attributes)",
+        "Sent after TCP handshake to initiate session and negotiate capabilities",
+        "Sent on error and closes the session",
+        "Maintains session and prevents hold timer expiry (header only)"
+      ],
+      "mapping": ["B","A","D","C"]
+    },
+    "explanation": "OPEN initiates the session and negotiates capabilities, UPDATE carries routes, KEEPALIVE maintains the session, and NOTIFICATION signals errors and closes the session."
+  },
+  {
+    "type": "match",
+    "prompt": "Match the BGP attribute class to an example attribute listed in the content.",
+    "match": {
+      "statements": [
+        "Well-known mandatory",
+        "Well-known discretionary",
+        "Optional transitive",
+        "Optional non-transitive"
+      ],
+      "answers": [
+        "Community",
+        "MED",
+        "AS Path",
+        "Local Preference"
+      ],
+      "mapping": ["C","D","A","B"]
+    },
+    "explanation": "AS Path is well-known mandatory; Local Preference is well-known discretionary; Community is optional transitive; MED is optional non-transitive."
+  },
+  {
+    "type": "match",
+    "prompt": "Match the VPN-related concept to its function (per the content).",
+    "match": {
+      "statements": [
+        "Route Target (RT)",
+        "Route Distinguisher (RD)",
+        "Site ID / CE-ID",
+        "Label Block"
+      ],
+      "answers": [
+        "Makes overlapping customer prefixes unique by prepending a unique value",
+        "Identifies VPN membership and controls import/export of VPN routes",
+        "Advertises multiple VPN labels for several attachment circuits in one advertisement",
+        "Unique endpoint identifier used to calculate the VPN label"
+      ],
+      "mapping": ["B","A","D","C"]
+    },
+    "explanation": "RTs indicate VPN membership/import-export; RDs make routes unique across VPNs; Site IDs identify endpoints and help calculate labels; Label blocks advertise many labels efficiently."
+  },
+
+  {
+    "type": "single",
+    "prompt": "Which attribute is used as the first step in the provided BGP path selection summary?",
+    "options": [
+      "Lowest MED",
+      "Highest Local Preference",
+      "Shortest Cluster List",
+      "Lowest Router ID"
+    ],
+    "correct": 1,
+    "explanation": "The path selection summary begins with Highest Local Preference."
+  },
+  {
+    "type": "single",
+    "prompt": "Which statement best describes BGP loop avoidance using AS Path (per the content)?",
+    "options": [
+      "BGP accepts routes only if the AS path contains the local AS",
+      "BGP drops a route if the local AS number is found in the AS path",
+      "BGP rewrites the AS path to remove the local AS",
+      "BGP ignores the AS path for iBGP routes"
+    ],
+    "correct": 1,
+    "explanation": "The notes state the router checks if the local AS is in the AS path; if it is, the route is dropped to avoid loops."
+  },
+  {
+    "type": "single",
+    "prompt": "What does the MED attribute primarily influence (per the content)?",
+    "options": [
+      "Preferred path out of an AS",
+      "Preferred path back into an AS when multiple links exist between the same two ASs",
+      "Whether next hop is reachable",
+      "Whether routes are redistributed into IGPs"
+    ],
+    "correct": 1,
+    "explanation": "The MED section states it influences the preferred path back into an AS when multiple links exist between the same two ASs."
+  },
+  {
+    "type": "single",
+    "prompt": "How does the remote AS interpret MED values when choosing among multiple links (per the content)?",
+    "options": [
+      "Higher MED is better",
+      "Lower MED is better",
+      "MED is ignored unless communities exist",
+      "MED is mandatory and must be present"
+    ],
+    "correct": 1,
+    "explanation": "The content states lower MED is better, and routes do not require MED."
+  },
+  {
+    "type": "single",
+    "prompt": "Which statement best describes a Route Target (RT) in BGP-signalled MPLS VPNs (per the content)?",
+    "options": [
+      "It makes identical customer prefixes unique across VPNs",
+      "It identifies VPN membership and controls which VPN routes are imported/exported",
+      "It is the TTL used for multihop eBGP",
+      "It is the TCP port used by BGP"
+    ],
+    "correct": 1,
+    "explanation": "The notes state RTs identify VPN membership and control import/export of VPN routes between PEs."
+  },
+  {
+    "type": "single",
+    "prompt": "Which statement best describes why Route Distinguishers (RDs) are used in MPLS L3VPNs?",
+    "options": [
+      "To indicate VPN membership for import/export",
+      "To allow two customers to use the same IP subnet without conflicts by making advertisements unique",
+      "To control the local preference inside an AS",
+      "To prevent TCP session resets"
+    ],
+    "correct": 1,
+    "explanation": "The content explains RDs prepend a unique value to the prefix so overlapping subnets (e.g., 192.168.10.0/24) remain distinct."
+  },
+  {
+    "type": "single",
+    "prompt": "Which RD format (type) uses a 4-byte IP address plus a 2-byte number (per the content)?",
+    "options": [
+      "Type 0",
+      "Type 1",
+      "Type 2",
+      "Type 3"
+    ],
+    "correct": 1,
+    "explanation": "The RD formats section states Type 1 is 4-byte IP address + 2-byte number (often the PE loopback)."
+  },
+  {
+    "type": "single",
+    "prompt": "Which RD type is recommended for a multihomed customer (per the content)?",
+    "options": [
+      "Type 0",
+      "Type 1",
+      "Type 2",
+      "Any type, it makes no difference"
+    ],
+    "correct": 1,
+    "explanation": "The content explicitly notes the best RD type for a multihomed customer is Type 1."
+  }
+]

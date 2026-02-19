@@ -1,0 +1,370 @@
+[
+  {
+    "type": "single",
+    "prompt": "What is a primary goal of load balancing in network operations?",
+    "options": [
+      "Disable redundant links to reduce cost",
+      "Optimise network response time by spreading workload evenly",
+      "Ensure all packets take the longest available path",
+      "Replace routing protocols with static routes"
+    ],
+    "correct": 1,
+    "explanation": "The notes state load balancing is important to optimise response time and spread workload evenly."
+  },
+  {
+    "type": "single",
+    "prompt": "In Junos, what does ECMP stand for?",
+    "options": [
+      "Enhanced Control Management Protocol",
+      "Equal-Cost MultiPath",
+      "External Cost Metric Policy",
+      "Encrypted Core Multipath"
+    ],
+    "correct": 1,
+    "explanation": "ECMP is defined as Equal-Cost MultiPath in the provided content."
+  },
+  {
+    "type": "single",
+    "prompt": "Which statement best describes ECMP (as presented in the notes)?",
+    "options": [
+      "It balances traffic based on bandwidth utilisation in real time",
+      "It uses all available equal-cost links to increase network bandwidth",
+      "It performs application-layer health checks and routes users accordingly",
+      "It only installs a single path and disables the others"
+    ],
+    "correct": 1,
+    "explanation": "The notes describe ECMP as using all available equal-cost links to increase bandwidth, not balancing by bandwidth utilisation."
+  },
+  {
+    "type": "single",
+    "prompt": "What is the key distinction between Application Load Balancing (ALB) and ECMP in the notes?",
+    "options": [
+      "ALB distributes traffic across equal-cost network paths; ECMP controls application flows",
+      "ALB controls traffic flow to applications; ECMP distributes network traffic across available connections/ports",
+      "ALB is only for IPv6; ECMP is only for IPv4",
+      "ALB modifies the routing table; ECMP modifies the control plane"
+    ],
+    "correct": 1,
+    "explanation": "ALB is described as controlling traffic flow to applications, while ECMP distributes network traffic across available connections/ports."
+  },
+  {
+    "type": "single",
+    "prompt": "Which load sharing method is NOT supported on currently sold Junos devices (per the notes)?",
+    "options": [
+      "Per-flow load balancing",
+      "Per-packet load balancing",
+      "Per-prefix load balancing",
+      "Hash-based load balancing"
+    ],
+    "correct": 1,
+    "explanation": "The notes explicitly say per-packet load balancing is not supported on Junos devices that are currently sold."
+  },
+  {
+    "type": "single",
+    "prompt": "Why is per-flow load balancing preferred for avoiding packet reordering?",
+    "options": [
+      "It sends each packet down a different path to maximise throughput",
+      "It ensures packets in the same flow use the same egress interface/path",
+      "It forces all traffic to use a single link",
+      "It changes the routing table to pin routes"
+    ],
+    "correct": 1,
+    "explanation": "Per-flow keeps packets of the same flow on the same path, preventing out-of-order delivery."
+  },
+  {
+    "type": "single",
+    "prompt": "In Junos default IGP ECMP behaviour, what is installed in the forwarding table when multiple equal-cost paths exist?",
+    "options": [
+      "All equal-cost next-hops for the route",
+      "One best next-hop",
+      "No next-hop until a policy is configured",
+      "Per-packet entries for each next-hop"
+    ],
+    "correct": 1,
+    "explanation": "The notes state that for IGP, Junos selects one best path by default and installs that next-hop in the FIB."
+  },
+  {
+    "type": "single",
+    "prompt": "If the equal-cost next-hop set changes (added/removed/modified) in IGP default behaviour, what does Junos do?",
+    "options": [
+      "Keeps the existing FIB entry until manual intervention",
+      "Automatically re-evaluates and selects a new best path",
+      "Disables ECMP permanently",
+      "Converts the routes to iBGP"
+    ],
+    "correct": 1,
+    "explanation": "The notes state Junos automatically re-evaluates and selects a new best path when the next-hop set changes."
+  },
+  {
+    "type": "single",
+    "prompt": "In Junos default iBGP ECMP behaviour, how is load balancing applied?",
+    "options": [
+      "Per-packet across all available paths",
+      "Per-flow across all available paths for a single prefix",
+      "Per-prefix distribution across equal-cost paths, with each prefix using a single path",
+      "All prefixes always use the same single path"
+    ],
+    "correct": 2,
+    "explanation": "The notes describe iBGP default as per-prefix load balancing: different prefixes can be distributed across paths, but each prefix uses one path."
+  },
+  {
+    "type": "single",
+    "prompt": "In the iBGP example, what causes R1 to see multiple equal-cost paths to R2’s loopback?",
+    "options": [
+      "R2 advertises routes using OSPF",
+      "R2 uses next-hop self",
+      "R1 disables hashing",
+      "R2 advertises only one prefix"
+    ],
+    "correct": 1,
+    "explanation": "The example states R2 uses next-hop self, so R1 sees multiple equal-cost paths to R2’s loopback."
+  },
+  {
+    "type": "single",
+    "prompt": "Which statement about Junos Layer 3 load balancing default behaviour is correct?",
+    "options": [
+      "Junos installs multiple next-hops in the RIB by default",
+      "Junos installs one next-hop in the forwarding table by default",
+      "Junos modifies the routing table only, not the forwarding table",
+      "Junos enables per-packet load balancing by default"
+    ],
+    "correct": 1,
+    "explanation": "The notes state that Junos installs one next-hop in the forwarding table by default."
+  },
+  {
+    "type": "single",
+    "prompt": "When enabling load balancing via policy, which table is affected according to the notes?",
+    "options": [
+      "Routing table (RIB) only",
+      "Forwarding table (FIB) only",
+      "Both RIB and FIB equally",
+      "Neither table changes"
+    ],
+    "correct": 1,
+    "explanation": "The notes state the routing table does not change; only the forwarding table (FIB) is affected."
+  },
+  {
+    "type": "single",
+    "prompt": "Where do you apply a load-balancing policy so equal-cost paths are exported to the forwarding table?",
+    "options": [
+      "[edit interfaces] as an input policy",
+      "[edit protocols] as an import policy",
+      "[edit routing-options] as an export policy under forwarding-table",
+      "[edit firewall] as a filter action"
+    ],
+    "correct": 2,
+    "explanation": "The notes specify applying the policy as an export policy under [edit routing-options] using forwarding-table export."
+  },
+
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Which statements about ECMP are supported by the notes?",
+    "options": [
+      "It uses all available equal-cost links to increase bandwidth",
+      "It balances traffic at a traffic/bandwidth utilisation level",
+      "It distributes traffic across multiple equal-cost paths to the same destination",
+      "It can be implemented as per-flow load sharing"
+    ],
+    "correct": [0,2,3],
+    "explanation": "ECMP uses equal-cost links/paths and can distribute traffic across them. The notes explicitly say it does not balance at traffic/bandwidth utilisation level."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: In Junos, load balancing can be performed using:",
+    "options": [
+      "Per-packet",
+      "Per-flow",
+      "Per-prefix",
+      "Per-VLAN"
+    ],
+    "correct": [0,1],
+    "explanation": "The notes list per-packet and per-flow as load-balancing methods. Per-prefix is described for iBGP behaviour, not as the general load-sharing method list, and per-VLAN is not mentioned."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Which statements describe per-flow load balancing?",
+    "options": [
+      "Packets arrive in the order they were sent (no reordering)",
+      "Traffic in the same flow uses the same egress interface (same path)",
+      "Each packet is sent down a different path",
+      "It is not supported on currently sold Junos devices"
+    ],
+    "correct": [0,1],
+    "explanation": "Per-flow keeps a flow on one path, preventing reordering. Per-packet is the one stated as not supported."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Junos default IGP ECMP behaviour includes:",
+    "options": [
+      "Selecting one best path when equal-cost paths exist",
+      "Installing the selected next-hop in the FIB",
+      "Automatically re-evaluating if the next-hop set changes",
+      "Per-packet balancing across all equal-cost paths"
+    ],
+    "correct": [0,1,2],
+    "explanation": "IGP default selects one best path, installs it in the FIB, and re-evaluates when next-hops change. Per-packet is not the default (and is noted as unsupported on current devices)."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Junos default iBGP load-balancing behaviour includes:",
+    "options": [
+      "Per-prefix load balancing by default",
+      "Different prefixes can use different equal-cost paths",
+      "Each individual prefix uses only one specific path",
+      "Per-packet load balancing by default"
+    ],
+    "correct": [0,1,2],
+    "explanation": "The notes describe per-prefix distribution where each prefix uses a single path; per-packet is not the default."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: When using a load-balancing policy in Junos, which statements are correct?",
+    "options": [
+      "If no criteria are specified, the policy matches all destination prefixes",
+      "The policy affects only the local router",
+      "The routing table (RIB) changes to include multiple paths",
+      "For network-wide behaviour, apply a similar policy on each router"
+    ],
+    "correct": [0,1,3],
+    "explanation": "No criteria means match all prefixes, policy is local-only, and to extend behaviour network-wide you must configure it on each router. The RIB remains unchanged."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: By default, Junos determines a traffic flow using which fields?",
+    "options": [
+      "Incoming interface index",
+      "Source address",
+      "Destination address",
+      "TCP/UDP source/destination ports"
+    ],
+    "correct": [0,1,2],
+    "explanation": "The notes list incoming interface index, destination address, source address, and protocol by default. Layer 4 ports require hash-key layer-4 configuration."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: To include both Layer 3 and Layer 4 information in flow calculations, which configuration is used (per the notes)?",
+    "options": [
+      "set hash-key family inet layer-3",
+      "set hash-key family inet layer-4",
+      "set forwarding-table export load-balance",
+      "set protocols bgp per-packet"
+    ],
+    "correct": [0,1],
+    "explanation": "The notes show configuring hash-key under [edit forwarding-options] to include layer-3 and layer-4 in flow hashing."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: In the Layer 3 load-balancing steps scenario, which actions are required?",
+    "options": [
+      "Create a load-balancing policy matching 172.24.0.0/24 and 172.24.1.0/24 with 'then load-balance'",
+      "Apply the policy using 'set forwarding-table export load-balance'",
+      "Configure hash-key to include Layer 3 and Layer 4",
+      "Enable per-packet load balancing as the final step"
+    ],
+    "correct": [0,1,2],
+    "explanation": "The scenario steps include creating the policy, applying it to forwarding-table export, and setting hash-key layer-3 and layer-4. Per-packet is not part of the steps."
+  },
+
+  {
+    "type": "tf",
+    "prompt": "True or False: ECMP balances traffic based on current bandwidth utilisation across links.",
+    "tfCorrect": false,
+    "explanation": "The notes state ECMP does not balance traffic at a traffic or bandwidth level."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: Per-packet load balancing is supported on currently sold Junos devices, according to the notes.",
+    "tfCorrect": false,
+    "explanation": "The notes say per-packet is not supported on Junos devices that are currently sold."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: With per-flow load balancing, packets for the same flow follow the same egress interface (same path).",
+    "tfCorrect": true,
+    "explanation": "The notes explicitly state that traffic belonging to the same flow uses the same egress interface/path."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: By default, Junos IGP ECMP installs all equal-cost next-hops into the forwarding table.",
+    "tfCorrect": false,
+    "explanation": "Default IGP behaviour installs one selected next-hop in the FIB."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: A load-balancing policy in Junos changes the routing table (RIB) but not the forwarding table (FIB).",
+    "tfCorrect": false,
+    "explanation": "The notes state the RIB does not change; only the FIB is affected."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: To make load balancing consistent across a network, the same load-balancing policy must be applied on each router.",
+    "tfCorrect": true,
+    "explanation": "The notes state the policy affects only the local router; network-wide requires similar policy on each router."
+  },
+
+  {
+    "type": "match",
+    "prompt": "Match the concept with its description from the notes.",
+    "match": {
+      "statements": [
+        "ECMP",
+        "ALB",
+        "Per-flow load balancing",
+        "IGP default ECMP behaviour"
+      ],
+      "answers": [
+        "Controls traffic flow to applications in cloud or data centres",
+        "Distributes traffic across multiple equal-cost paths to the same destination",
+        "One best next-hop is installed in the FIB by default",
+        "Same flow uses same path to prevent packet reordering"
+      ],
+      "mapping": ["B","A","D","C"]
+    },
+    "explanation": "ECMP distributes across equal-cost paths; ALB is application-focused; per-flow keeps a flow on one path; IGP default installs a single next-hop by default."
+  },
+  {
+    "type": "match",
+    "prompt": "Match the configuration goal to the Junos configuration line shown in the scenario.",
+    "match": {
+      "statements": [
+        "Include Layer 3 fields in flow hashing",
+        "Include Layer 4 fields in flow hashing",
+        "Apply load-balancing policy to forwarding table",
+        "Verify multiple next-hops are installed"
+      ],
+      "answers": [
+        "show route forwarding-table",
+        "set hash-key family inet layer-4",
+        "set forwarding-table export load-balance",
+        "set hash-key family inet layer-3"
+      ],
+      "mapping": ["D","B","C","A"]
+    },
+    "explanation": "Layer-3 and layer-4 hash-key settings expand flow calculation fields; forwarding-table export applies the policy; show route forwarding-table verifies multiple next-hops."
+  },
+
+  {
+    "type": "single",
+    "prompt": "According to the notes, how many equal-cost paths can be added to the forwarding table depending on platform/hardware?",
+    "options": [
+      "Up to 8",
+      "Up to 16",
+      "Up to 64",
+      "Unlimited"
+    ],
+    "correct": 2,
+    "explanation": "The notes state that depending on the platform and hardware, you can add up to 64 equal-cost paths to the forwarding table."
+  },
+  {
+    "type": "single",
+    "prompt": "What is the verification command mentioned to confirm multiple next-hops exist in the forwarding table after applying load balancing?",
+    "options": [
+      "show route forwarding-table",
+      "show interfaces terse",
+      "show bgp summary",
+      "show route summary"
+    ],
+    "correct": 0,
+    "explanation": "The scenario explicitly says to verify multiple next-hops using 'show route forwarding-table'."
+  }
+]

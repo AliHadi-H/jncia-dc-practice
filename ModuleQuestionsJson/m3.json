@@ -1,0 +1,375 @@
+[
+  {
+    "id": "q_c299a1cb8f2918_19c7201abf7",
+    "type": "single",
+    "prompt": "Why do most data centres separate network functions into different LANs?",
+    "explanation": "Separating network functions into different LANs reduces the size of collision domains, lowering collisions and improving performance.",
+    "options": [
+      "To increase broadcast traffic",
+      "To eliminate MAC learning",
+      "To minimise collision domains",
+      "To remove the need for switches"
+    ],
+    "correct": 2
+  },
+  {
+    "id": "q_c24d1f1fbe893_19c7201abf7",
+    "type": "single",
+    "prompt": "What is the primary purpose of the Forwarding Information Base (FIB) in a switch?",
+    "explanation": "The FIB (bridge table) stores MAC-to-port mappings so the switch can make intelligent forwarding decisions.",
+    "options": [
+      "Store routing protocol neighbours",
+      "Decide where to forward frames",
+      "Maintain VLAN configuration",
+      "Prevent broadcast traffic"
+    ],
+    "correct": 1
+  },
+  {
+    "id": "q_b7329d93064038_19c7201abf7",
+    "type": "single",
+    "prompt": "Which device type is used in a switched LAN instead of hubs?",
+    "explanation": "Switched LANs use switches instead of hubs, reducing collisions and improving performance.",
+    "options": [
+      "Routers",
+      "Firewalls",
+      "Switches",
+      "Repeaters"
+    ],
+    "correct": 2
+  },
+  {
+    "id": "q_1e8843d3c58a28_19c7201abf7",
+    "type": "single",
+    "prompt": "What information is learned during MAC learning?",
+    "explanation": "MAC learning stores the source MAC address and associated ingress port in the bridge table.",
+    "options": [
+      "IP address and subnet mask",
+      "MAC address and ingress port",
+      "Routing protocol metrics",
+      "Gateway IP address"
+    ],
+    "correct": 1
+  },
+  {
+    "id": "q_71a7a5f55ca8d_19c7201abf7",
+    "type": "single",
+    "prompt": "When is a frame forwarded only to a single port?",
+    "explanation": "If the destination MAC exists in the bridge table, the frame is forwarded only to the correct egress port.",
+    "options": [
+      "When destination MAC is unknown",
+      "When destination MAC is known",
+      "When VLAN is misconfigured",
+      "When MAC ageing expires"
+    ],
+    "correct": 1
+  },
+  {
+    "id": "q_4d49ec0c4d9f88_19c7201abf7",
+    "type": "single",
+    "prompt": "Which component performs protocol updates and system management tasks in EX Series switches?",
+    "explanation": "The Routing Engine handles control-plane operations including protocol updates and system management.",
+    "options": [
+      "Packet Forwarding Engine",
+      "Bridge table",
+      "Routing Engine",
+      "Switch fabric"
+    ],
+    "correct": 2
+  },
+  {
+    "id": "q_391e4c38f7d2e8_19c7201abf7",
+    "type": "single",
+    "prompt": "Which component is built using ASICs and handles packet forwarding?",
+    "explanation": "The PFE is built with ASICs and is responsible for forwarding frames and packets.",
+    "options": [
+      "Routing Engine",
+      "Packet Forwarding Engine",
+      "Junos kernel",
+      "Internal link"
+    ],
+    "correct": 1
+  },
+  {
+    "id": "q_fffdc3d722368_19c7201abf7",
+    "type": "single",
+    "prompt": "Why is the internal link between RE and PFE rate-limited?",
+    "explanation": "The internal link is rate-limited to protect the control plane from DDoS attacks.",
+    "options": [
+      "To reduce VLAN leaks",
+      "To protect against DDoS attacks",
+      "To increase MAC ageing speed",
+      "To improve broadcast flooding"
+    ],
+    "correct": 1
+  },
+  {
+    "id": "q_06cbf780263878_19c7201abf7",
+    "type": "single",
+    "prompt": "If a destination MAC is unknown, what action does the switch take?",
+    "explanation": "When the destination MAC is unknown, the switch floods the frame within the same VLAN except the ingress port.",
+    "options": [
+      "Drops the frame",
+      "Routes the packet",
+      "Floods the frame",
+      "Sends it to the RE"
+    ],
+    "correct": 2
+  },
+  {
+    "id": "q_37d78ba1dc48a_19c7201abf7",
+    "type": "single",
+    "prompt": "What happens if no Layer 3 forwarding entry exists for a routed packet?",
+    "explanation": "If there is no matching entry in the Layer 3 forwarding table, the packet is dropped.",
+    "options": [
+      "It is flooded",
+      "It is sent to all PFEs",
+      "It is dropped",
+      "It is returned to ingress port"
+    ],
+    "correct": 2
+  },
+  {
+    "id": "q_bc47f70a68fb5_19c7201abf7",
+    "type": "single",
+    "prompt": "Which table is updated when a new MAC address is learned?",
+    "explanation": "Newly learned MAC addresses are added to the bridge table.",
+    "options": [
+      "RIB",
+      "Primary forwarding table",
+      "Bridge table",
+      "ARP table"
+    ],
+    "correct": 2
+  },
+  {
+    "id": "q_48d5d18835386_19c7201abf7",
+    "type": "multi",
+    "prompt": "Select all that apply: What are benefits of a switched LAN?",
+    "explanation": "Switched LANs reduce collisions, improve performance, and use micro-segmentation. They reduce security risks.",
+    "options": [
+      "Reduced collision domains",
+      "Improved performance",
+      "Increased security risks",
+      "Micro-segmentation via bridging"
+    ],
+    "correct": [
+      0,
+      1,
+      3
+    ]
+  },
+  {
+    "id": "q_79b0ea45aa48c8_19c7201abf7",
+    "type": "multi",
+    "prompt": "Select all that apply: Which tables are maintained by the Routing Engine?",
+    "explanation": "The Routing Engine maintains the RIB, bridging table, and primary forwarding table.",
+    "options": [
+      "Routing Information Base (RIB)",
+      "Bridging table",
+      "Primary forwarding table",
+      "ARP table"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ]
+  },
+  {
+    "id": "q_f49c9076817ea8_19c7201abf7",
+    "type": "multi",
+    "prompt": "Select all that apply: Flooding occurs when:",
+    "explanation": "Flooding occurs for unknown unicast, broadcast, and multicast traffic.",
+    "options": [
+      "Destination MAC is unknown",
+      "Frame is broadcast",
+      "Frame is multicast",
+      "Source MAC is known"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ]
+  },
+  {
+    "id": "q_128dbb133ca58_19c7201abf7",
+    "type": "multi",
+    "prompt": "Select all that apply: During unknown source processing, the Routing Engine may:",
+    "explanation": "The RE decides whether to add or discard the MAC and distributes updates to PFEs.",
+    "options": [
+      "Add the MAC address to the bridge table",
+      "Discard the MAC address if limit exceeded",
+      "Perform Layer 3 routing",
+      "Update all PFEs"
+    ],
+    "correct": [
+      0,
+      1,
+      3
+    ]
+  },
+  {
+    "id": "q_8d4f793bb48ea_19c7201abf7",
+    "type": "multi",
+    "prompt": "Select all that apply: Known destination processing includes:",
+    "explanation": "Known destination frames are forwarded directly using bridge table information, including across switch fabric if needed.",
+    "options": [
+      "Bridge table lookup",
+      "Flooding within VLAN",
+      "Forwarding to correct egress port",
+      "Switch fabric transfer if different PFE"
+    ],
+    "correct": [
+      0,
+      2,
+      3
+    ]
+  },
+  {
+    "id": "q_0a283cdeeb9ce8_19c7201abf7",
+    "type": "multi",
+    "prompt": "Select all that apply: Routed packet processing may involve:",
+    "explanation": "Routed packets involve MAC and L3 lookups. STP is not involved.",
+    "options": [
+      "MAC lookup",
+      "Layer 3 lookup via IRB",
+      "Sending to RE if IP belongs to switch",
+      "Spanning tree recalculation"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ]
+  },
+  {
+    "id": "q_63e1364a1068_19c7201abf7",
+    "type": "multi",
+    "prompt": "Select all that apply: MAC learning uses:",
+    "explanation": "MAC learning records source MAC, port, and timestamp.",
+    "options": [
+      "Source MAC address",
+      "Port information",
+      "Timestamp",
+      "Destination IP address"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ]
+  },
+  {
+    "id": "q_91e4c4af98cfe_19c7201abf7",
+    "type": "multi",
+    "prompt": "Select all that apply: Packet Forwarding Engine characteristics:",
+    "explanation": "PFE forwards traffic and receives table updates from RE but does not handle control-plane updates.",
+    "options": [
+      "Built with ASICs",
+      "Forwards L2 and L3 traffic",
+      "Handles protocol updates",
+      "Receives forwarding tables from RE"
+    ],
+    "correct": [
+      0,
+      1,
+      3
+    ]
+  },
+  {
+    "id": "q_072eceb586307_19c7201abf7",
+    "type": "tf",
+    "prompt": "True or False: Switches organise the bridge table by VLAN.",
+    "explanation": "Switches maintain bridge tables per VLAN to keep traffic within the correct broadcast domain.",
+    "tfCorrect": true
+  },
+  {
+    "id": "q_130f88c37350f8_19c7201abf7",
+    "type": "tf",
+    "prompt": "True or False: Broadcast traffic is only forwarded to one port.",
+    "explanation": "Broadcast traffic is flooded to all ports within the same VLAN except the ingress port.",
+    "tfCorrect": false
+  },
+  {
+    "id": "q_6f17fb25526ab8_19c7201abf7",
+    "type": "tf",
+    "prompt": "True or False: The PFE sends unknown source MAC information to the RE.",
+    "explanation": "When the source MAC is unknown, the PFE sends header information to the RE.",
+    "tfCorrect": true
+  },
+  {
+    "id": "q_1801b547ee5eb8_19c7201abf7",
+    "type": "tf",
+    "prompt": "True or False: If the egress port is on the same PFE, switching occurs locally.",
+    "explanation": "If the egress port belongs to the same PFE, the frame is switched locally.",
+    "tfCorrect": true
+  },
+  {
+    "id": "q_83cca82a35c47_19c7201abf7",
+    "type": "tf",
+    "prompt": "True or False: Ageing removes stale MAC entries using timestamps.",
+    "explanation": "MAC ageing uses timestamps to remove outdated entries.",
+    "tfCorrect": true
+  },
+  {
+    "id": "q_4f0a7e2a825118_19c7201abf7",
+    "type": "tf",
+    "prompt": "True or False: If destination IP belongs to the switch, the packet is processed by the RE.",
+    "explanation": "If the destination IP belongs to the switch, the PFE sends it to the RE for processing.",
+    "tfCorrect": true
+  },
+  {
+    "id": "q_74c02b2d04de78_19c7201abf7",
+    "type": "match",
+    "prompt": "Match the component with its function.",
+    "explanation": "RE handles control tasks, PFE forwards frames, bridge table stores MAC mappings, and the internal link connects RE and PFEs.",
+    "match": {
+      "statements": [
+        "Routing Engine",
+        "Packet Forwarding Engine",
+        "Bridge Table",
+        "Internal Link"
+      ],
+      "answers": [
+        "Transfers control information between RE and PFEs",
+        "Handles control-plane operations",
+        "Stores MAC-to-port mappings",
+        "Forwards frames using ASICs"
+      ],
+      "mapping": [
+        "B",
+        "D",
+        "C",
+        "A"
+      ]
+    }
+  },
+  {
+    "id": "q_c27504ab826ad_19c7201abf7",
+    "type": "match",
+    "prompt": "Match the frame processing scenario to the correct behaviour.",
+    "explanation": "Unknown destination floods, known destination forwards directly, unknown source may be learned, and missing L3 entry results in drop.",
+    "match": {
+      "statements": [
+        "Unknown destination",
+        "Known destination",
+        "Unknown source",
+        "Routed packet with no L3 entry"
+      ],
+      "answers": [
+        "Frame flooded within VLAN",
+        "Frame forwarded directly",
+        "MAC may be added to bridge table",
+        "Packet dropped"
+      ],
+      "mapping": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ]
+    }
+  }
+]

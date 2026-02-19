@@ -1,0 +1,423 @@
+[
+  {
+    "type": "single",
+    "prompt": "Where are static routes configured in Junos OS?",
+    "options": [
+      "[edit interfaces]",
+      "[edit routing-options]",
+      "[edit protocols]",
+      "[edit policy-options]"
+    ],
+    "correct": 1,
+    "explanation": "The content states that all static routes are configured under the [edit routing-options] hierarchy."
+  },
+  {
+    "type": "single",
+    "prompt": "Which statement best describes routing?",
+    "options": [
+      "Sending frames within the same VLAN",
+      "Sending packets between different networks (subnets)",
+      "Encapsulating Ethernet frames inside UDP",
+      "Synchronising routing engines during failover"
+    ],
+    "correct": 1,
+    "explanation": "Routing is described as the process of sending packets between different networks (subnets)."
+  },
+  {
+    "type": "single",
+    "prompt": "What information does the Routing Information Base (RIB) contain to forward traffic?",
+    "options": [
+      "Only local MAC addresses",
+      "Remote preference values only",
+      "Known networks and next-hop information",
+      "Only interface administrative status"
+    ],
+    "correct": 2,
+    "explanation": "The RIB stores known networks (including remote networks) and includes next-hop information."
+  },
+  {
+    "type": "single",
+    "prompt": "Which is an example of a static route mentioned in the content?",
+    "options": [
+      "OSPF-learned route",
+      "BGP-learned route",
+      "A default route",
+      "An EVPN route"
+    ],
+    "correct": 2,
+    "explanation": "The notes state that a default route is an example of a static route."
+  },
+  {
+    "type": "single",
+    "prompt": "What is the default route preference for static routes (as stated in the content)?",
+    "options": [
+      "5",
+      "50",
+      "130",
+      "250"
+    ],
+    "correct": 0,
+    "explanation": "The content specifies the default static route preference as 5 (lower is more preferred)."
+  },
+  {
+    "type": "single",
+    "prompt": "What happens if a static route next-hop is invalid?",
+    "options": [
+      "The route becomes active but hidden",
+      "The route will not become active",
+      "The route is converted to a generated route",
+      "The router selects an alternate path automatically"
+    ],
+    "correct": 1,
+    "explanation": "If the next-hop is invalid, the route will not become active."
+  },
+  {
+    "type": "single",
+    "prompt": "Which next-hop rule applies to Ethernet interfaces for static routes?",
+    "options": [
+      "You must use the interface name only",
+      "You must use an IP address",
+      "You must use a VLAN ID",
+      "You must use a policy statement"
+    ],
+    "correct": 1,
+    "explanation": "The notes state that on Ethernet interfaces, you must use an IP address as the next-hop."
+  },
+  {
+    "type": "single",
+    "prompt": "Which next-hop rule applies to point-to-point interfaces for static routes?",
+    "options": [
+      "You must use an IP address only",
+      "You must use an interface name",
+      "You must use a BGP community",
+      "You must use a routing policy"
+    ],
+    "correct": 1,
+    "explanation": "On point-to-point interfaces, you can use the interface name as the next-hop."
+  },
+  {
+    "type": "single",
+    "prompt": "What is the purpose of the 'resolve' option for static routes?",
+    "options": [
+      "Prevent readvertisement into routing protocols",
+      "Allow recursive lookup when next-hop is not directly connected",
+      "Force traffic to be discarded silently",
+      "Change the default static preference to 130"
+    ],
+    "correct": 1,
+    "explanation": "resolve is used when the next-hop is not directly connected, allowing recursive lookup."
+  },
+  {
+    "type": "single",
+    "prompt": "Which action drops traffic and sends an ICMP 'network unreachable' message?",
+    "options": [
+      "discard",
+      "reject",
+      "no-readvertise",
+      "next-table"
+    ],
+    "correct": 1,
+    "explanation": "reject drops the packet and sends an ICMP 'network unreachable' message."
+  },
+  {
+    "type": "single",
+    "prompt": "Which action drops traffic silently with no ICMP response?",
+    "options": [
+      "discard",
+      "reject",
+      "resolve",
+      "qualified-next-hop"
+    ],
+    "correct": 0,
+    "explanation": "discard drops the packet and sends nothing (silent drop)."
+  },
+  {
+    "type": "single",
+    "prompt": "What is the purpose of 'qualified-next-hop' in static routing?",
+    "options": [
+      "Create multiple next-hops with different preferences",
+      "Disable route installation in the routing table",
+      "Enable routing protocols to learn static routes",
+      "Attach a VLAN tag to the route"
+    ],
+    "correct": 0,
+    "explanation": "qualified-next-hop allows multiple next-hops for the same destination with different preferences, enabling primary/backup behaviour."
+  },
+  {
+    "type": "single",
+    "prompt": "Which option prevents a static route from being redistributed into dynamic routing protocols?",
+    "options": [
+      "resolve",
+      "no-readvertise",
+      "discard",
+      "as-path"
+    ],
+    "correct": 1,
+    "explanation": "no-readvertise prevents the route from being redistributed into routing protocols."
+  },
+  {
+    "type": "single",
+    "prompt": "By default, if the next-hop of a static route becomes unreachable, what happens to the route?",
+    "options": [
+      "It remains active regardless",
+      "It is deleted automatically from configuration",
+      "It stays in the table only until the next-hop becomes unreachable",
+      "Junos automatically selects an alternate next-hop"
+    ],
+    "correct": 2,
+    "explanation": "Static routes stay in the routing table until deleted or until the next-hop becomes unreachable."
+  },
+  {
+    "type": "single",
+    "prompt": "If two identical static routes exist, how does Junos choose between them (per the notes)?",
+    "options": [
+      "Always selects the first configured route",
+      "Always selects the lowest next-hop IP",
+      "Selects one randomly",
+      "Always selects the route with discard"
+    ],
+    "correct": 2,
+    "explanation": "The notes state that if two identical static routes exist, Junos picks one randomly."
+  },
+
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Static routes are commonly used:",
+    "options": [
+      "As a default route",
+      "For small networks",
+      "To reach a customer network",
+      "Only when BGP is fully operational"
+    ],
+    "correct": [0,1,2],
+    "explanation": "The notes list default routes, small networks, and customer networks as common static-route use cases; static routes are also used when dynamic protocols are not yet online."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Basic static route configuration requires:",
+    "options": [
+      "Destination prefix",
+      "Next-hop",
+      "BGP community",
+      "Routing policy"
+    ],
+    "correct": [0,1],
+    "explanation": "A basic static route needs a destination prefix and a next-hop."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Which statements about route preference are correct?",
+    "options": [
+      "Lower preference value is more preferred",
+      "Default static preference is 5",
+      "Setting a high preference can make a route 'floating'",
+      "Higher preference always wins tie-breaks"
+    ],
+    "correct": [0,1,2],
+    "explanation": "Lower is preferred; default static preference is 5; higher preference can be used to create floating routes. Higher preference does not win—lower does."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Which are optional static route parameters mentioned?",
+    "options": [
+      "qualified-next-hop",
+      "resolve",
+      "next-table",
+      "native-vlan-id"
+    ],
+    "correct": [0,1,2],
+    "explanation": "The notes list qualified-next-hop, resolve, and next-table as optional static-route features. native-vlan-id is a VLAN trunk feature, not static routing."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: 'reject' and 'discard' static routes both:",
+    "options": [
+      "Drop the packet",
+      "Install a forwarding next-hop",
+      "Remove the traffic",
+      "Are used to forward packets to another router"
+    ],
+    "correct": [0,2],
+    "explanation": "Both reject and discard drop traffic. reject sends ICMP unreachable; discard silently drops. Neither forwards traffic to a next-hop."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: In the provided floating default route example, which statements are correct?",
+    "options": [
+      "172.30.25.1 is preferred over 172.30.25.5",
+      "Preference 250 is preferred over 251",
+      "The backup next-hop is used only if the primary becomes unreachable",
+      "The default static preference used is 5 for both next-hops"
+    ],
+    "correct": [0,1,2],
+    "explanation": "The example sets defaults preference 250 for the primary and 251 for qualified-next-hop backup; lower preference wins, and backup is used when primary is unreachable."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: What does the static route 'no-readvertise' option help with (per the notes)?",
+    "options": [
+      "Keeping management routes local to the router",
+      "Preventing redistribution into protocols like BGP/OSPF",
+      "Making the route an aggregate route",
+      "Enabling recursive next-hop lookup"
+    ],
+    "correct": [0,1],
+    "explanation": "no-readvertise prevents redistribution, commonly used for management/internal routes. It does not create aggregates or enable recursion."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Aggregate routes (as described) are configured under:",
+    "options": [
+      "[edit routing-options aggregate]",
+      "[edit routing-options static]",
+      "[edit protocols aggregate]",
+      "[edit routing-options generated]"
+    ],
+    "correct": [0],
+    "explanation": "Aggregate routes are configured under [edit routing-options aggregate]."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Default behaviour of aggregate routes includes:",
+    "options": [
+      "Preference 130",
+      "Next-hop reject",
+      "Preference 5",
+      "Next-hop discard"
+    ],
+    "correct": [0,1],
+    "explanation": "By default, aggregate routes have preference 130 and next-hop reject."
+  },
+
+  {
+    "type": "tf",
+    "prompt": "True or False: Static routes must be configured on each router manually.",
+    "tfCorrect": true,
+    "explanation": "Static routing is manually configured and must be added on each router that needs the route."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: Junos automatically searches for alternate paths if a static route next-hop is not reachable.",
+    "tfCorrect": false,
+    "explanation": "The notes state Junos does not look for alternate paths by default for static routes."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: A static route remains in the routing table until deleted, even if the next-hop becomes unreachable.",
+    "tfCorrect": false,
+    "explanation": "Static routes remain until deleted OR the next-hop becomes unreachable, at which point they are no longer active."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: Aggregate routes become active only if at least one contributing route is active.",
+    "tfCorrect": true,
+    "explanation": "Aggregate routes activate only when at least one contributing (more specific) route is active in the routing table."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: Best practice suggested is to change aggregate route next-hop from reject to discard.",
+    "tfCorrect": true,
+    "explanation": "The notes recommend using discard instead of reject to reduce potential DDoS impact on the Routing Engine."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: Generated routes appear in show route as aggregate routes.",
+    "tfCorrect": true,
+    "explanation": "The notes state generated routes are displayed as aggregate routes in show route."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: For generated routes, the primary contributing route provides the next-hop.",
+    "tfCorrect": true,
+    "explanation": "The key difference noted is that generated routes use the primary contributing route to supply the next-hop."
+  },
+
+  {
+    "type": "match",
+    "prompt": "Match the static route option with its behaviour.",
+    "match": {
+      "statements": [
+        "reject",
+        "discard",
+        "no-readvertise",
+        "resolve"
+      ],
+      "answers": [
+        "Silent drop (no ICMP sent)",
+        "Drop and send ICMP network unreachable",
+        "Prevent redistribution into routing protocols",
+        "Recursive lookup when next-hop is not directly connected"
+      ],
+      "mapping": ["B","A","C","D"]
+    },
+    "explanation": "reject drops and notifies; discard drops silently; no-readvertise blocks redistribution; resolve enables recursive next-hop resolution."
+  },
+  {
+    "type": "match",
+    "prompt": "Match the route type with its activation rule or characteristic (as described).",
+    "match": {
+      "statements": [
+        "Static route",
+        "Aggregate route",
+        "Generated route",
+        "Floating static route"
+      ],
+      "answers": [
+        "Manually configured with destination and next-hop",
+        "Becomes active when at least one contributing route is active; default next-hop reject",
+        "Uses next-hop from the primary contributing route; shown as aggregate in show route",
+        "Uses higher preference backup path via qualified-next-hop"
+      ],
+      "mapping": ["A","B","C","D"]
+    },
+    "explanation": "Static routes are manual; aggregate routes depend on contributing routes and default to reject; generated routes derive next-hop from a primary contributor; floating statics use preferences to create primary/backup behaviour."
+  },
+  {
+    "type": "single",
+    "prompt": "For generated routes, if multiple contributing routes have the same preference, which route is selected as primary (per the notes)?",
+    "options": [
+      "The route with the highest metric",
+      "The route with the lowest numerical prefix",
+      "The route with the largest next-hop IP",
+      "Selection is always random"
+    ],
+    "correct": 1,
+    "explanation": "The notes state that if preferences are equal, the contributing route with the lowest numerical prefix is selected as primary."
+  },
+  {
+    "type": "single",
+    "prompt": "Which condition can cause a generated route to become hidden?",
+    "options": [
+      "The contributing route has no valid forwarding next-hop",
+      "The generated route has preference 130",
+      "The next-hop is directly connected",
+      "The route uses qualified-next-hop"
+    ],
+    "correct": 0,
+    "explanation": "Generated route contributing routes must have a valid forwarding next-hop and must not point to the local device; otherwise the generated route becomes hidden."
+  },
+  {
+    "type": "single",
+    "prompt": "What is a common use case for generated routes mentioned in the notes?",
+    "options": [
+      "Replacing BGP for internet routing",
+      "Conditional default route (route of last resort)",
+      "MAC learning optimisation",
+      "VLAN trunk native routing"
+    ],
+    "correct": 1,
+    "explanation": "Generated routes are often used as a conditional default route (route of last resort)."
+  },
+  {
+    "type": "single",
+    "prompt": "Which command is shown to view details of an aggregate route and its contributing routes for a specific prefix?",
+    "options": [
+      "show route 172.29.0.0/22 exact detail",
+      "show route forwarding-table family inet",
+      "show interfaces terse | match route",
+      "show configuration routing-options aggregate"
+    ],
+    "correct": 0,
+    "explanation": "The notes provide 'show route 172.29.0.0/22 exact detail' to show the aggregate route and active contributing routes."
+  }
+]

@@ -1,0 +1,122 @@
+[
+    {
+      "type": "single",
+      "prompt": "What is the primary purpose of MAC limiting on a switch port?",
+      "options": [
+        "Increase bandwidth by aggregating links",
+        "Limit MAC learning to reduce spoofing risk",
+        "Enable VLAN trunking on access ports",
+        "Provide Layer 3 routing between VLANs"
+      ],
+      "correct": 1,
+      "explanation": "MAC limiting restricts the number of MAC addresses learned on a port to help prevent MAC address spoofing and control which devices can communicate on that port."
+    },
+    {
+      "type": "single",
+      "prompt": "What does a MAC move limit control?",
+      "options": [
+        "The number of VLANs allowed on a trunk",
+        "The number of times a MAC address can move to a new interface",
+        "The maximum size of the routing table",
+        "The rate of ARP requests on an interface"
+      ],
+      "correct": 1,
+      "explanation": "A MAC move limit restricts how many times a MAC address can move to a different interface, helping detect spoofing or Layer 2 loop conditions."
+    },
+    {
+      "type": "single",
+      "prompt": "Which MAC limiting action disables the port and generates error logs?",
+      "options": [
+        "Log",
+        "Drop",
+        "Drop-and-log",
+        "Shutdown"
+      ],
+      "correct": 3,
+      "explanation": "Shutdown disables the port and generates error logs when the limiting condition is violated."
+    },
+    {
+      "type": "single",
+      "prompt": "Which MAC limiting action drops offending frames and also generates an error log?",
+      "options": [
+        "None",
+        "Drop",
+        "Log",
+        "Drop-and-log"
+      ],
+      "correct": 3,
+      "explanation": "Drop-and-log both drops offending frames and generates an error log."
+    },
+  
+    {
+      "type": "multi",
+      "prompt": "Select all that apply: Which are stated benefits/uses of MAC limiting?",
+      "options": [
+        "Limit the number of MAC addresses learned on a port",
+        "Prevent MAC address spoofing",
+        "Provide per-packet ECMP load balancing",
+        "Allow the interface to only process communication from certain MAC addresses"
+      ],
+      "correct": [0,1,3],
+      "explanation": "MAC limiting can cap learned MACs per port, help prevent spoofing, and restrict communication to specific MAC addresses. ECMP per-packet load balancing is unrelated."
+    },
+    {
+      "type": "multi",
+      "prompt": "Select all that apply: Which actions can MAC limiting take when a violation occurs (per the content)?",
+      "options": [
+        "None",
+        "Drop",
+        "Drop-and-log",
+        "Shutdown"
+      ],
+      "correct": [0,1,2,3],
+      "explanation": "The listed MAC limiting actions include None, Drop, Drop-and-log, and Shutdown (as well as Log)."
+    },
+    {
+      "type": "multi",
+      "prompt": "Select all that apply: What can the 'Drop' MAC limiting action generate?",
+      "options": [
+        "An alarm",
+        "An SNMP trap",
+        "A syslog entry",
+        "A routing table update"
+      ],
+      "correct": [0,1,2],
+      "explanation": "Drop is described as dropping the packet and generating an alarm, SNMP trap, or syslog entry. It does not update routing tables."
+    },
+  
+    {
+      "type": "tf",
+      "prompt": "True or False: The 'Log' MAC limiting action drops offending frames by default.",
+      "tfCorrect": false,
+      "explanation": "Log does not drop the frame; it generates an error log instead."
+    },
+    {
+      "type": "tf",
+      "prompt": "True or False: MAC move limiting can help identify MAC spoofing and Layer 2 loops.",
+      "tfCorrect": true,
+      "explanation": "MAC move limiting restricts how often a MAC can move interfaces and is described as helping with MAC spoofing and Layer 2 loops."
+    },
+  
+    {
+      "type": "match",
+      "prompt": "Match the MAC limiting action to its behaviour (per the content).",
+      "match": {
+        "statements": [
+          "None",
+          "Drop",
+          "Log",
+          "Shutdown"
+        ],
+        "answers": [
+          "Do nothing when the limit is exceeded",
+          "Drop the packet and generate an alarm/SNMP trap/syslog entry",
+          "Do not drop the frame; generate an error log",
+          "Disable the port and generate error logs"
+        ],
+        "mapping": ["A","B","C","D"]
+      },
+      "explanation": "The actions map directly to the behaviours listed: None does nothing, Drop drops and alerts/logs, Log records without dropping, and Shutdown disables the port and logs."
+    }
+  ]
+  

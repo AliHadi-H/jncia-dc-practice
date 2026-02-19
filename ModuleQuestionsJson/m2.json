@@ -1,0 +1,345 @@
+[
+  {
+    "id": "q_2fd33f6bedd75_19c71f47a38",
+    "type": "single",
+    "prompt": "Which component in a traditional data centre ensures smooth operation through power, cooling, and physical security?",
+    "explanation": "Support infrastructure includes systems such as power supply, cooling, and physical security that ensure smooth data centre operations.",
+    "options": [
+      "Core components",
+      "Support infrastructure",
+      "Distribution layer",
+      "Overlay network"
+    ],
+    "correct": 1
+  },
+  {
+    "id": "q_0e89bdf30fe8d_19c71f47a38",
+    "type": "single",
+    "prompt": "In a five-stage IP fabric design, which layer connects multiple pods together?",
+    "explanation": "In a five-stage (pod-based) design, pods are interconnected through a super spine layer.",
+    "options": [
+      "Leaf layer",
+      "Spine layer",
+      "Super spine layer",
+      "Access layer"
+    ],
+    "correct": 2
+  },
+  {
+    "id": "q_45153efb3d1fc8_19c71f47a38",
+    "type": "single",
+    "prompt": "What is the primary purpose of MC-LAG in a data centre network?",
+    "explanation": "MC-LAG allows two switches to act as one logical device, providing redundancy and load balancing while keeping the network loop-free without STP.",
+    "options": [
+      "Encapsulate Ethernet frames in UDP",
+      "Provide redundancy and load balancing without STP",
+      "Replace Layer 3 routing protocols",
+      "Act as a WAN gateway"
+    ],
+    "correct": 1
+  },
+  {
+    "id": "q_15d111bd8917b8_19c71f47a38",
+    "type": "single",
+    "prompt": "Which best describes east-to-west traffic in a data centre?",
+    "explanation": "East-to-west traffic refers to traffic within the data centre, typically between servers.",
+    "options": [
+      "Traffic from ISP to WAN router",
+      "Traffic between servers within the data centre",
+      "Traffic leaving the data centre",
+      "Traffic between WAN routers"
+    ],
+    "correct": 1
+  },
+  {
+    "id": "q_5e7a575b8b4a9_19c71f47a38",
+    "type": "single",
+    "prompt": "What is a key benefit of IP-based data centres compared to traditional designs?",
+    "explanation": "IP-based data centres improve scalability and efficiency while reducing reliance on traditional Layer 2 mechanisms.",
+    "options": [
+      "Increased dependence on spanning tree",
+      "Reduced scalability",
+      "Greater scalability and efficiency",
+      "Elimination of routing protocols"
+    ],
+    "correct": 2
+  },
+  {
+    "id": "q_bef96b135f822_19c71f47a38",
+    "type": "single",
+    "prompt": "Which protocol shares control information between MC-LAG peers?",
+    "explanation": "MC-LAG peers synchronise using ICCP to share control information and maintain consistent forwarding decisions.",
+    "options": [
+      "EVPN",
+      "ICCP",
+      "STP",
+      "OSPF"
+    ],
+    "correct": 1
+  },
+  {
+    "id": "q_9269cf9c05e76_19c71f47a38",
+    "type": "single",
+    "prompt": "In a three-stage IP fabric, how many hops separate two network-facing interfaces?",
+    "explanation": "In a three-stage spine-leaf architecture, any two network-facing interfaces are always two hops apart (leaf → spine → leaf).",
+    "options": [
+      "One hop",
+      "Two hops",
+      "Three hops",
+      "Five hops"
+    ],
+    "correct": 1
+  },
+  {
+    "id": "q_35fdc13915256_19c71f47a38",
+    "type": "single",
+    "prompt": "Which fabric type primarily focuses on Layer 3 services and requires overlay technology for Layer 2 services?",
+    "explanation": "IP Fabric focuses on Layer 3 services. To provide Layer 2 services, it requires an overlay such as VXLAN.",
+    "options": [
+      "Ethernet Fabric",
+      "IP Fabric",
+      "Traditional hierarchical fabric",
+      "MC-LAG fabric"
+    ],
+    "correct": 1
+  },
+  {
+    "id": "q_b1d4ba1b7dce28_19c71f47a38",
+    "type": "single",
+    "prompt": "What happens in a three-stage IP fabric if one spine fails?",
+    "explanation": "If one spine fails, the fabric continues to operate but available bandwidth is reduced, which may cause congestion.",
+    "options": [
+      "All traffic stops",
+      "Layer 2 loops occur",
+      "Available bandwidth is reduced",
+      "Leaf switches shut down"
+    ],
+    "correct": 2
+  },
+  {
+    "id": "q_c758d7730bbdc_19c71f47a38",
+    "type": "single",
+    "prompt": "What is the main goal of IP fabric best practices?",
+    "explanation": "Best practices aim to avoid bottlenecks and ensure consistent, predictable traffic distribution.",
+    "options": [
+      "Increase Layer 2 switching",
+      "Create bottlenecks for traffic shaping",
+      "Ensure no bottlenecks and predictable traffic distribution",
+      "Eliminate equal-cost paths"
+    ],
+    "correct": 2
+  },
+  {
+    "id": "q_03d60d1cbc1af_19c71f47a38",
+    "type": "multi",
+    "prompt": "Select all that apply: Which are characteristics of Ethernet Fabric?",
+    "explanation": "Ethernet Fabric provides both L2 and L3 services, supports multicast and DCB, and avoids STP using VCF. Overlay is required in IP Fabric, not Ethernet Fabric.",
+    "options": [
+      "Provides Layer 2 and Layer 3 services",
+      "Supports multicast and lossless data centre bridging",
+      "Avoids spanning tree ports using VCF",
+      "Requires overlay technology for Layer 2"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ]
+  },
+  {
+    "id": "q_7f97bb8633cf2_19c71f47a38",
+    "type": "multi",
+    "prompt": "Select all that apply: Which are elements of a data centre?",
+    "explanation": "The elements include facility, core components (hardware), and support infrastructure. Overlay encapsulation is a networking technique, not a core element category.",
+    "options": [
+      "Facility",
+      "Core components",
+      "Support infrastructure",
+      "Overlay encapsulation"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ]
+  },
+  {
+    "id": "q_f0ae5728c9c2e8_19c71f47a38",
+    "type": "multi",
+    "prompt": "Select all that apply: Which are considerations when choosing spine nodes?",
+    "explanation": "Spine selection considers WAN requirements, peering arrangements, and uplink capacity. Server OS versions are unrelated.",
+    "options": [
+      "Type of WAN or gateway router required",
+      "Connectivity or peering with other providers",
+      "Number and speed of uplink ports",
+      "Server operating system versions"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ]
+  },
+  {
+    "id": "q_d389d73d2a0b9_19c71f47a38",
+    "type": "multi",
+    "prompt": "Select all that apply: Which are overlay tunnelling protocols mentioned?",
+    "explanation": "VXLAN, MPLS, and GRE are tunnelling protocols used in overlays. STP is a loop prevention protocol.",
+    "options": [
+      "VXLAN",
+      "MPLS",
+      "GRE",
+      "STP"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ]
+  },
+  {
+    "id": "q_187fd66ab79148_19c71f47a38",
+    "type": "multi",
+    "prompt": "Select all that apply: Which are benefits of Juniper Apstra?",
+    "explanation": "Apstra provides faster deployment, reduces MTTR, and lowers operational risk. It reduces manual configuration rather than increasing it.",
+    "options": [
+      "Faster deployment",
+      "Reduced MTTR",
+      "Increased manual configuration",
+      "Lower operational risk"
+    ],
+    "correct": [
+      0,
+      1,
+      3
+    ]
+  },
+  {
+    "id": "q_7e92278ec814a8_19c71f47a38",
+    "type": "multi",
+    "prompt": "Select all that apply: Which are best practices for IP fabric uplinks?",
+    "explanation": "Consistency in hardware and link speed ensures predictable load balancing. Different speeds can prevent some paths from being used effectively.",
+    "options": [
+      "All spines should be the same model",
+      "All uplinks should be the same speed",
+      "Leaves should connect to every spine",
+      "Different speeds improve load balancing"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ]
+  },
+  {
+    "id": "q_a0d5ff8a69117_19c71f47a38",
+    "type": "multi",
+    "prompt": "Select all that apply: Which statements describe the overlay network?",
+    "explanation": "The overlay is built on top of the underlay, carries Ethernet frames, and uses VXLAN encapsulation. It does not replace the physical network.",
+    "options": [
+      "Built on top of the underlay",
+      "Carries Ethernet frames across the IP fabric",
+      "Replaces the physical network",
+      "Uses VXLAN encapsulation"
+    ],
+    "correct": [
+      0,
+      1,
+      3
+    ]
+  },
+  {
+    "id": "q_f8e29daabb1e58_19c71f47a38",
+    "type": "tf",
+    "prompt": "True or False: In IP fabric, OSPF is commonly used as the underlay routing protocol.",
+    "explanation": "The content specifies that OSPF is not used anymore in this context, and eBGP is commonly used instead.",
+    "tfCorrect": false
+  },
+  {
+    "id": "q_f2006ab3a8a118_19c71f47a38",
+    "type": "tf",
+    "prompt": "True or False: Ingress traffic refers to traffic leaving a device.",
+    "explanation": "Ingress traffic refers to traffic entering a device, while egress refers to traffic leaving.",
+    "tfCorrect": false
+  },
+  {
+    "id": "q_903b18b1c73138_19c71f47a38",
+    "type": "tf",
+    "prompt": "True or False: All devices in an IP fabric act as Layer 3 routers.",
+    "explanation": "In IP fabric, all devices act as Layer 3 routers and forward traffic based on routing information.",
+    "tfCorrect": true
+  },
+  {
+    "id": "q_0700eaed939f9_19c71f47a38",
+    "type": "tf",
+    "prompt": "True or False: In a five-stage fabric, traffic between pods passes through the super spine.",
+    "explanation": "Traffic between pods flows leaf → spine → super spine → spine → leaf, passing through the super spine layer.",
+    "tfCorrect": true
+  },
+  {
+    "id": "q_27b06b6236073_19c71f47a38",
+    "type": "tf",
+    "prompt": "True or False: IP fabric relies on spanning tree protocol for loop prevention.",
+    "explanation": "IP fabric uses Layer 3 routing and ECMP, eliminating the need for spanning tree.",
+    "tfCorrect": false
+  },
+  {
+    "id": "q_8a6220cd66a01_19c71f47a38",
+    "type": "tf",
+    "prompt": "True or False: Apache Hadoop distributes large datasets across multiple servers for parallel processing.",
+    "explanation": "Apache Hadoop distributes large datasets across many servers to enable parallel processing and improve efficiency.",
+    "tfCorrect": true
+  },
+  {
+    "id": "q_395ebdb2221368_19c71f47a38",
+    "type": "match",
+    "prompt": "Match the data centre layer with its responsibility.",
+    "explanation": "Core handles routing, distribution handles L3 switching, access handles L2 switching, and support infrastructure ensures environmental stability.",
+    "match": {
+      "statements": [
+        "Core layer",
+        "Distribution layer",
+        "Access layer",
+        "Support infrastructure"
+      ],
+      "answers": [
+        "Handles Layer 3 switching",
+        "Performs basic Layer 2 switching",
+        "Provides routing of traffic",
+        "Provides power, cooling, and physical security"
+      ],
+      "mapping": [
+        "C",
+        "A",
+        "B",
+        "D"
+      ]
+    }
+  },
+  {
+    "id": "q_9b2d16091a3de_19c71f47a38",
+    "type": "match",
+    "prompt": "Match the term with the correct definition.",
+    "explanation": "Ingress is incoming traffic, egress is outgoing traffic, underlay is the physical routed fabric, and overlay is the virtual network built on top.",
+    "match": {
+      "statements": [
+        "Ingress",
+        "Egress",
+        "Underlay",
+        "Overlay"
+      ],
+      "answers": [
+        "Traffic leaving a device",
+        "Layer 3 routed physical fabric",
+        "Traffic entering a device",
+        "Virtual Layer 2 network on top of IP fabric"
+      ],
+      "mapping": [
+        "C",
+        "A",
+        "B",
+        "D"
+      ]
+    }
+  }
+]

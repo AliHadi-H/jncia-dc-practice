@@ -1,0 +1,118 @@
+[
+  {
+    "type": "single",
+    "prompt": "What is the primary purpose of an IRB interface on an EX Series switch?",
+    "options": [
+      "To forward Layer 2 frames within a VLAN",
+      "To provide a default gateway for devices in a VLAN",
+      "To replace VLAN tagging",
+      "To create additional broadcast domains"
+    ],
+    "correct": 1,
+    "explanation": "An IRB interface functions as the Layer 3 gateway IP address for devices within a VLAN, enabling inter-VLAN routing. Module 6: Configuring Virtual Networks"
+  },
+  {
+    "type": "single",
+    "prompt": "Why are devices in VLAN 14 unable to communicate with devices in VLAN 15 without additional configuration?",
+    "options": [
+      "Because VLANs operate only at Layer 2",
+      "Because VLAN IDs must be sequential",
+      "Because trunk ports block inter-VLAN traffic",
+      "Because EX switches do not support routing"
+    ],
+    "correct": 0,
+    "explanation": "VLANs are Layer 2 constructs. Devices in separate VLANs cannot communicate unless a Layer 3 interface such as an IRB is configured. Module 6: Configuring Virtual Networks"
+  },
+  {
+    "type": "single",
+    "prompt": "Where is an IRB interface typically implemented in a network design?",
+    "options": [
+      "On end-user laptops",
+      "On access layer switches only",
+      "In the aggregation (distribution) layer",
+      "Inside a VLAN tag"
+    ],
+    "correct": 2,
+    "explanation": "In most cases, IRB interfaces are configured in the aggregation (distribution) layer to handle Layer 3 routing between VLANs. Module 6: Configuring Virtual Networks"
+  },
+  {
+    "type": "single",
+    "prompt": "By default, in which routing table are IRB interfaces placed?",
+    "options": [
+      "vrf.0",
+      "inet.0",
+      "bridge.0",
+      "pfe.0"
+    ],
+    "correct": 1,
+    "explanation": "By default, IRB interfaces and their routes are placed in the main routing table, inet.0. Module 6: Configuring Virtual Networks"
+  },
+  {
+    "type": "multi",
+    "prompt": "Which conditions must be met for an IRB interface to function properly? (Select all that apply.)",
+    "options": [
+      "Each IRB must be paired with a VLAN",
+      "The VLAN must have at least one active Layer 2 interface",
+      "The IRB must be assigned to a trunk port",
+      "The end-user device must use the IRB IP as its default gateway"
+    ],
+    "correct": [0, 1, 3],
+    "explanation": "Each IRB must be associated with a VLAN, the VLAN must have at least one active Layer 2 interface, and end-user devices must use the IRB IP as their default gateway. Module 6: Configuring Virtual Networks"
+  },
+  {
+    "type": "multi",
+    "prompt": "Which statements correctly describe VRFs? (Select all that apply.)",
+    "options": [
+      "They create separate routing tables on the same device",
+      "They isolate traffic between customers or VLAN groups",
+      "They replace VLAN functionality",
+      "They help keep routing domains separated"
+    ],
+    "correct": [0, 1, 3],
+    "explanation": "VRFs create separate routing tables, isolate traffic between customers or VLAN groups, and keep routing domains separated. They do not replace VLANs. Module 6: Configuring Virtual Networks"
+  },
+  {
+    "type": "multi",
+    "prompt": "In modern data center designs, why are IRBs often assigned to different VRFs? (Select all that apply.)",
+    "options": [
+      "To keep traffic logically separated",
+      "To isolate tenants or customers",
+      "To eliminate the need for VLANs",
+      "To improve segmentation"
+    ],
+    "correct": [0, 1, 3],
+    "explanation": "Assigning IRBs to different VRFs allows logical separation, tenant isolation, and improved segmentation. Module 6: Configuring Virtual Networks"
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: Without an IRB interface, devices in different VLANs can communicate directly at Layer 2.",
+    "tfCorrect": false,
+    "explanation": "False. VLANs are separate Layer 2 domains and require a Layer 3 interface such as an IRB for inter-VLAN communication. Module 6: Configuring Virtual Networks"
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: All EX Series switches are capable of performing IRB and other Layer 3 routing tasks.",
+    "tfCorrect": true,
+    "explanation": "True. All EX Series switches are equipped to handle IRB and other Layer 3 routing functions. Module 6: Configuring Virtual Networks"
+  },
+  {
+    "type": "match",
+    "prompt": "Match the concept to its correct description.",
+    "match": {
+      "statements": [
+        "IRB",
+        "VLAN",
+        "VRF",
+        "inet.0"
+      ],
+      "answers": [
+        "Layer 3 gateway interface for a VLAN",
+        "Separate Layer 2 broadcast domain",
+        "Creates isolated routing tables on a device",
+        "Default main routing table"
+      ],
+      "mapping": ["A", "B", "C", "D"]
+    },
+    "explanation": "IRB provides Layer 3 gateway functionality, VLAN defines a Layer 2 broadcast domain, VRF creates isolated routing tables, and inet.0 is the default routing table. Module 6: Configuring Virtual Networks"
+  }
+]

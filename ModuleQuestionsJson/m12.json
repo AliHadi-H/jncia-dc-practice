@@ -1,0 +1,562 @@
+[
+  {
+    "type": "single",
+    "prompt": "Which routing approach does OSPF use?",
+    "options": [
+      "Distance-vector",
+      "Link-state",
+      "Path-vector",
+      "Flood-and-learn"
+    ],
+    "correct": 1,
+    "explanation": "The content states OSPF uses a link-state routing approach."
+  },
+  {
+    "type": "single",
+    "prompt": "Which OSPF component is a collection of all Link-State Advertisements (LSAs) maintained by each router?",
+    "options": [
+      "RIB",
+      "LSDB",
+      "FIB",
+      "DR table"
+    ],
+    "correct": 1,
+    "explanation": "The Link-State Database (LSDB) is built and maintained by each OSPF router and contains the LSAs."
+  },
+  {
+    "type": "single",
+    "prompt": "Which algorithm does OSPF use to calculate best paths?",
+    "options": [
+      "Bellman-Ford",
+      "Spanning Tree",
+      "Shortest Path First (SPF)",
+      "Round-robin"
+    ],
+    "correct": 2,
+    "explanation": "The content states OSPF uses the Shortest Path First (SPF) algorithm to build a shortest-path tree."
+  },
+  {
+    "type": "single",
+    "prompt": "In Junos, OSPF interface cost is based on which factor (per the content)?",
+    "options": [
+      "Hop count",
+      "Bandwidth",
+      "Latency",
+      "Packet loss"
+    ],
+    "correct": 1,
+    "explanation": "The notes explicitly state Juniper OSPF cost is based on bandwidth."
+  },
+  {
+    "type": "single",
+    "prompt": "Which OSPF packet type is sent periodically (default every 10 seconds) on each link to discover/maintain neighbors?",
+    "options": [
+      "Database Description",
+      "Hello",
+      "Link-state update",
+      "Link-state acknowledgement"
+    ],
+    "correct": 1,
+    "explanation": "Hello packets are sent by all OSPF routers every 10 seconds by default to maintain neighbor relationships."
+  },
+  {
+    "type": "single",
+    "prompt": "What multicast address do OSPF Hello packets use by default (per the content)?",
+    "options": [
+      "224.0.0.1",
+      "224.0.0.5",
+      "224.0.0.9",
+      "239.255.255.250"
+    ],
+    "correct": 1,
+    "explanation": "The content specifies Hello packets are multicast to 224.0.0.5 (all OSPF routers)."
+  },
+  {
+    "type": "single",
+    "prompt": "Which OSPF packet type is used only during adjacency formation to exchange LSA headers?",
+    "options": [
+      "Hello",
+      "Database Description",
+      "Link-state request",
+      "Link-state acknowledgement"
+    ],
+    "correct": 1,
+    "explanation": "Database Description packets are used during adjacency formation and transfer LSA headers."
+  },
+  {
+    "type": "single",
+    "prompt": "During Database Description (DD) packet exchange, how is the Master router determined (per the content)?",
+    "options": [
+      "Lower Router ID",
+      "Higher Router ID",
+      "Lower OSPF priority",
+      "Highest interface bandwidth"
+    ],
+    "correct": 1,
+    "explanation": "The content states the router with the higher ID becomes the Master; the other becomes the slave."
+  },
+  {
+    "type": "single",
+    "prompt": "Which packet is sent when a neighbor advertises an LSA header that is not in the local LSDB?",
+    "options": [
+      "Link-state request",
+      "Link-state acknowledgement",
+      "Hello",
+      "Database Description"
+    ],
+    "correct": 0,
+    "explanation": "A Link-state request packet is sent to request the full LSA when only the header is known."
+  },
+  {
+    "type": "single",
+    "prompt": "When are Link-state update (LSU) packets sent? (Choose the best answer.)",
+    "options": [
+      "Only every 10 seconds",
+      "Only during DR election",
+      "In response to link-state requests and when link information changes after adjacency forms",
+      "Only when authentication fails"
+    ],
+    "correct": 2,
+    "explanation": "The notes list two LSU scenarios: responding to LSRs and flooding changes after adjacency is formed."
+  },
+  {
+    "type": "single",
+    "prompt": "Which OSPF packet type is received in response to LSU packets?",
+    "options": [
+      "Hello",
+      "Database Description",
+      "Link-state acknowledgement",
+      "Link-state request"
+    ],
+    "correct": 2,
+    "explanation": "LSAck packets are received in response to LSU packets and can acknowledge multiple LSUs."
+  },
+  {
+    "type": "single",
+    "prompt": "Why are OSPF areas implemented as networks grow?",
+    "options": [
+      "To increase Hello interval timers",
+      "To shrink LSDB size and reduce resource load",
+      "To disable SPF calculations",
+      "To replace LSAs with static routes"
+    ],
+    "correct": 1,
+    "explanation": "The content explains that OSPF areas reduce LSDB size as the network scales."
+  },
+  {
+    "type": "single",
+    "prompt": "Which is a listed benefit of route summarization in OSPF?",
+    "options": [
+      "Increases the LSDB size",
+      "Hides some instabilities in one area from other areas",
+      "Eliminates the need for LSAs",
+      "Guarantees equal-cost multipath"
+    ],
+    "correct": 1,
+    "explanation": "Summarization reduces LSDB size and hides some instability in one area from others."
+  },
+  {
+    "type": "single",
+    "prompt": "What is an OSPF adjacency?",
+    "options": [
+      "Any device that can ping the router",
+      "A relationship ensuring routers acknowledge each other and agree on link parameters",
+      "A static route created between two routers",
+      "A VLAN trunk between two switches"
+    ],
+    "correct": 1,
+    "explanation": "Adjacency is defined as the relationship formed between two OSPF routers to synchronize and exchange routing information."
+  },
+  {
+    "type": "single",
+    "prompt": "Which OSPF adjacency state represents bidirectional communication after receiving a Hello packet?",
+    "options": [
+      "Init",
+      "2Way",
+      "Down",
+      "ExChange"
+    ],
+    "correct": 1,
+    "explanation": "2Way indicates Hellos are received and bidirectional communication is achieved."
+  },
+  {
+    "type": "single",
+    "prompt": "Which OSPF adjacency state is where routers negotiate which one is in charge of the database synchronization process?",
+    "options": [
+      "ExStart",
+      "Init",
+      "2Way",
+      "Down"
+    ],
+    "correct": 0,
+    "explanation": "ExStart is where routers negotiate the master/slave role for database synchronization."
+  },
+  {
+    "type": "single",
+    "prompt": "On broadcast networks, which routers form full adjacencies with all others?",
+    "options": [
+      "All routers form full adjacencies with each other",
+      "Only DR and BDR form full adjacencies with all other routers",
+      "Only DR-Other routers form full adjacencies with each other",
+      "Only routers with priority 0 form full adjacencies"
+    ],
+    "correct": 1,
+    "explanation": "On broadcast networks, all routers become neighbors, but only DR and BDR form full adjacencies with all others."
+  },
+  {
+    "type": "single",
+    "prompt": "Which statement about OSPF DR election is true (per the content)?",
+    "options": [
+      "DR election is preemptive; higher priority routers replace the DR immediately",
+      "Routers with priority 0 are eligible to become DR",
+      "The current DR remains DR until it leaves the network (non-preemptive)",
+      "DR is chosen by lowest Router ID only"
+    ],
+    "correct": 2,
+    "explanation": "The notes state DR election is non-preemptive and a priority 0 router is not eligible."
+  },
+  {
+    "type": "single",
+    "prompt": "What is the default OSPF DR election priority value on Junos (per the content)?",
+    "options": [
+      "0",
+      "1",
+      "128",
+      "255"
+    ],
+    "correct": 2,
+    "explanation": "The content states the priority range is 0–255 and the default is 128."
+  },
+
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Which OSPF packet types are listed in the content?",
+    "options": [
+      "Hello",
+      "Database Description",
+      "Link-state request",
+      "Link-state update"
+    ],
+    "correct": [0,1,2,3],
+    "explanation": "The content lists Hello, Database Description, Link-state request, Link-state update, and Link-state acknowledgement as OSPF packet types."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Which Hello packet fields must match to form an adjacency over a broadcast medium (per the content)?",
+    "options": [
+      "Network Mask",
+      "Hello Interval",
+      "Options",
+      "Router Dead Interval"
+    ],
+    "correct": [0,1,2,3],
+    "explanation": "The content marks these fields with an asterisk as must-match fields on broadcast media."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Which Hello packet fields are listed in the content?",
+    "options": [
+      "Router Priority",
+      "Designated Router ID",
+      "Backup Designated Router ID",
+      "Neighbour ID"
+    ],
+    "correct": [0,1,2,3],
+    "explanation": "All listed fields appear in the Hello packet field list in the provided notes."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: What information is stored in the LSDB according to the content?",
+    "options": [
+      "Router ID of the advertiser",
+      "Connected networks and neighboring routers",
+      "Link costs to each network or neighbor",
+      "BGP community attributes"
+    ],
+    "correct": [0,1,2],
+    "explanation": "The LSDB stores LSA information such as advertiser RID, connected networks/neighbors, and link costs. BGP communities are not part of this LSDB description."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Which are stated purposes of Database Description (DD) packets?",
+    "options": [
+      "Identify who is in charge of database synchronization",
+      "Transfer LSA headers between two systems",
+      "Flood full LSAs to all areas",
+      "Acknowledge LSU packets"
+    ],
+    "correct": [0,1],
+    "explanation": "The content states DD packets determine who is in charge of database sync and transfer LSA headers."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Which fields are listed for a Link-state request packet in the content?",
+    "options": [
+      "Link-state type",
+      "Link-state ID",
+      "Advertising router",
+      "Router Dead Interval"
+    ],
+    "correct": [0,1,2],
+    "explanation": "The content lists Link-state type, Link-state ID, and Advertising router (plus the OSPF header). Dead interval is a Hello field, not LSR."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Which adjacency states are listed in the content?",
+    "options": [
+      "Down",
+      "Init",
+      "2Way",
+      "ExStart"
+    ],
+    "correct": [0,1,2,3],
+    "explanation": "The content lists Down, Init, 2Way, ExStart, and ExChange as adjacency states (in the provided excerpt)."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Which statements describe neighbors vs adjacencies on broadcast networks (per the content)?",
+    "options": [
+      "All routers become neighbors",
+      "Only DR and BDR form full adjacencies with all others",
+      "DR-Other routers form full adjacency only with DR and BDR",
+      "All DR-Other routers form full adjacency with each other"
+    ],
+    "correct": [0,1,2],
+    "explanation": "The content states all routers become neighbors, and DR/BDR form full adjacencies; DR-Other routers form full adjacency only with DR and BDR."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: What are the listed functions of a Router ID in OSPF?",
+    "options": [
+      "Identifying the router from which a packet originated",
+      "Designated router election",
+      "LSA originator identification",
+      "Determining VLAN membership"
+    ],
+    "correct": [0,1,2],
+    "explanation": "The Router ID is used to identify packet origin, participate in DR election, and identify LSA originators. VLAN membership is unrelated."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Which methods to change OSPF cost are described in the content?",
+    "options": [
+      "Change the reference bandwidth",
+      "Change the interface metric value (globally)",
+      "Change the metric value of a specific OSPF interface",
+      "Enable BFD"
+    ],
+    "correct": [0,1,2],
+    "explanation": "The notes describe changing reference bandwidth and changing metric values, including per-interface changes. BFD is a feature but not listed as a cost-change method."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Which OSPF-related show commands are listed for monitoring/troubleshooting?",
+    "options": [
+      "show ospf neighbor",
+      "show ospf database",
+      "show ospf statistics",
+      "show ospf interface"
+    ],
+    "correct": [0,1,2,3],
+    "explanation": "All of these show commands are explicitly listed in the content."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Which authentication options are listed for Junos OSPF?",
+    "options": [
+      "Simple authentication",
+      "MD5 authentication",
+      "IPsec authentication",
+      "Kerberos authentication"
+    ],
+    "correct": [0,1,2],
+    "explanation": "The notes list simple, MD5, and IPsec authentication. Kerberos is not mentioned."
+  },
+
+  {
+    "type": "tf",
+    "prompt": "True or False: OSPF uses LSAs to share status between routers that form a link.",
+    "tfCorrect": true,
+    "explanation": "The content states OSPF routers use Link-State Advertisements (LSAs) to share their status."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: A matching network mask is required to form an adjacency on point-to-point (P2P) links.",
+    "tfCorrect": false,
+    "explanation": "The content states a matching network mask is not required for point-to-point (P2P) links."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: Link-state request packets are used to acknowledge Link-state update packets.",
+    "tfCorrect": false,
+    "explanation": "LSAck packets acknowledge LSUs. Link-state request packets ask for more information when a new LSA header is seen."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: OSPF DR election is preemptive; a higher-priority router that joins later replaces the current DR.",
+    "tfCorrect": false,
+    "explanation": "The content states DR election is non-preemptive; the DR remains until it leaves the network."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: A router with OSPF priority 0 is not eligible to become DR or BDR.",
+    "tfCorrect": true,
+    "explanation": "The content explicitly states that priority 0 routers are not eligible for DR/BDR."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: In Junos OS, OSPF3 is used for IPv4 or IPv6 routing environments.",
+    "tfCorrect": true,
+    "explanation": "The content states OSPF is used for IPv4 while OSPF3 is used for IPv4 or IPv6 (and later notes: v3 works with IPv4 and IPv6)."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: Authentication is enabled by default in Junos OSPF.",
+    "tfCorrect": false,
+    "explanation": "The notes state authentication is disabled by default."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: The clear ospf database purge option forces the router to set all LSAs in its database to max-age.",
+    "tfCorrect": true,
+    "explanation": "The content states the purge option forces LSAs to max-age."
+  },
+
+  {
+    "type": "match",
+    "prompt": "Match the OSPF packet type with its primary purpose from the content.",
+    "match": {
+      "statements": [
+        "Hello",
+        "Database Description",
+        "Link-state request",
+        "Link-state acknowledgement"
+      ],
+      "answers": [
+        "Request full LSA details when only an unknown LSA header is seen",
+        "Maintain/discover neighbors and exchange parameters needed for adjacency",
+        "Exchange LSA headers during adjacency formation and determine master/slave",
+        "Acknowledge one or more Link-state update packets"
+      ],
+      "mapping": ["B","C","A","D"]
+    },
+    "explanation": "Hello packets discover/maintain neighbors; DD packets exchange LSA headers and negotiate sync roles; LSR requests missing LSAs; LSAck acknowledges LSUs."
+  },
+  {
+    "type": "match",
+    "prompt": "Match the OSPF adjacency state with the description provided in the content.",
+    "match": {
+      "statements": [
+        "Down",
+        "Init",
+        "2Way",
+        "ExStart"
+      ],
+      "answers": [
+        "Bidirectional communication achieved after receiving Hello",
+        "OSPF is waiting to start event",
+        "Hello packet sent; no bidirectional link yet",
+        "Routers negotiate which one is in charge of database sync"
+      ],
+      "mapping": ["B","C","A","D"]
+    },
+    "explanation": "Down is the starting/wait state; Init is after sending Hello but not yet bidirectional; 2Way indicates bidirectional Hellos; ExStart is negotiation for DB sync control."
+  },
+
+  {
+    "type": "single",
+    "prompt": "What is the default behavior of OSPF on a link regarding adjacency attempts (per the content)?",
+    "options": [
+      "It forms adjacency only with the DR",
+      "It attempts to establish relationships with all neighbors",
+      "It forms adjacency only after 60 seconds",
+      "It never forms adjacencies on broadcast networks"
+    ],
+    "correct": 1,
+    "explanation": "The content says by default OSPF attempts to establish a relationship with all its neighbors."
+  },
+  {
+    "type": "single",
+    "prompt": "What is the stated benefit of adding point-to-point (P2P) network type on a link for adjacency formation?",
+    "options": [
+      "Enables per-packet load balancing",
+      "Avoids DR/BDR election on that link and can save up to ~40 seconds",
+      "Forces DR election to be preemptive",
+      "Disables LSA flooding on the link"
+    ],
+    "correct": 1,
+    "explanation": "The content states P2P instructs OSPF not to perform DR/BDR election and can save up to 40 seconds of wait time."
+  },
+  {
+    "type": "single",
+    "prompt": "Which command displays OSPF adjacency information including neighbor state, router ID, and priority?",
+    "options": [
+      "show ospf neighbor",
+      "show ospf database",
+      "show ospf route",
+      "show ospf interface"
+    ],
+    "correct": 0,
+    "explanation": "The notes state 'show ospf neighbor' shows neighbor state, Router ID, and Priority."
+  },
+  {
+    "type": "single",
+    "prompt": "Where is the OSPF Router ID manually defined in Junos (per the content)?",
+    "options": [
+      "[edit routing-options]",
+      "[edit protocols ospf]",
+      "[edit interfaces]",
+      "[edit firewall]"
+    ],
+    "correct": 0,
+    "explanation": "The content says the Router ID is manually defined under the [edit routing-options] hierarchy."
+  },
+  {
+    "type": "single",
+    "prompt": "If no Router ID is configured, what does Junos OS use as the OSPF Router ID (per the content)?",
+    "options": [
+      "The lowest interface IP address",
+      "One of the IP addresses configured on the router",
+      "The MAC address of lo0",
+      "A randomly generated 32-bit value"
+    ],
+    "correct": 1,
+    "explanation": "The notes state Junos OS uses one of the IP addresses configured on the router if Router ID is not specified."
+  },
+  {
+    "type": "single",
+    "prompt": "Which command is used to view SPF calculation timing fields like When, Type, and Elapsed (per the content)?",
+    "options": [
+      "show ospf log",
+      "show ospf statistics",
+      "show ospf database detail",
+      "show ospf interface extensive"
+    ],
+    "correct": 0,
+    "explanation": "The content specifies 'show ospf log' displays SPF-related information including When, Type, and Elapsed."
+  },
+  {
+    "type": "single",
+    "prompt": "Which tool writes OSPF debugging output to a file under /var/log (per the content)?",
+    "options": [
+      "Policy-options",
+      "Traceoptions",
+      "BFD",
+      "Prefix-limit"
+    ],
+    "correct": 1,
+    "explanation": "The content states traceoptions output is directed to the named file in /var/log and viewed with show log."
+  },
+  {
+    "type": "single",
+    "prompt": "A common cause of an OSPF neighbor not being detected includes mismatches in which settings? (Choose the best answer.)",
+    "options": [
+      "MTU only",
+      "IP subnet/mask, area number/type, authentication, hello/dead interval, or network type",
+      "BGP local preference and MED",
+      "VLAN tagging and native VLAN ID"
+    ],
+    "correct": 1,
+    "explanation": "The troubleshooting section lists mismatched IP subnet/mask, area number/type, authentication, hello/dead interval, and network type as checks."
+  }
+]

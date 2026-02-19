@@ -1,0 +1,375 @@
+[
+  {
+    "id": "q_7b454ca31ee08_19c7204e310",
+    "type": "single",
+    "prompt": "What is the purpose of the em0 interface on EX Series switches?",
+    "explanation": "The em0 interface is a dedicated management interface used to access the switch separately from the production network.",
+    "options": [
+      "To forward Layer 2 traffic",
+      "To act as a VLAN trunk interface",
+      "To provide out-of-band management access",
+      "To store MAC address entries"
+    ],
+    "correct": 2
+  },
+  {
+    "id": "q_c239681c30892_19c7204e310",
+    "type": "single",
+    "prompt": "Which protocol can be used to gather statistics from an EX Series switch through the management interface?",
+    "explanation": "SNMP can be used through the management interface to gather statistics from the switch.",
+    "options": [
+      "BGP",
+      "SNMP",
+      "STP",
+      "VXLAN"
+    ],
+    "correct": 1
+  },
+  {
+    "id": "q_ea37d0c976cdb8_19c7204e310",
+    "type": "single",
+    "prompt": "Which command is used to verify administrative and link status of interfaces?",
+    "explanation": "The show interfaces terse command displays whether interfaces are administratively up or down and their link status.",
+    "options": [
+      "show ethernet-switching table",
+      "show route forwarding-table",
+      "show interfaces terse",
+      "show interfaces extensive"
+    ],
+    "correct": 2
+  },
+  {
+    "id": "q_201749f02d99b8_19c7204e310",
+    "type": "single",
+    "prompt": "Which command displays detailed interface information including errors?",
+    "explanation": "The show interfaces extensive command provides detailed interface information including error conditions.",
+    "options": [
+      "show interfaces extensive",
+      "show interfaces terse",
+      "clear ethernet-switching table",
+      "show route forwarding-table"
+    ],
+    "correct": 0
+  },
+  {
+    "id": "q_715288097a5bf_19c7204e310",
+    "type": "single",
+    "prompt": "Which command displays the MAC address table?",
+    "explanation": "The show ethernet-switching table command displays the bridge table (MAC table).",
+    "options": [
+      "show route forwarding-table",
+      "show ethernet-switching table",
+      "show interfaces terse",
+      "clear ethernet-switching table"
+    ],
+    "correct": 1
+  },
+  {
+    "id": "q_f0f62ebf767dd8_19c7204e310",
+    "type": "single",
+    "prompt": "Where is the interface-range option valid?",
+    "explanation": "The interface-range option is only valid under the [edit interfaces] hierarchy.",
+    "options": [
+      "[edit protocols]",
+      "[edit vlans]",
+      "[edit interfaces]",
+      "[edit routing-options]"
+    ],
+    "correct": 2
+  },
+  {
+    "id": "q_65b7336112c64_19c7204e310",
+    "type": "single",
+    "prompt": "What must be specified for interfaces operating in Layer 2 mode?",
+    "explanation": "Interfaces operating in Layer 2 mode must be configured with family ethernet-switching.",
+    "options": [
+      "family inet",
+      "family ethernet-switching",
+      "family bridge",
+      "family mpls"
+    ],
+    "correct": 1
+  },
+  {
+    "id": "q_2d6da9854b358_19c7204e310",
+    "type": "single",
+    "prompt": "Which command clears the MAC table for a specific interface?",
+    "explanation": "The clear ethernet-switching table interface INTERFACE_NAME command clears MAC entries for a specific interface.",
+    "options": [
+      "clear ethernet-switching table interface INTERFACE_NAME",
+      "clear interfaces INTERFACE_NAME",
+      "clear route forwarding-table",
+      "clear ethernet-switching vlan"
+    ],
+    "correct": 0
+  },
+  {
+    "id": "q_19270592e1f4f_19c7204e310",
+    "type": "single",
+    "prompt": "Which command displays the Layer 2 forwarding table (FIB)?",
+    "explanation": "The show route forwarding-table family ethernet-switching command displays the Layer 2 forwarding table.",
+    "options": [
+      "show ethernet-switching table",
+      "show interfaces terse",
+      "show route forwarding-table family ethernet-switching",
+      "show vlans"
+    ],
+    "correct": 2
+  },
+  {
+    "id": "q_b89f8e764cae5_19c7204e310",
+    "type": "single",
+    "prompt": "How do static MAC entries behave compared to dynamically learned entries?",
+    "explanation": "Static entries do not expire and override dynamically learned entries.",
+    "options": [
+      "They expire automatically",
+      "They override dynamic entries",
+      "They are removed after ageing timeout",
+      "They are VLAN-independent"
+    ],
+    "correct": 1
+  },
+  {
+    "id": "q_d127467b9d5ff8_19c7204e310",
+    "type": "single",
+    "prompt": "Which option defines a continuous range of interfaces in a configuration?",
+    "explanation": "The member-range option defines a continuous range of interfaces such as ge-0/0/1 to ge-0/0/10.",
+    "options": [
+      "member",
+      "member-range",
+      "interface-group",
+      "range-set"
+    ],
+    "correct": 1
+  },
+  {
+    "id": "q_1da31ff24598c_19c7204e310",
+    "type": "multi",
+    "prompt": "Select all that apply: Management access to EX Series switches can be performed using:",
+    "explanation": "SSH and Telnet allow management access, and SNMP can gather statistics. BGP is unrelated to management access.",
+    "options": [
+      "SSH",
+      "Telnet",
+      "SNMP",
+      "BGP"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ]
+  },
+  {
+    "id": "q_533e33f98326b8_19c7204e310",
+    "type": "multi",
+    "prompt": "Select all that apply: Ethernet switching on EX Series switches:",
+    "explanation": "Ethernet switching is enabled by default, supports grouping, and requires family ethernet-switching for L2 mode.",
+    "options": [
+      "Is enabled by default",
+      "Requires manual activation",
+      "Supports interface grouping",
+      "Requires family ethernet-switching for Layer 2"
+    ],
+    "correct": [
+      0,
+      2,
+      3
+    ]
+  },
+  {
+    "id": "q_1901e9eb288a48_19c7204e310",
+    "type": "multi",
+    "prompt": "Select all that apply: The show ethernet-switching table command can:",
+    "explanation": "It displays MAC entries including VLAN-specific entries. It does not display Layer 3 routes.",
+    "options": [
+      "Display MAC entries",
+      "Display VLAN-specific entries",
+      "Display Layer 3 routes",
+      "Be used after clearing the table to verify results"
+    ],
+    "correct": [
+      0,
+      1,
+      3
+    ]
+  },
+  {
+    "id": "q_d020ea0734bb18_19c7204e310",
+    "type": "multi",
+    "prompt": "Select all that apply: Static MAC entries:",
+    "explanation": "Static MAC entries direct traffic, override dynamic entries, and do not expire.",
+    "options": [
+      "Direct frames to a specific interface",
+      "Expire automatically",
+      "Override dynamic entries",
+      "Remain until manually removed"
+    ],
+    "correct": [
+      0,
+      2,
+      3
+    ]
+  },
+  {
+    "id": "q_5aa20938f64118_19c7204e310",
+    "type": "multi",
+    "prompt": "Select all that apply: The clear ethernet-switching table command can clear:",
+    "explanation": "The command can clear MAC entries for a specific interface, VLAN, or the entire table. It does not affect the RIB.",
+    "options": [
+      "A specific interface",
+      "A specific VLAN",
+      "The entire MAC table",
+      "The RIB"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ]
+  },
+  {
+    "id": "q_fa17c4e6cb3ea8_19c7204e310",
+    "type": "multi",
+    "prompt": "Select all that apply: Interface grouping features include:",
+    "explanation": "member and member-range can be combined within interface-range under [edit interfaces].",
+    "options": [
+      "member option",
+      "member-range option",
+      "Combining member and member-range",
+      "Using interface-range under protocols"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ]
+  },
+  {
+    "id": "q_7f4b7840345948_19c7204e310",
+    "type": "multi",
+    "prompt": "Select all that apply: The show interfaces terse command:",
+    "explanation": "show interfaces terse shows admin/link status and can be filtered with match. Detailed errors require extensive.",
+    "options": [
+      "Displays admin status",
+      "Displays link status",
+      "Shows detailed error counters",
+      "Can be filtered with match"
+    ],
+    "correct": [
+      0,
+      1,
+      3
+    ]
+  },
+  {
+    "id": "q_a4cbbdbf107da_19c7204e310",
+    "type": "multi",
+    "prompt": "Select all that apply: To configure Layer 2 functionality on an interface you must:",
+    "explanation": "Layer 2 configuration requires family ethernet-switching under [edit interfaces], optionally using interface-range.",
+    "options": [
+      "Use family ethernet-switching",
+      "Be under [edit interfaces]",
+      "Enable SNMP",
+      "Use interface-range if grouping"
+    ],
+    "correct": [
+      0,
+      1,
+      3
+    ]
+  },
+  {
+    "id": "q_c44ef845a36c1_19c7204e310",
+    "type": "tf",
+    "prompt": "True or False: Ethernet switching is disabled by default on EX Series switches.",
+    "explanation": "Ethernet switching is enabled by default on EX Series switches.",
+    "tfCorrect": false
+  },
+  {
+    "id": "q_363b93b5938f08_19c7204e310",
+    "type": "tf",
+    "prompt": "True or False: Static MAC entries expire after a timeout.",
+    "explanation": "Static MAC entries do not expire and must be manually removed.",
+    "tfCorrect": false
+  },
+  {
+    "id": "q_f4edb905feaf6_19c7204e310",
+    "type": "tf",
+    "prompt": "True or False: The management interface em0 allows separation from the production network.",
+    "explanation": "The em0 interface provides separate management access outside the main switching network.",
+    "tfCorrect": true
+  },
+  {
+    "id": "q_50a816cbeb8fb8_19c7204e310",
+    "type": "tf",
+    "prompt": "True or False: The member option is used to specify individual interfaces within an interface-range.",
+    "explanation": "The member option specifies individual interfaces inside an interface-range configuration.",
+    "tfCorrect": true
+  },
+  {
+    "id": "q_143b128cfe0ae8_19c7204e310",
+    "type": "tf",
+    "prompt": "True or False: show route forwarding-table family ethernet-switching displays the RIB.",
+    "explanation": "It displays the Layer 2 forwarding table (FIB), not the Routing Information Base.",
+    "tfCorrect": false
+  },
+  {
+    "id": "q_d3ca1660a70e7_19c7204e310",
+    "type": "tf",
+    "prompt": "True or False: You can combine member and member-range options in the same interface range.",
+    "explanation": "Both options can be combined within the same interface-range configuration.",
+    "tfCorrect": true
+  },
+  {
+    "id": "q_2171950c1a5e08_19c7204e310",
+    "type": "match",
+    "prompt": "Match the command with its function.",
+    "explanation": "Each command serves a specific operational function for interface and MAC table management.",
+    "match": {
+      "statements": [
+        "show interfaces terse",
+        "show interfaces extensive",
+        "show ethernet-switching table",
+        "clear ethernet-switching table"
+      ],
+      "answers": [
+        "Displays detailed interface information",
+        "Displays interface admin and link status",
+        "Clears MAC table entries",
+        "Displays MAC address entries"
+      ],
+      "mapping": [
+        "B",
+        "A",
+        "D",
+        "C"
+      ]
+    }
+  },
+  {
+    "id": "q_8a8cae763d2e98_19c7204e310",
+    "type": "match",
+    "prompt": "Match the configuration element with its purpose.",
+    "explanation": "family ethernet-switching enables L2 mode, member specifies interfaces, member-range defines ranges, and em0 is for management.",
+    "match": {
+      "statements": [
+        "family ethernet-switching",
+        "member",
+        "member-range",
+        "em0"
+      ],
+      "answers": [
+        "Specifies continuous interface range",
+        "Defines Layer 2 mode",
+        "Designates individual interface in a group",
+        "Dedicated management interface"
+      ],
+      "mapping": [
+        "B",
+        "C",
+        "A",
+        "D"
+      ]
+    }
+  }
+]

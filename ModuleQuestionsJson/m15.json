@@ -1,0 +1,447 @@
+[
+  {
+    "type": "single",
+    "prompt": "What is the primary purpose of Graceful Restart (GR) as described?",
+    "options": [
+      "To prevent routing loops by blocking interfaces during restart",
+      "To allow a router to restart while remaining in the topology and continuing forwarding",
+      "To force neighbours to reset all adjacencies immediately",
+      "To disable forwarding until routing protocols fully converge"
+    ],
+    "correct": 1,
+    "explanation": "Graceful Restart enables a router to restart while keeping it in the topology and it keeps forwarding packets during the restart."
+  },
+  {
+    "type": "single",
+    "prompt": "When Graceful Restart is enabled, what does the restarting router do before it restarts?",
+    "options": [
+      "Sends BFD hellos to all neighbours to indicate a restart",
+      "Informs its neighbours that it is about to restart",
+      "Disables helper mode on neighbours",
+      "Deletes its routing table to force a clean reconvergence"
+    ],
+    "correct": 1,
+    "explanation": "The content states that when Graceful Restart is enabled, the router informs its neighbours that it is about to restart."
+  },
+  {
+    "type": "single",
+    "prompt": "In Graceful Restart operation, how do neighbours assist the restarting router?",
+    "options": [
+      "They act as helpers and hide the restart from the rest of the network",
+      "They stop forwarding and wait for the router to return",
+      "They automatically disable all routing protocols",
+      "They require manual approval to keep routes installed"
+    ],
+    "correct": 0,
+    "explanation": "Neighbours act as helpers and hide the restart from the rest of the network, reducing disruption."
+  },
+  {
+    "type": "single",
+    "prompt": "Which statement best describes forwarding behaviour during a Graceful Restart (per the content)?",
+    "options": [
+      "The router stops forwarding until it re-establishes neighbour adjacencies",
+      "The router keeps forwarding packets even during the restart",
+      "The router forwards only management traffic",
+      "Forwarding is replaced by BFD until restart completes"
+    ],
+    "correct": 1,
+    "explanation": "The content explicitly states the router keeps forwarding packets even during restart."
+  },
+  {
+    "type": "single",
+    "prompt": "After a Graceful Restart completes, what happens next (per the content)?",
+    "options": [
+      "The router syncs with its neighbours without disrupting packet forwarding operations",
+      "The router clears all helper state and drops traffic to re-learn routes",
+      "Neighbours force a full protocol reset on all links",
+      "BFD must be disabled before routes are reinstalled"
+    ],
+    "correct": 0,
+    "explanation": "After the restart completes, the device syncs with its neighbours without disrupting packet forwarding operations."
+  },
+  {
+    "type": "single",
+    "prompt": "Which statement is correct regarding default settings for Graceful Restart (per the content)?",
+    "options": [
+      "Graceful restart is enabled by default, helper mode is disabled by default",
+      "Graceful restart is disabled by default, helper mode is enabled by default",
+      "Both graceful restart and helper mode are disabled by default",
+      "Both graceful restart and helper mode are enabled by default"
+    ],
+    "correct": 1,
+    "explanation": "The content states graceful restart is not enabled by default, but helper mode is enabled by default."
+  },
+
+  {
+    "type": "single",
+    "prompt": "What is Bidirectional Forwarding Detection (BFD) designed to detect?",
+    "options": [
+      "Routing policy errors",
+      "Link failures / communication failures between devices",
+      "VLAN tagging mismatches",
+      "Incorrect route preferences"
+    ],
+    "correct": 1,
+    "explanation": "BFD is described as a simple protocol designed to detect link failures; it notifies the system of a communication error when sessions fail."
+  },
+  {
+    "type": "single",
+    "prompt": "What triggers BFD to declare a session down?",
+    "options": [
+      "Receiving an OSPF LSA update",
+      "Not receiving BFD hello messages from the neighbour",
+      "A change in interface MTU",
+      "A route becomes inactive in the RIB"
+    ],
+    "correct": 1,
+    "explanation": "If BFD stops receiving hellos from its neighbour, it takes the session down and notifies the system."
+  },
+  {
+    "type": "single",
+    "prompt": "How quickly can BFD detect failures according to the content?",
+    "options": [
+      "Less than 1 second",
+      "Every 10 seconds by default",
+      "Within 40 seconds",
+      "Only after the routing protocol dead timer expires"
+    ],
+    "correct": 0,
+    "explanation": "The content states BFD can detect failures in less than 1 second."
+  },
+  {
+    "type": "single",
+    "prompt": "Which is a listed benefit of BFD?",
+    "options": [
+      "It replaces the need for routing protocols",
+      "It provides a single common method for managing protocol timers",
+      "It forces per-packet load balancing",
+      "It automatically generates static routes"
+    ],
+    "correct": 1,
+    "explanation": "BFD provides a single, common method for managing protocol timers rather than modifying each protocol’s timers."
+  },
+  {
+    "type": "single",
+    "prompt": "Where is BFD typically configured for a given protocol in Junos (per the content)?",
+    "options": [
+      "Under [edit interfaces] using family inet bfd",
+      "Under [edit routing-options] using bfd-liveness-detection",
+      "Under [edit protocols] for each protocol using bfd-liveness-detection",
+      "Under [edit firewall] using a filter term action"
+    ],
+    "correct": 2,
+    "explanation": "The content states BFD is configured under the [edit protocols] hierarchy for each protocol using the bfd-liveness-detection option."
+  },
+  {
+    "type": "single",
+    "prompt": "Which configuration option disables BFD adaptive mode?",
+    "options": [
+      "full-neighbors-only",
+      "no-adaptation",
+      "minimum-interval",
+      "multiplier"
+    ],
+    "correct": 1,
+    "explanation": "The content states BFD sessions are adaptive and you can use no-adaptation to disable adaptive mode."
+  },
+  {
+    "type": "single",
+    "prompt": "What does the BFD multiplier represent (per the content)?",
+    "options": [
+      "The number of routing instances that share interface routes",
+      "How many consecutive BFD hellos must be missed before declaring the session dead",
+      "The TTL value for BFD packets",
+      "How many neighbours can participate in helper mode"
+    ],
+    "correct": 1,
+    "explanation": "Multiplier is defined as how many consecutive BFD hellos must be missed prior to declaring the BFD session dead."
+  },
+  {
+    "type": "single",
+    "prompt": "What is the purpose of the 'full-neighbors-only' option under bfd-liveness-detection (as shown in the completion list)?",
+    "options": [
+      "Send BFD hellos only to BGP neighbours",
+      "Set up BFD sessions only to Full neighbours",
+      "Disable BFD sessions on point-to-point links",
+      "Force graceful restart helper mode"
+    ],
+    "correct": 1,
+    "explanation": "The completion list shows 'full-neighbors-only' as: Setup BFD sessions only to Full neighbors."
+  },
+
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Which statements describe Graceful Restart (per the content)?",
+    "options": [
+      "Enables a router to restart while keeping it in the topology",
+      "The router keeps forwarding packets even during restart",
+      "Neighbours act as helpers and hide the restart from the rest of the network",
+      "Graceful restart is enabled by default"
+    ],
+    "correct": [0,1,2],
+    "explanation": "GR keeps the router in topology, continues forwarding, and uses neighbours as helpers. The content states GR is not enabled by default."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Which are listed benefits of BFD?",
+    "options": [
+      "Relieves supported protocols by providing fast-failure detection",
+      "Provides a single, common method for managing protocol timers",
+      "Ensures graceful restart is always enabled",
+      "Automatically advertises inactive routes"
+    ],
+    "correct": [0,1],
+    "explanation": "The content lists fast-failure detection for supported protocols and a common method for managing protocol timers. The other options are not stated."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Which protocols are listed as supported by BFD in the content?",
+    "options": [
+      "OSPF",
+      "BGP",
+      "Static routes",
+      "RSTP"
+    ],
+    "correct": [0,1,2],
+    "explanation": "Supported protocols listed include OSPF, BGP, and static routes (among others). RSTP is not listed."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Which additional protocols are listed as supported by BFD in the content?",
+    "options": [
+      "IS-IS",
+      "RIP",
+      "RSVP",
+      "LACP"
+    ],
+    "correct": [0,1,2],
+    "explanation": "IS-IS, RIP, and RSVP are listed as supported. LACP is not listed in the BFD section."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Which additional protocols are listed as supported by BFD in the content?",
+    "options": [
+      "PIM",
+      "OSPF",
+      "BGP",
+      "VXLAN"
+    ],
+    "correct": [0,1,2],
+    "explanation": "PIM is listed, along with OSPF and BGP. VXLAN is not listed as a BFD-supported protocol here."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Based on the completion list shown for OSPF bfd-liveness-detection, which options relate to timing behaviour?",
+    "options": [
+      "minimum-interval",
+      "minimum-receive-interval",
+      "multiplier",
+      "apply-groups"
+    ],
+    "correct": [0,1,2],
+    "explanation": "minimum-interval, minimum-receive-interval, and multiplier are timing/detection-related. apply-groups is configuration inheritance, not timing."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Which statements are true about BFD adaptive sessions (per the content)?",
+    "options": [
+      "BFD sessions are adaptive by default",
+      "Transmit and receive intervals can be adjusted on the router",
+      "no-adaptation disables adaptive mode",
+      "Adaptive mode is required for Graceful Restart"
+    ],
+    "correct": [0,1,2],
+    "explanation": "The content states BFD sessions are adaptive, intervals can be adjusted, and no-adaptation disables adaptive mode. There is no statement that adaptive mode is required for GR."
+  },
+
+  {
+    "type": "tf",
+    "prompt": "True or False: Graceful Restart is enabled by default.",
+    "tfCorrect": false,
+    "explanation": "The content states graceful restart is not enabled by default."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: Helper mode for Graceful Restart is enabled by default.",
+    "tfCorrect": true,
+    "explanation": "The content states helper mode is enabled by default."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: With Graceful Restart enabled, the router stops forwarding packets during the restart.",
+    "tfCorrect": false,
+    "explanation": "The content explicitly states the router keeps forwarding packets even during restart."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: BFD continuously sends hello messages once a session is established.",
+    "tfCorrect": true,
+    "explanation": "The content states that once two devices establish a BFD session, they continuously send hello messages to monitor the link."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: BFD can detect failures in less than 1 second.",
+    "tfCorrect": true,
+    "explanation": "This is explicitly stated in the content."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: BFD is configured globally under [edit system] and automatically applies to all protocols.",
+    "tfCorrect": false,
+    "explanation": "The content states BFD is configured under [edit protocols] for each protocol using bfd-liveness-detection."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: The BFD multiplier determines how many consecutive hello packets must be missed before declaring the session dead.",
+    "tfCorrect": true,
+    "explanation": "The content defines multiplier exactly this way."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: Disabling BFD adaptation is done with the 'no-adaptation' option.",
+    "tfCorrect": true,
+    "explanation": "The content states to use no-adaptation to disable adaptive mode."
+  },
+
+  {
+    "type": "match",
+    "prompt": "Match the feature to its description (per the content).",
+    "match": {
+      "statements": [
+        "Graceful Restart",
+        "Helper mode (GR)",
+        "BFD",
+        "BFD multiplier"
+      ],
+      "answers": [
+        "Number of consecutive hellos missed before declaring a session dead",
+        "Neighbours assist by hiding the restart from the rest of the network",
+        "Protocol to detect link failures using hello messages",
+        "Allows restart while keeping forwarding and remaining in topology"
+      ],
+      "mapping": ["D","B","C","A"]
+    },
+    "explanation": "GR allows restart while staying in topology and forwarding; neighbours act as helpers; BFD detects failures with hellos; multiplier is missed-hello threshold."
+  },
+  {
+    "type": "match",
+    "prompt": "Match the configuration concept to where/what it is used for (per the content).",
+    "match": {
+      "statements": [
+        "bfd-liveness-detection (per protocol)",
+        "no-adaptation",
+        "full-neighbors-only",
+        "minimum-receive-interval"
+      ],
+      "answers": [
+        "Sets minimum receive interval in milliseconds",
+        "Disables adaptive mode for BFD sessions",
+        "Configure BFD under [edit protocols] for a protocol (e.g., OSPF interface)",
+        "Sets up BFD sessions only to Full neighbours"
+      ],
+      "mapping": ["C","B","D","A"]
+    },
+    "explanation": "The content describes bfd-liveness-detection as per-protocol config under [edit protocols], no-adaptation disables adaptive, full-neighbors-only restricts to Full neighbours, and minimum-receive-interval sets receive timing."
+  },
+  {
+    "type": "match",
+    "prompt": "Match the operational event to the resulting behaviour (per the content).",
+    "match": {
+      "statements": [
+        "Router restarts with Graceful Restart enabled",
+        "Neighbours operating as helpers during GR",
+        "BFD stops receiving hellos",
+        "Restart completes (GR)"
+      ],
+      "answers": [
+        "Session is taken down and the system is notified of a communication error",
+        "Router continues forwarding packets during restart",
+        "Device syncs with neighbours without disrupting forwarding",
+        "Restart is hidden from the rest of the network"
+      ],
+      "mapping": ["B","D","A","C"]
+    },
+    "explanation": "GR keeps forwarding during restart; neighbours hide restart; BFD missing hellos triggers session down/notification; after restart, the device syncs with neighbours without disrupting forwarding."
+  },
+  {
+    "type": "match",
+    "prompt": "Match each item to whether it is enabled by default (per the content).",
+    "match": {
+      "statements": [
+        "Graceful Restart (restart mode)",
+        "Graceful Restart helper mode",
+        "BFD adaptive sessions",
+        "BFD no-adaptation"
+      ],
+      "answers": [
+        "Enabled by default",
+        "Not enabled by default",
+        "Disabled only when explicitly configured",
+        "Enabled by default (sessions are adaptive)"
+      ],
+      "mapping": ["B","A","D","C"]
+    },
+    "explanation": "GR is not enabled by default, helper mode is enabled by default. BFD sessions are adaptive (so effectively enabled by default) and no-adaptation is only used when you explicitly configure it."
+  },
+
+  {
+    "type": "single",
+    "prompt": "Which statement best captures why BFD can reduce the need to tune multiple protocol timers?",
+    "options": [
+      "BFD replaces routing protocols entirely",
+      "BFD provides a single common method for managing failure detection rather than modifying timers per protocol",
+      "BFD disables protocol hold timers automatically",
+      "BFD only works with OSPF so other protocols are unaffected"
+    ],
+    "correct": 1,
+    "explanation": "The content states BFD provides a single, common method for managing protocol timers instead of modifying timers for each protocol."
+  },
+  {
+    "type": "single",
+    "prompt": "In the example shown, where is bfd-liveness-detection applied for OSPF?",
+    "options": [
+      "Under [edit protocols ospf area 0 interface ge-0/0/1.0]",
+      "Under [edit routing-options static]",
+      "Under [edit interfaces ge-0/0/1 unit 0 family inet]",
+      "Under [edit system services]"
+    ],
+    "correct": 0,
+    "explanation": "The example shows setting bfd-liveness-detection under protocols for OSPF on a specific interface in an area."
+  },
+  {
+    "type": "single",
+    "prompt": "Which best describes the role of neighbours during Graceful Restart?",
+    "options": [
+      "They become Designated Routers and take over routing for the segment",
+      "They act as helpers and conceal the restart from the rest of the network",
+      "They send ICMP unreachable messages to all peers",
+      "They disable BFD to prevent false failures"
+    ],
+    "correct": 1,
+    "explanation": "Neighbours act as helpers and hide the restart from the rest of the network, according to the provided content."
+  },
+  {
+    "type": "single",
+    "prompt": "Which statement about Graceful Restart and packet forwarding is accurate (per the content)?",
+    "options": [
+      "Packet forwarding is disrupted until route exchange completes",
+      "Packet forwarding continues during restart and remains undisrupted when syncing after restart",
+      "Packet forwarding is replaced by helper forwarding only",
+      "Packet forwarding requires BFD to be enabled"
+    ],
+    "correct": 1,
+    "explanation": "The content states the router keeps forwarding during restart, and syncs with neighbours after restart without disrupting packet forwarding operations."
+  },
+  {
+    "type": "single",
+    "prompt": "Which BFD setting directly affects how soon a neighbour is declared down after failures begin?",
+    "options": [
+      "apply-groups",
+      "multiplier",
+      "authentication",
+      "version"
+    ],
+    "correct": 1,
+    "explanation": "Multiplier is the number of consecutive BFD hellos that must be missed before declaring the session dead, directly impacting detection time."
+  }
+]

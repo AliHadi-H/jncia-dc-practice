@@ -1,0 +1,119 @@
+[
+    {
+      "type": "single",
+      "prompt": "What is the purpose of the em0 interface on an EX Series switch?",
+      "options": [
+        "To forward Layer 2 production traffic",
+        "To provide a dedicated management interface",
+        "To function as the default VLAN interface",
+        "To operate as a trunk port"
+      ],
+      "correct": 1,
+      "explanation": "The em0 interface is a dedicated management interface created by Junos OS, allowing separate management access to the switch. Module 4: Configuring Ethernet Switching"
+    },
+    {
+      "type": "single",
+      "prompt": "Where is the interface-range option valid when configuring Ethernet switching?",
+      "options": [
+        "Under [edit protocols]",
+        "Under [edit vlans]",
+        "Under [edit interfaces]",
+        "Under [edit routing-options]"
+      ],
+      "correct": 2,
+      "explanation": "The interface-range option is only valid under the [edit interfaces] hierarchy. Module 4: Configuring Ethernet Switching"
+    },
+    {
+      "type": "single",
+      "prompt": "Which configuration statement must be specified for interfaces operating in Layer 2 mode?",
+      "options": [
+        "family inet",
+        "family ethernet-switching",
+        "family mpls",
+        "family iso"
+      ],
+      "correct": 1,
+      "explanation": "When configuring Layer 2 interfaces, you must specify family ethernet-switching. Module 4: Configuring Ethernet Switching"
+    },
+    {
+      "type": "single",
+      "prompt": "Which command is used to view the MAC address table on an EX Series switch?",
+      "options": [
+        "show interfaces terse",
+        "show route forwarding-table family ethernet-switching",
+        "show ethernet-switching table",
+        "clear ethernet-switching table"
+      ],
+      "correct": 2,
+      "explanation": "The show ethernet-switching table command displays the bridge table, also known as the MAC address table. Module 4: Configuring Ethernet Switching"
+    },
+    {
+      "type": "multi",
+      "prompt": "Which statements correctly describe the management interface on EX Series switches? (Select all that apply.)",
+      "options": [
+        "Junos OS creates the em0 interface for management",
+        "It allows separate access from the main network",
+        "It can be assigned a valid IP address",
+        "It forwards normal Layer 2 switching traffic"
+      ],
+      "correct": [0, 1, 2],
+      "explanation": "The em0 interface is created for management, allows separate connectivity, and can be configured with an IP address for SSH, Telnet, or SNMP. It does not forward production traffic. Module 4: Configuring Ethernet Switching"
+    },
+    {
+      "type": "multi",
+      "prompt": "Which statements apply when configuring interface ranges? (Select all that apply.)",
+      "options": [
+        "You can use member to specify individual interfaces",
+        "You can use member-range to define continuous interface ranges",
+        "member and member-range can be combined within the same interface range",
+        "interface-range is configured under [edit vlans]"
+      ],
+      "correct": [0, 1, 2],
+      "explanation": "The member option specifies individual interfaces, member-range defines continuous ranges, and both can be combined. The interface-range option is configured under [edit interfaces]. Module 4: Configuring Ethernet Switching"
+    },
+    {
+      "type": "multi",
+      "prompt": "Which commands are used for verifying or troubleshooting Layer 2 switching? (Select all that apply.)",
+      "options": [
+        "show interfaces terse",
+        "show interfaces extensive",
+        "show ethernet-switching table",
+        "clear ethernet-switching table"
+      ],
+      "correct": [0, 1, 2, 3],
+      "explanation": "show interfaces terse and extensive verify interface status and details, show ethernet-switching table displays MAC entries, and clear ethernet-switching table removes MAC entries for troubleshooting. Module 4: Configuring Ethernet Switching"
+    },
+    {
+      "type": "tf",
+      "prompt": "True or False: Static MAC address entries expire automatically after a timeout period.",
+      "tfCorrect": false,
+      "explanation": "False. Static MAC entries do not expire and override dynamically learned entries. Module 4: Configuring Ethernet Switching"
+    },
+    {
+      "type": "tf",
+      "prompt": "True or False: EX Series switches have Ethernet switching enabled by default.",
+      "tfCorrect": true,
+      "explanation": "True. EX Series switches have Ethernet switching enabled by default. Module 4: Configuring Ethernet Switching"
+    },
+    {
+      "type": "match",
+      "prompt": "Match the command to its function.",
+      "match": {
+        "statements": [
+          "show interfaces terse",
+          "show interfaces extensive",
+          "show ethernet-switching table",
+          "clear ethernet-switching table"
+        ],
+        "answers": [
+          "Displays brief interface status",
+          "Shows detailed interface information and errors",
+          "Displays MAC address table",
+          "Clears MAC address entries"
+        ],
+        "mapping": ["A", "B", "C", "D"]
+      },
+      "explanation": "show interfaces terse provides status, show interfaces extensive provides detailed information, show ethernet-switching table displays MAC entries, and clear ethernet-switching table removes them. Module 4: Configuring Ethernet Switching"
+    }
+  ]
+  

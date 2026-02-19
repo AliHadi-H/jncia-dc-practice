@@ -1,0 +1,294 @@
+[
+  {
+    "type": "single",
+    "prompt": "What is the primary purpose of creating VLANs in a data centre?",
+    "options": [
+      "To increase collision domains",
+      "To create separate broadcast domains",
+      "To eliminate trunk links",
+      "To replace physical switches"
+    ],
+    "correct": 1,
+    "explanation": "VLANs logically group devices to form separate broadcast domains, improving management and segmentation."
+  },
+  {
+    "type": "single",
+    "prompt": "Which port mode is typically used to connect end-user devices such as laptops or servers?",
+    "options": [
+      "Trunk mode",
+      "Access mode",
+      "Native mode",
+      "Routed mode"
+    ],
+    "correct": 1,
+    "explanation": "Access (untagged) ports are typically used for end devices and belong to a single VLAN."
+  },
+  {
+    "type": "single",
+    "prompt": "Which port mode allows multiple VLANs to traverse the same physical interface?",
+    "options": [
+      "Access mode",
+      "Trunk mode",
+      "Default mode",
+      "IRB mode"
+    ],
+    "correct": 1,
+    "explanation": "Trunk (tagged) ports can carry traffic for multiple VLANs across the same physical link."
+  },
+  {
+    "type": "single",
+    "prompt": "By default, how are switch ports configured when first powered on?",
+    "options": [
+      "Trunk mode",
+      "Access mode in default VLAN",
+      "Routed mode",
+      "Disabled"
+    ],
+    "correct": 1,
+    "explanation": "By default, all switch ports are configured as access ports and assigned to the default VLAN."
+  },
+  {
+    "type": "single",
+    "prompt": "Which statement enables untagged traffic on a trunk port in EX Series switches?",
+    "options": [
+      "family ethernet-switching",
+      "vlan-tagging",
+      "native-vlan-id",
+      "interface-range"
+    ],
+    "correct": 2,
+    "explanation": "The native-vlan-id configuration allows trunk ports to send and receive untagged traffic."
+  },
+  {
+    "type": "single",
+    "prompt": "Which VLAN field defines the specific VLAN to which a frame belongs?",
+    "options": [
+      "PCP",
+      "DEI",
+      "VID",
+      "TPID"
+    ],
+    "correct": 2,
+    "explanation": "VID (VLAN Identifier) is a 12-bit field identifying the VLAN to which the frame belongs."
+  },
+  {
+    "type": "single",
+    "prompt": "How many bits are used for the Priority Code Point (PCP) field?",
+    "options": [
+      "1 bit",
+      "3 bits",
+      "12 bits",
+      "16 bits"
+    ],
+    "correct": 1,
+    "explanation": "PCP uses 3 bits and defines frame priority."
+  },
+  {
+    "type": "single",
+    "prompt": "What is the purpose of the DEI field in VLAN tagging?",
+    "options": [
+      "Identifies VLAN ID",
+      "Defines routing priority",
+      "Indicates if frame can be dropped during congestion",
+      "Encrypts the VLAN tag"
+    ],
+    "correct": 2,
+    "explanation": "DEI (Drop Eligible Indicator) indicates whether a frame can be dropped during congestion."
+  },
+  {
+    "type": "single",
+    "prompt": "Which command displays configured VLANs on a switch?",
+    "options": [
+      "show interfaces",
+      "show vlans",
+      "show ethernet-switching table",
+      "clear vlans"
+    ],
+    "correct": 1,
+    "explanation": "The show vlans command displays VLAN configuration information."
+  },
+  {
+    "type": "single",
+    "prompt": "Where are trunk ports typically used?",
+    "options": [
+      "Connecting to end-user laptops",
+      "Connecting to printers",
+      "Connecting to another switch or edge router",
+      "Connecting to a management port"
+    ],
+    "correct": 2,
+    "explanation": "Trunk ports are typically used between switches or between a switch and an edge router."
+  },
+  {
+    "type": "single",
+    "prompt": "How many bits are used for the VLAN Identifier (VID)?",
+    "options": [
+      "3 bits",
+      "1 bit",
+      "12 bits",
+      "16 bits"
+    ],
+    "correct": 2,
+    "explanation": "The VID field uses 12 bits to identify the VLAN."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Characteristics of trunk (tagged) ports include:",
+    "options": [
+      "Carry multiple VLANs",
+      "Use VLAN tagging",
+      "Connect to end-user devices by default",
+      "Can carry untagged traffic with native-vlan-id"
+    ],
+    "correct": [0,1,3],
+    "explanation": "Trunk ports carry multiple VLANs, use tagging, and can carry untagged traffic if native-vlan-id is configured."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Access (untagged) ports:",
+    "options": [
+      "Belong to a single VLAN",
+      "Typically connect to end devices",
+      "Carry multiple VLANs simultaneously",
+      "Handle untagged Ethernet frames"
+    ],
+    "correct": [0,1,3],
+    "explanation": "Access ports belong to one VLAN and handle untagged frames. They do not carry multiple VLANs."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: VLAN tagging inserts which fields?",
+    "options": [
+      "PCP",
+      "DEI",
+      "VID",
+      "RIB"
+    ],
+    "correct": [0,1,2],
+    "explanation": "VLAN tagging includes PCP, DEI, and VID within the TCI header."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: VLANs provide:",
+    "options": [
+      "Logical grouping of nodes",
+      "Separate broadcast domains",
+      "Physical isolation of hardware",
+      "Segmentation regardless of physical location"
+    ],
+    "correct": [0,1,3],
+    "explanation": "VLANs logically group nodes and create separate broadcast domains regardless of physical location."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Native VLAN operations require:",
+    "options": [
+      "Configuration on all trunk ports passing untagged traffic",
+      "family ethernet-switching",
+      "native-vlan-id statement",
+      "Interface reset"
+    ],
+    "correct": [0,2],
+    "explanation": "native-vlan-id must be configured on all trunk ports expected to pass untagged traffic."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: VLAN Data Frame tagging includes:",
+    "options": [
+      "TPID",
+      "TCI",
+      "PCP",
+      "IRB"
+    ],
+    "correct": [0,1,2],
+    "explanation": "The VLAN tag includes TPID and TCI fields, which contain PCP, DEI, and VID."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Tagged ports:",
+    "options": [
+      "Separate traffic by VLAN ID",
+      "Carry multiple VLANs",
+      "Belong to only one VLAN",
+      "Are commonly used between switches"
+    ],
+    "correct": [0,1,3],
+    "explanation": "Tagged ports separate traffic using VLAN IDs and are commonly used between switches."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: VLAN tagging adds 4 bytes to the Ethernet frame.",
+    "tfCorrect": true,
+    "explanation": "VLAN tagging inserts 4 bytes (16 bits TPID + 16 bits TCI) into the Ethernet frame."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: Access ports can carry traffic for multiple VLANs simultaneously.",
+    "tfCorrect": false,
+    "explanation": "Access ports typically belong to a single VLAN and carry untagged traffic."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: PCP defines frame priority.",
+    "tfCorrect": true,
+    "explanation": "PCP (Priority Code Point) defines the priority of a frame."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: By default, trunk ports allow both tagged and untagged traffic.",
+    "tfCorrect": false,
+    "explanation": "By default, trunk ports only send and receive tagged traffic unless native-vlan-id is configured."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: VLANs create separate collision domains.",
+    "tfCorrect": false,
+    "explanation": "VLANs create separate broadcast domains, not collision domains."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: The VID field uses 12 bits in the VLAN tag.",
+    "tfCorrect": true,
+    "explanation": "The VLAN Identifier (VID) field is 12 bits long."
+  },
+  {
+    "type": "match",
+    "prompt": "Match the VLAN field with its function.",
+    "match": {
+      "statements": [
+        "PCP",
+        "DEI",
+        "VID",
+        "TPID"
+      ],
+      "answers": [
+        "Indicates drop eligibility",
+        "Identifies VLAN",
+        "Defines frame priority",
+        "Tag Protocol Identifier field"
+      ],
+      "mapping": ["C","A","B","D"]
+    },
+    "explanation": "PCP defines priority, DEI indicates drop eligibility, VID identifies VLAN, and TPID identifies the VLAN tag."
+  },
+  {
+    "type": "match",
+    "prompt": "Match the port mode with its characteristic.",
+    "match": {
+      "statements": [
+        "Access Port",
+        "Trunk Port",
+        "Native VLAN",
+        "Default Port Mode"
+      ],
+      "answers": [
+        "Carries multiple VLANs",
+        "Single VLAN membership",
+        "Allows untagged traffic on trunk",
+        "Access mode in default VLAN"
+      ],
+      "mapping": ["B","A","C","D"]
+    },
+    "explanation": "Access ports carry a single VLAN, trunk ports carry multiple VLANs, native VLAN allows untagged traffic, and default mode is access in default VLAN."
+  }
+]

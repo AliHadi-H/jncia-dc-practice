@@ -1,0 +1,120 @@
+Generate JNCIA-DC practice questions based only on the content I provide below.
+
+Requirements:
+- the content will have the sentence "Questions about below" which means create questions about this section
+- Follow official JNCIA-DC exam style
+- Medium difficulty (not trivial, not expert-level)
+- Focus on conceptual understanding and operational knowledge
+- Avoid trick wording
+- Include explanation for each answer
+- Do NOT include topics outside the content provided
+- include the sentence "Module 5: Virtual Networks Overview" at the end of each explanation
+
+Question Types:
+- 40% single choice (pick 1 of 4)
+- 30% select all that apply (1–4 correct answers)
+- 20% true/false
+- 10% match statements
+
+Format output as JSON compatible with my website:
+[
+  {
+    "type": "single" | "multi" | "tf" | "match",
+    "prompt": "...",
+    "options": ["A","B","C","D"],   // only for single/multi
+    "correct": number OR [numbers], // only for single/multi
+    "tfCorrect": true/false,        // only for tf
+    "match": {
+        "statements": ["","","",""],
+        "answers": ["","","",""],
+        "mapping": ["A","B","C","D"]
+    },                              // only for match
+    "explanation": "..."
+  }
+]
+
+Here is the content to use:
+--------------------------------
+Enterprise Switching Platforms 
+
+Questions about below 
+"
+VLAN:  
+
+DC's requires network to be segregate into smaller domains to make them easier to manage and create sperate broadcast domains 
+
+Definition of VLAN: A collection of network nodes that are logically grouped together to form separate broadcast domains 
+
+supports all nodes of a particular VLAN regardless of location 
+"
+
+Questions about below 
+"
+Switch Designation: VLAN-enabled port can be operate in 1 of 2 mods
+Access (Untagged) and Trunk (tagged) Port Modes 
+
+"
+
+
+
+Questions about below 
+"
+Tagged ( Trunk ) 
+
+Used to allow multiple VLANS 
+
+Usually links to another switch or an edge router 
+
+It can handle traffic for multiple VLANs. Means that it can send and receive data for all the configured VLAN's over the same physical connection. 
+
+Sends the traffic for all configured VLANs over the same physical connection and separates traffic by tagging it with appropriate VLAN ID 
+
+Can carry untagged traffic when configured with the native-vlan-id statement. 
+"
+
+
+
+Questions about below 
+"
+Untagged (Access) 
+
+Acepts only a single VLAN: Access ports typically belong to a single VLAN 
+
+Typically connect to end user devices such as laptop , computers, server, and printers 
+
+These ports are usually part of one VLAN and handle untagged Ethernet frames for sending and receiving data. However, there is an exception for the voice VLAN. 
+
+By default, all switch ports are set to access mode and are assigned to the default VLAN when you first get the switch. 
+"
+
+
+
+Questions about below 
+"
+
+"
+
+
+
+Questions about below 
+"
+
+"
+
+
+
+Questions about below 
+"
+
+"
+
+
+
+Questions about below 
+"
+
+"
+
+
+
+--------------------------------

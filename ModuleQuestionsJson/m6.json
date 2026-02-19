@@ -1,0 +1,282 @@
+[
+  {
+    "type": "single",
+    "prompt": "By default, all interfaces on a new switch belong to which VLAN?",
+    "options": [
+      "VLAN 10",
+      "VLAN 100",
+      "VLAN 1",
+      "No VLAN"
+    ],
+    "correct": 2,
+    "explanation": "Factory default configuration places all interfaces into the default VLAN, which is VLAN 1."
+  },
+  {
+    "type": "single",
+    "prompt": "Which command changes the default VLAN ID?",
+    "options": [
+      "set vlans default vlan-id 100",
+      "set interfaces vlan-id 100",
+      "set routing-options vlan 100",
+      "set default-vlan 100"
+    ],
+    "correct": 0,
+    "explanation": "The command 'set vlans default vlan-id 100' changes the default VLAN ID."
+  },
+  {
+    "type": "single",
+    "prompt": "What is the primary function of an IRB interface?",
+    "options": [
+      "Provide Layer 2 switching",
+      "Act as a trunk port",
+      "Route traffic between VLANs",
+      "Replace VLAN tagging"
+    ],
+    "correct": 2,
+    "explanation": "IRB (Integrated Routing and Bridging) provides Layer 3 routing between VLANs and acts as the default gateway."
+  },
+  {
+    "type": "single",
+    "prompt": "Where are IRB interfaces and routes placed by default?",
+    "options": [
+      "vrf.0",
+      "inet.0",
+      "bridge.0",
+      "vlan.0"
+    ],
+    "correct": 1,
+    "explanation": "By default, IRB interfaces and their routes are placed in the main routing table inet.0."
+  },
+  {
+    "type": "single",
+    "prompt": "What must exist for IRB to function properly?",
+    "options": [
+      "At least one active Layer 2 interface in the VLAN",
+      "A trunk port only",
+      "A VRF configured",
+      "A static route to 0.0.0.0/0"
+    ],
+    "correct": 0,
+    "explanation": "Each IRB must be paired with a VLAN that has at least one active Layer 2 interface."
+  },
+  {
+    "type": "single",
+    "prompt": "Which command verifies VLAN configuration?",
+    "options": [
+      "show route",
+      "show interfaces",
+      "show vlans",
+      "show irb"
+    ],
+    "correct": 2,
+    "explanation": "The 'show vlans' command displays VLAN configuration."
+  },
+  {
+    "type": "single",
+    "prompt": "If Host A in VLAN 14 sends traffic to VLAN 15, where is the traffic sent first?",
+    "options": [
+      "Directly to Host B",
+      "To irb.15",
+      "To irb.14",
+      "To VLAN 1"
+    ],
+    "correct": 2,
+    "explanation": "Host A sends traffic to its default gateway, irb.14."
+  },
+  {
+    "type": "single",
+    "prompt": "Which command verifies IRB interface status?",
+    "options": [
+      "show vlans",
+      "show interfaces terse irb",
+      "show route 172.23/16",
+      "show ethernet-switching table"
+    ],
+    "correct": 1,
+    "explanation": "The command 'show interfaces terse irb' verifies IRB interface status."
+  },
+  {
+    "type": "single",
+    "prompt": "Which protocol family enables Layer 2 operations on interfaces?",
+    "options": [
+      "family inet",
+      "family ethernet-switching",
+      "family bridge",
+      "family mpls"
+    ],
+    "correct": 1,
+    "explanation": "The ethernet-switching protocol family enables Layer 2 functionality."
+  },
+  {
+    "type": "single",
+    "prompt": "What is the purpose of VRFs?",
+    "options": [
+      "Increase VLAN IDs",
+      "Create separate routing tables",
+      "Enable trunking",
+      "Replace IRBs"
+    ],
+    "correct": 1,
+    "explanation": "VRFs create separate routing tables to isolate routing domains."
+  },
+  {
+    "type": "single",
+    "prompt": "Which interface mode allows multiple VLANs?",
+    "options": [
+      "Access",
+      "IRB",
+      "Trunk",
+      "Routed"
+    ],
+    "correct": 2,
+    "explanation": "Trunk mode allows multiple VLANs on the same interface."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: IRB configuration requires:",
+    "options": [
+      "VLAN creation",
+      "Binding VLAN to IRB",
+      "Assigning IP address to IRB",
+      "Configuring trunk port"
+    ],
+    "correct": [0,1,2],
+    "explanation": "IRB setup requires VLAN creation, binding to IRB, and assigning IP address."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: VRFs allow you to:",
+    "options": [
+      "Isolate customers",
+      "Separate routing domains",
+      "Improve segmentation",
+      "Merge VLANs"
+    ],
+    "correct": [0,1,2],
+    "explanation": "VRFs isolate routing domains and improve segmentation."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Verification commands include:",
+    "options": [
+      "show vlans",
+      "show interfaces terse",
+      "show route",
+      "clear vlans"
+    ],
+    "correct": [0,1,2],
+    "explanation": "These commands verify VLAN, interface, and routing information."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Access port configuration includes:",
+    "options": [
+      "family ethernet-switching",
+      "port-mode access",
+      "vlan members VLAN_NAME",
+      "interface-mode trunk"
+    ],
+    "correct": [0,1,2],
+    "explanation": "Access ports use ethernet-switching family, port-mode access, and VLAN membership."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Trunk configuration includes:",
+    "options": [
+      "port-mode trunk",
+      "vlan members all",
+      "family ethernet-switching",
+      "irb assignment"
+    ],
+    "correct": [0,1,2],
+    "explanation": "Trunks require ethernet-switching, trunk mode, and VLAN members all."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Host routing requirements include:",
+    "options": [
+      "Correct default gateway",
+      "IP address in correct subnet",
+      "Static route to IRB",
+      "VLAN trunk"
+    ],
+    "correct": [0,1],
+    "explanation": "Hosts must have correct IP and default gateway."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: VLANs are Layer 3 networks.",
+    "tfCorrect": false,
+    "explanation": "VLANs are Layer 2 networks."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: IRB interfaces act as default gateways.",
+    "tfCorrect": true,
+    "explanation": "IRBs provide gateway functionality for VLANs."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: Without IRB, VLANs cannot communicate with each other.",
+    "tfCorrect": true,
+    "explanation": "Layer 2 VLANs require Layer 3 routing (IRB) to communicate."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: VRFs allow multiple routing tables on the same device.",
+    "tfCorrect": true,
+    "explanation": "VRFs create separate routing tables on the same switch."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: IRB requires static routing to function internally between VLANs.",
+    "tfCorrect": false,
+    "explanation": "IRB handles inter-VLAN routing without requiring static routes between local VLANs."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: Access ports can carry multiple VLANs.",
+    "tfCorrect": false,
+    "explanation": "Access ports carry a single VLAN."
+  },
+  {
+    "type": "match",
+    "prompt": "Match the command with its purpose.",
+    "match": {
+      "statements": [
+        "show vlans",
+        "show interfaces terse irb",
+        "show route 172.23/16",
+        "ping 172.23.14.10 source 173.23.15.1"
+      ],
+      "answers": [
+        "Verify routing entries",
+        "Verify VLAN configuration",
+        "Test inter-VLAN connectivity",
+        "Verify IRB interface status"
+      ],
+      "mapping": ["B","D","A","C"]
+    },
+    "explanation": "Each command verifies VLAN, IRB, routing, or connectivity."
+  },
+  {
+    "type": "match",
+    "prompt": "Match the component to its function.",
+    "match": {
+      "statements": [
+        "IRB",
+        "VLAN",
+        "VRF",
+        "Trunk port"
+      ],
+      "answers": [
+        "Separate routing table",
+        "Default gateway for VLAN",
+        "Carries multiple VLANs",
+        "Layer 2 broadcast domain"
+      ],
+      "mapping": ["B","D","A","C"]
+    },
+    "explanation": "IRB acts as gateway, VLAN defines broadcast domain, VRF isolates routing tables, trunk carries multiple VLANs."
+  }
+]

@@ -1,0 +1,358 @@
+[
+  {
+    "type": "single",
+    "prompt": "What is the primary purpose of Filter-Based Forwarding (FBF)?",
+    "options": [
+      "To replace dynamic routing protocols",
+      "To control packet forwarding using criteria beyond destination address",
+      "To encrypt traffic between routing instances",
+      "To increase interface bandwidth using link aggregation"
+    ],
+    "correct": 1,
+    "explanation": "FBF allows forwarding decisions based on additional criteria (for example, source address), not just destination."
+  },
+  {
+    "type": "single",
+    "prompt": "Which tools are listed as being used with FBF?",
+    "options": [
+      "Stateful firewalls, NAT, IPS",
+      "Stateless firewall filters, forwarding classes, routing instances",
+      "VLAN tagging, STP, MC-LAG",
+      "OSPF, IS-IS, RIP"
+    ],
+    "correct": 1,
+    "explanation": "The notes list stateless firewall filters, forwarding classes, and routing instances as tools used in FBF."
+  },
+  {
+    "type": "single",
+    "prompt": "How is a match filter applied for FBF on Junos?",
+    "options": [
+      "As an output filter on the egress interface",
+      "As an input filter on the interface receiving traffic",
+      "Only under [edit routing-options]",
+      "Only under [edit routing-instances]"
+    ],
+    "correct": 1,
+    "explanation": "The match filter must be applied as an input filter on the ingress interface so it can classify incoming traffic."
+  },
+  {
+    "type": "single",
+    "prompt": "If incoming traffic does not match any firewall filter term in an FBF match filter, what happens by default?",
+    "options": [
+      "It is forwarded using inet.0 routes",
+      "It is load balanced across all ISPs",
+      "It is discarded",
+      "It is sent to the Routing Engine for processing"
+    ],
+    "correct": 2,
+    "explanation": "The notes state that traffic not matching any filter term is discarded by default."
+  },
+  {
+    "type": "single",
+    "prompt": "For Filter-Based Forwarding (FBF), which routing instance type should be used?",
+    "options": [
+      "virtual-router",
+      "vrf",
+      "forwarding",
+      "no-forwarding"
+    ],
+    "correct": 2,
+    "explanation": "The content explicitly states that FBF uses routing instances with instance-type forwarding."
+  },
+  {
+    "type": "single",
+    "prompt": "When a packet matches an FBF filter term that points to a routing instance, which table is consulted to select the next hop?",
+    "options": [
+      "The default instance's inet.0 only",
+      "The routing instance's RIB (routing table)",
+      "The firewall filter term list",
+      "The Layer 2 forwarding table (FIB)"
+    ],
+    "correct": 1,
+    "explanation": "After matching, the packet is forwarded based on the destination lookup in the specified routing instance’s routing table (RIB)."
+  },
+  {
+    "type": "single",
+    "prompt": "Which statement describes why a RIB group is needed in the example FBF design?",
+    "options": [
+      "To enable Source Class Usage (SCU) matching",
+      "To allow forwarding instances to resolve next hops by sharing interface routes",
+      "To perform uRPF checks on FBF interfaces",
+      "To automatically create firewall filter terms"
+    ],
+    "correct": 1,
+    "explanation": "Forwarding instances cannot have interfaces directly assigned, so they need shared interface routes (via a RIB group) to resolve next hops and activate default routes."
+  },
+  {
+    "type": "single",
+    "prompt": "Where do you configure a RIB group for FBF route sharing?",
+    "options": [
+      "[edit routing-options]",
+      "[edit routing-instances]",
+      "[edit firewall]",
+      "[edit interfaces]"
+    ],
+    "correct": 0,
+    "explanation": "The content states RIB groups are configured under the [edit routing-options] hierarchy."
+  },
+  {
+    "type": "single",
+    "prompt": "In the provided example, which interface is explicitly mentioned as receiving traffic that needs the match filter applied?",
+    "options": [
+      "ge-0/0/0.0",
+      "ge-0/0/1.0",
+      "ge-0/0/2.0",
+      "ae0.0"
+    ],
+    "correct": 1,
+    "explanation": "The notes say traffic enters R1 via ge-0/0/1 and the filter must be applied to ge-0/0/1.0."
+  },
+  {
+    "type": "single",
+    "prompt": "Which configuration line applies the FBF match filter to an interface (as shown in the notes)?",
+    "options": [
+      "set unit 0 family inet filter output my-match-filter",
+      "set unit 0 family inet filter input my-match-filter",
+      "set protocols inet filter input my-match-filter",
+      "set routing-options filter input my-match-filter"
+    ],
+    "correct": 1,
+    "explanation": "The notes show applying the filter as: set unit 0 family inet filter input my-match-filter."
+  },
+  {
+    "type": "single",
+    "prompt": "In the example, what problem exists before FBF is configured on R1?",
+    "options": [
+      "The router forwards all traffic to ISP-B",
+      "The router drops all traffic from 172.25.0.0/24",
+      "The router only looks at destination address and forwards all traffic to ISP-A",
+      "The router cannot use static routes"
+    ],
+    "correct": 2,
+    "explanation": "The scenario states the router uses only destination address, causing all connections to go to ISP-A."
+  },
+  {
+    "type": "single",
+    "prompt": "What is the purpose of adding an 'else-accept' term in the FBF filter?",
+    "options": [
+      "To discard unmatched traffic",
+      "To accept all remaining traffic and forward it based on destination address",
+      "To force unmatched traffic into ISP-A routing instance",
+      "To enable uRPF checks"
+    ],
+    "correct": 1,
+    "explanation": "The else-accept term permits traffic not matched earlier and forwards it normally based on destination."
+  },
+
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Which statements about FBF are supported by the notes?",
+    "options": [
+      "FBF can forward traffic based on source address",
+      "FBF works with IPv4 and IPv6",
+      "FBF requires SCU filter matching to function",
+      "FBF can be used to select between multiple ISPs"
+    ],
+    "correct": [0,1,3],
+    "explanation": "FBF can use source address and other criteria, works with IPv4/IPv6, and can choose an ISP. Junos does not support SCU filter matching."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: The three main configuration tasks for FBF include:",
+    "options": [
+      "Create and apply a match filter",
+      "Create routing instances",
+      "Create a RIB group",
+      "Enable MC-LAG"
+    ],
+    "correct": [0,1,2],
+    "explanation": "The notes describe three tasks: match filter, routing instances, and RIB group. MC-LAG is unrelated."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Junos OS does NOT support the following on interfaces configured for FBF (per the notes):",
+    "options": [
+      "Source Class Usage (SCU) filter matching",
+      "Unicast Reverse Path Forwarding (RPF) checks",
+      "IPv4 forwarding",
+      "IPv6 forwarding"
+    ],
+    "correct": [0,1],
+    "explanation": "The notes explicitly state Junos does not support SCU filter matching or unicast RPF checks on FBF interfaces."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: What must be true when configuring an FBF match filter term that directs traffic to a routing instance?",
+    "options": [
+      "The routing instance must exist in the configuration",
+      "The filter must be applied as an input filter on the receiving interface",
+      "The filter must be applied as an output filter on the sending interface",
+      "Each term includes an action (such as directing traffic to an instance)"
+    ],
+    "correct": [0,1,3],
+    "explanation": "The notes state the instance must be defined, the filter must be input on ingress, and each term includes an action directing traffic."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Why must inet.0 be included in the RIB group import list in the example?",
+    "options": [
+      "Otherwise interface routes won't be imported into the default table",
+      "To enable uRPF checks",
+      "So forwarding instances can receive interface routes for next-hop resolution",
+      "To allow SCU filter matching"
+    ],
+    "correct": [0,2],
+    "explanation": "The notes say to always include inet.0, otherwise interface routes won’t be imported into the default table, and the sharing of interface routes helps forwarding instances resolve next hops."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: In the example, what routing information is configured inside the ISP-A and ISP-B forwarding instances?",
+    "options": [
+      "Each instance has a default static route (0.0.0.0/0)",
+      "ISP-A default route points to 172.20.0.2",
+      "ISP-B default route points to 172.20.1.2",
+      "Each instance runs OSPF"
+    ],
+    "correct": [0,1,2],
+    "explanation": "The example states ISP-A uses 0.0.0.0/0 via 172.20.0.2 and ISP-B uses 0.0.0.0/0 via 172.20.1.2. No dynamic routing protocols are mentioned."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Which statements about instance-import are supported by the notes?",
+    "options": [
+      "It is an alternative to using RIB groups for route sharing",
+      "It is policy-based route sharing between routing instances",
+      "It can be simpler or more intuitive than RIB groups",
+      "It requires configuring a RIB group per VRF to work"
+    ],
+    "correct": [0,1,2],
+    "explanation": "The notes describe instance-import as a policy-based alternative that can be less complex than RIB groups. It does not require a separate RIB group per VRF."
+  },
+  {
+    "type": "multi",
+    "prompt": "Select all that apply: Which were listed as drawbacks of older RIB-group-based inter-instance sharing methods?",
+    "options": [
+      "Routing table groups were unfamiliar to many users",
+      "Each VRF needed its own main import routing table (separate group per VRF)",
+      "Groups had to be manually applied per protocol",
+      "It automatically created firewall filters and terms"
+    ],
+    "correct": [0,1,2],
+    "explanation": "The notes list these drawbacks (unfamiliar concept, separate group per VRF, manual per-protocol application). Auto-creating filters is not mentioned."
+  },
+
+  {
+    "type": "tf",
+    "prompt": "True or False: FBF forwards traffic only based on destination IP address.",
+    "tfCorrect": false,
+    "explanation": "FBF forwards based on additional criteria (for example, source address), not only destination."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: In FBF, the match filter must be applied as an input filter on the interface receiving the traffic.",
+    "tfCorrect": true,
+    "explanation": "The notes explicitly state the match filter is applied as an input filter on the receiving interface."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: If traffic does not match any term in an FBF filter, it is accepted and forwarded normally by default.",
+    "tfCorrect": false,
+    "explanation": "By default, unmatched traffic is discarded unless you add a term (such as else-accept) to handle it."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: For FBF, the routing instance type should be set to forwarding.",
+    "tfCorrect": true,
+    "explanation": "The notes explicitly say the instance type for FBF should be forwarding."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: Junos supports unicast RPF checks on interfaces configured for FBF.",
+    "tfCorrect": false,
+    "explanation": "The notes state Junos OS does not support unicast RPF checks on FBF interfaces."
+  },
+  {
+    "type": "tf",
+    "prompt": "True or False: A RIB group is configured under [edit routing-options].",
+    "tfCorrect": true,
+    "explanation": "The notes specify RIB groups are configured under [edit routing-options]."
+  },
+
+  {
+    "type": "match",
+    "prompt": "Match the FBF configuration step with what it accomplishes.",
+    "match": {
+      "statements": [
+        "Step 1: Match filter",
+        "Step 2: Routing instances",
+        "Step 3: RIB group",
+        "else-accept term"
+      ],
+      "answers": [
+        "Share interface routes so forwarding instances can resolve next-hops",
+        "Classify incoming traffic and direct it to an action/instance",
+        "Accept unmatched traffic and forward based on destination address",
+        "Provide separate routing tables used after traffic is classified"
+      ],
+      "mapping": ["B","D","A","C"]
+    },
+    "explanation": "Match filters classify and select an action; routing instances supply routing tables; RIB groups share interface routes for next-hop resolution; else-accept prevents unintended drops by forwarding normally."
+  },
+  {
+    "type": "match",
+    "prompt": "Match each concept to the description from the notes.",
+    "match": {
+      "statements": [
+        "FBF",
+        "Forwarding instance",
+        "RIB group",
+        "instance-import"
+      ],
+      "answers": [
+        "Policy-based route sharing between routing instances without RIB groups",
+        "Routing instance type used for FBF; uses its own routing table",
+        "Shares routes between routing tables (including interface routes) to enable next-hop resolution",
+        "Forward traffic using criteria such as source address, not only destination"
+      ],
+      "mapping": ["D","B","C","A"]
+    },
+    "explanation": "FBF forwards based on additional criteria; forwarding instances are the instance type used by FBF; RIB groups share routes/tables; instance-import is policy-based route sharing."
+  },
+
+  {
+    "type": "single",
+    "prompt": "Which verification command is shown to confirm that inet.0 routes are visible in the ISP-A instance after instance-import is configured?",
+    "options": [
+      "show route table ISP-A.inet.0",
+      "show firewall filter my-match-filter",
+      "show interfaces terse | match lt-",
+      "show route instance ISP-A"
+    ],
+    "correct": 0,
+    "explanation": "The notes show verification using 'show route table ISP-A.inet.0'."
+  },
+  {
+    "type": "single",
+    "prompt": "What is the main risk if you do not include an else-accept term (or otherwise handle unmatched traffic) in an FBF filter?",
+    "options": [
+      "Unmatched traffic will be load balanced across all ISPs",
+      "Unmatched traffic will be discarded, causing unintended traffic loss",
+      "Unmatched traffic will always go to ISP-B",
+      "Unmatched traffic will bypass the filter entirely"
+    ],
+    "correct": 1,
+    "explanation": "The notes state unmatched traffic is discarded by default; else-accept prevents unintended traffic loss by allowing normal destination-based forwarding."
+  },
+  {
+    "type": "single",
+    "prompt": "Which statement best describes what the RIB group configuration is ensuring in the FBF design?",
+    "options": [
+      "That firewall filters are stateful",
+      "That interface routes are shared into forwarding instances and inet.0 for next-hop reachability",
+      "That IPv6 is disabled for FBF",
+      "That routing instances can directly own physical interfaces"
+    ],
+    "correct": 1,
+    "explanation": "The RIB group shares interface routes between inet.0 and forwarding instance tables so next-hop IPs can be resolved and default routes can become active."
+  }
+]

@@ -1,0 +1,910 @@
+[
+    {
+        "type": "multi",
+        "prompt": "Which of the following are types of datacenters mentioned in the provided content? (Select all that apply.)",
+        "options": [
+          "Collocated facilities",
+          "Leased locations",
+          "Server rooms",
+          "Public cloud regions"
+        ],
+        "correct": [0, 1, 2],
+        "explanation": "The content lists three datacenter types: collocated facilities, leased locations, and server rooms. Public cloud regions were not mentioned."
+      },
+      {
+        "type": "multi",
+        "prompt": "Which of the following are considered elements of a datacenter based on the provided content? (Select all that apply.)",
+        "options": [
+          "Facility",
+          "Core Components",
+          "Support Infrastructure",
+          "Cloud-native services"
+        ],
+        "correct": [0, 1, 2],
+        "explanation": "The listed datacenter elements are Facility, Core Components, and Support Infrastructure. Cloud-native services were not included in the provided content."
+      },
+      {
+        "type": "single",
+        "prompt": "In the traditional datacenter architecture shown, which component sits directly above the hardware rack?",
+        "options": [
+          "WAN",
+          "Layer 2 and 3 network gear",
+          "Top-of-Rack (ToR) switch",
+          "Core router"
+        ],
+        "correct": 2,
+        "explanation": "In the provided hierarchy, the Hardware Rack connects first to the Top-of-Rack (ToR) switch, which then connects upward to Layer 2 and 3 network gear and eventually to the WAN."
+      },
+      {
+        "type": "multi",
+        "prompt": "Based on the provided traditional architecture diagram, which components are part of the vertical connectivity path? (Select all that apply.)",
+        "options": [
+          "Hardware Rack",
+          "Top-of-Rack (ToR) switch",
+          "Layer 2 and 3 network gear",
+          "Hypervisor cluster"
+        ],
+        "correct": [0, 1, 2],
+        "explanation": "The diagram shows a vertical path: Hardware Rack → ToR switch → Layer 2 and 3 network gear → WAN. Hypervisor cluster was not mentioned in the provided content."
+      },
+      {
+        "type": "multi",
+        "prompt": "Which statements correctly describe a WAN router? (Select all that apply.)",
+        "options": [
+          "It communicates with an ISP router or routers in another datacenter.",
+          "It can use static or dynamic VPNs.",
+          "It serves as the default gateway for internal devices.",
+          "It only operates at Layer 2."
+        ],
+        "correct": [0, 1, 2],
+        "explanation": "A WAN router communicates with external routers (such as ISP routers), can use static or dynamic VPNs or custom tunnels, and often serves as the default gateway for internal devices. It is not limited to Layer 2 operation."
+      },
+      {
+        "type": "single",
+        "prompt": "In a traditional three-tier datacenter architecture, which layer is primarily responsible for routing traffic?",
+        "options": [
+          "Access layer",
+          "Distribution (Aggregation) layer",
+          "Core layer",
+          "Support layer"
+        ],
+        "correct": 2,
+        "explanation": "In the traditional hierarchical model, the Core layer is responsible for routing traffic across the network and between different parts of the infrastructure."
+      },
+      {
+        "type": "multi",
+        "prompt": "Which statements correctly describe the traditional three-layer datacenter architecture? (Select all that apply.)",
+        "options": [
+          "The Core layer is responsible for routing traffic.",
+          "The Distribution layer handles Layer 3 switching.",
+          "The Access layer mainly performs basic or Layer 2 switching.",
+          "The Access layer is responsible for WAN connectivity."
+        ],
+        "correct": [0, 1, 2],
+        "explanation": "The traditional model consists of Core (routing), Distribution/Aggregation (Layer 3 switching), and Access (primarily Layer 2/basic switching). WAN connectivity was not defined as an Access layer responsibility in the provided content."
+      },
+      {
+        "type": "tf",
+        "prompt": "True or False: In the traditional architecture, the Distribution layer primarily performs basic Layer 2 switching.",
+        "tfCorrect": false,
+        "explanation": "The Distribution (Aggregation) layer handles Layer 3 switching. Basic Layer 2 switching is mainly performed at the Access layer."
+      },
+      {
+        "type": "match",
+        "prompt": "Match each traditional architecture layer with its primary function.",
+        "match": {
+          "statements": [
+            "Core layer",
+            "Distribution (Aggregation) layer",
+            "Access layer",
+            "Not part of the traditional three-layer model"
+          ],
+          "answers": [
+            "Responsible for routing traffic",
+            "Handles Layer 3 switching",
+            "Performs mainly basic or Layer 2 switching",
+            "Application layer"
+          ],
+          "mapping": ["A", "B", "C", "D"]
+        },
+        "explanation": "The traditional three-layer architecture consists of Core (routing), Distribution/Aggregation (Layer 3 switching), and Access (Layer 2/basic switching). The Application layer is not part of this network hierarchy."
+      },
+      {
+        "type": "single",
+        "prompt": "Which fabric type primarily focuses on Layer 3 services and requires overlay technology to provide Layer 2 services?",
+        "options": [
+          "Ethernet Fabric",
+          "IP Fabric",
+          "Virtual Chassis Fabric (VCF)",
+          "Spanning Tree Fabric"
+        ],
+        "correct": 1,
+        "explanation": "IP Fabric focuses on Layer 3 services. To provide Layer 2 services, it requires overlay technology."
+      },
+      {
+        "type": "multi",
+        "prompt": "Which characteristics apply to Ethernet Fabric? (Select all that apply.)",
+        "options": [
+          "Provides both Layer 2 and Layer 3 services",
+          "Supports multicast and lossless data center bridging",
+          "Requires overlay technology to provide Layer 2 services",
+          "Supports load balancing across equal-cost paths using VCF"
+        ],
+        "correct": [0, 1, 3],
+        "explanation": "Ethernet Fabric provides both Layer 2 and Layer 3 services, supports multicast and lossless data center bridging, and supports load balancing across equal-cost paths using VCF. The requirement for overlay technology to provide Layer 2 services applies to IP Fabric."
+      },
+      {
+        "type": "tf",
+        "prompt": "True or False: Ethernet Fabric avoids spanning tree blocked ports by using equal-cost load balancing mechanisms such as VCF.",
+        "tfCorrect": true,
+        "explanation": "Ethernet Fabric supports load balancing across equal-cost paths using VCF and avoids the need for spanning tree blocked ports."
+      },
+      {
+        "type": "match",
+        "prompt": "Match each fabric type with its correct characteristic.",
+        "match": {
+          "statements": [
+            "Ethernet Fabric",
+            "IP Fabric",
+            "VCF",
+            "Overlay technology"
+          ],
+          "answers": [
+            "Provides both Layer 2 and Layer 3 services",
+            "Primarily focuses on Layer 3 services",
+            "Enables load balancing across equal-cost paths",
+            "Used to provide Layer 2 services over a Layer 3 network"
+          ],
+          "mapping": ["A", "B", "C", "D"]
+        },
+        "explanation": "Ethernet Fabric supports both Layer 2 and Layer 3 services. IP Fabric focuses on Layer 3 services. VCF enables load balancing across equal-cost paths. Overlay technology is required to deliver Layer 2 services over an IP (Layer 3) fabric."
+      },
+      {
+        "type": "single",
+        "prompt": "In an IP Fabric environment, what is the primary role of the physical underlay network?",
+        "options": [
+          "To provide Layer 2 spanning tree functionality",
+          "To create the IP Fabric (CLOS network) enabling IP connectivity between devices",
+          "To perform deep packet inspection",
+          "To eliminate the need for IP addressing"
+        ],
+        "correct": 1,
+        "explanation": "The physical underlay network creates the IP Fabric (also known as a CLOS network) and ensures that devices can communicate with each other using unique IP addresses."
+      },
+      {
+        "type": "tf",
+        "prompt": "True or False: In an IP Fabric environment, the physical underlay network is responsible for enabling IP-based communication between devices.",
+        "tfCorrect": true,
+        "explanation": "The underlay network creates the IP Fabric and ensures devices can communicate using unique IP addresses."
+      },
+      {
+        "type": "match",
+        "prompt": "Match each IP Fabric concept with its correct description.",
+        "match": {
+          "statements": [
+            "Physical underlay network",
+            "IP Fabric",
+            "CLOS network",
+            "Unique IP address"
+          ],
+          "answers": [
+            "Foundation that enables IP connectivity between devices",
+            "Network design built on IP-based communication",
+            "Another name for IP Fabric architecture",
+            "Identifier that allows device-to-device communication"
+          ],
+          "mapping": ["A", "B", "C", "D"]
+        },
+        "explanation": "The physical underlay network forms the foundation of the IP Fabric. IP Fabric is the IP-based network design, also known as a CLOS network. Unique IP addresses allow devices to communicate with one another."
+      },
+      {
+        "type": "single",
+        "prompt": "What is the most common two-layer configuration used in modern IP Fabric data centers?",
+        "options": [
+          "Core and Access",
+          "Spine and Leaf",
+          "Distribution and Core",
+          "Access and Aggregation"
+        ],
+        "correct": 1,
+        "explanation": "The most common two-layer configuration in modern IP Fabric environments is the Spine and Leaf architecture."
+      },
+      {
+        "type": "multi",
+        "prompt": "Which statements correctly describe a spine-and-leaf architecture? (Select all that apply.)",
+        "options": [
+          "It consists of two layers: spine and leaf.",
+          "Leaf nodes connect directly to spine nodes.",
+          "Spine nodes connect to other spine nodes in a basic two-layer design.",
+          "It is commonly used in IP Fabric (CLOS) networks."
+        ],
+        "correct": [0, 1, 3],
+        "explanation": "A spine-and-leaf architecture consists of two layers. Leaf nodes connect to spine nodes, and it is commonly used in IP Fabric (CLOS) designs. In a basic two-layer design, spine nodes do not connect to each other."
+      },
+      {
+        "type": "tf",
+        "prompt": "True or False: In a spine-and-leaf topology, all leaf switches connect to every spine switch.",
+        "tfCorrect": true,
+        "explanation": "In a typical spine-and-leaf design, each leaf switch connects to every spine switch to provide predictable latency and equal-cost paths."
+      },
+      {
+        "type": "single",
+        "prompt": "What is a key characteristic of an IP fabric design?",
+        "options": [
+          "It relies primarily on Layer 2 switching across the network.",
+          "It uses Layer 3 routing protocols on all devices.",
+          "It requires STP to prevent loops.",
+          "It supports only a single active path between servers."
+        ],
+        "correct": 1,
+        "explanation": "An IP fabric design uses Layer 3 routing protocols on all devices. It does not rely on Layer 2 switching or STP for loop prevention."
+      },
+      {
+        "type": "single",
+        "prompt": "In an IP fabric, how is the next hop toward a destination determined?",
+        "options": [
+          "By STP root bridge selection",
+          "By manual static mapping between switches",
+          "By routing protocols calculating the best path",
+          "By Layer 2 MAC address learning"
+        ],
+        "correct": 2,
+        "explanation": "Routing protocols calculate the next hop toward a destination in an IP fabric. Forwarding decisions are based on Layer 3 routing information."
+      },
+      {
+        "type": "single",
+        "prompt": "Which statement describes path availability in an IP fabric?",
+        "options": [
+          "Only one active path exists between any two servers.",
+          "Multiple equal-cost paths can exist between servers.",
+          "Backup paths are blocked by STP.",
+          "Paths are manually selected by administrators."
+        ],
+        "correct": 1,
+        "explanation": "An IP fabric provides multiple equal-cost paths between any two servers, allowing for efficient load balancing and redundancy."
+      },
+      {
+        "type": "single",
+        "prompt": "What is the primary purpose of an IP fabric?",
+        "options": [
+          "To provide Layer 2 broadcast domain extension",
+          "To prevent routing loops using STP",
+          "To provide unicast IP connectivity between any two devices",
+          "To aggregate access-layer switches"
+        ],
+        "correct": 2,
+        "explanation": "The IP fabric is responsible for providing unicast (one-to-one) IP connectivity between any two devices in the network."
+      },
+      {
+        "type": "single",
+        "prompt": "How does an IP fabric scale as the network size increases?",
+        "options": [
+          "It scales exponentially.",
+          "It scales linearly.",
+          "It requires a full Layer 2 redesign.",
+          "It becomes dependent on STP tuning."
+        ],
+        "correct": 1,
+        "explanation": "An IP fabric scales linearly as the network size increases, which makes it suitable for large data centre environments."
+      },
+      {
+        "type": "multi",
+        "prompt": "Which statements are true about devices in an IP fabric? (Select all that apply.)",
+        "options": [
+          "All devices act as Layer 3 routers.",
+          "Devices use routing information to forward traffic.",
+          "Devices depend on Layer 2 switching for forwarding decisions.",
+          "Devices calculate next-hop information using routing protocols."
+        ],
+        "correct": [0, 1, 3],
+        "explanation": "In an IP fabric, all devices act as Layer 3 routers. They use routing information and routing protocols to calculate the next hop. They do not rely on Layer 2 switching for forwarding decisions."
+      },
+      {
+        "type": "multi",
+        "prompt": "Which benefits are provided by MC-LAG? (Select all that apply.)",
+        "options": [
+          "Redundancy",
+          "Load balancing",
+          "Multihoming",
+          "Requirement for STP to prevent loops"
+        ],
+        "correct": [0, 1, 2],
+        "explanation": "MC-LAG provides redundancy, load balancing, and multihoming. It keeps the Layer 2 network loop-free without requiring STP."
+      },
+      {
+        "type": "multi",
+        "prompt": "Which statements correctly describe MC-LAG operation? (Select all that apply.)",
+        "options": [
+          "Two switches act as one logical device.",
+          "ICCP is used to share control information between peers.",
+          "STP must be enabled to prevent loops.",
+          "Peers remain synchronized to forward traffic correctly."
+        ],
+        "correct": [0, 1, 3],
+        "explanation": "In MC-LAG, two switches act as one logical device. They use ICCP to share control information and remain synchronized, ensuring correct forwarding without needing STP."
+      },
+      {
+        "type": "tf",
+        "prompt": "True or False: An IP fabric relies on Layer 2 switching as its primary forwarding mechanism.",
+        "tfCorrect": false,
+        "explanation": "False. An IP fabric uses Layer 3 routing protocols and does not rely on Layer 2 switching as its primary forwarding mechanism."
+      },
+      {
+        "type": "match",
+        "prompt": "Match the concept to its correct description.",
+        "match": {
+          "statements": [
+            "IP Fabric",
+            "MC-LAG",
+            "ICCP",
+            "Equal-cost paths"
+          ],
+          "answers": [
+            "Provides unicast IP connectivity between any two devices",
+            "Two switches acting as one logical device",
+            "Protocol used to synchronize MC-LAG peers",
+            "Multiple paths with the same routing cost"
+          ],
+          "mapping": ["A", "B", "C", "D"]
+        },
+        "explanation": "IP Fabric provides unicast IP connectivity. MC-LAG allows two switches to act as one logical device. ICCP synchronizes MC-LAG peers. Equal-cost paths refer to multiple paths with the same routing cost."
+      },
+      {
+        "type": "single",
+        "prompt": "In an IP fabric, what ensures that all servers are only two hops apart?",
+        "options": [
+          "Each leaf connects to every other leaf directly.",
+          "Each spine connects to every other spine.",
+          "Every leaf connects to every spine.",
+          "Each pod connects directly to all other pods."
+        ],
+        "correct": 2,
+        "explanation": "In a spine-leaf IP fabric, every leaf connects to every spine. This ensures traffic between servers traverses leaf → spine → leaf, resulting in only two hops."
+      },
+      {
+        "type": "single",
+        "prompt": "How is a switch classified as a leaf or spine in an IP fabric?",
+        "options": [
+          "By enabling a specific software feature",
+          "By the routing protocol it runs",
+          "By its physical position in the topology",
+          "By assigning it a specific VLAN role"
+        ],
+        "correct": 2,
+        "explanation": "A switch becomes a leaf or spine based on where it sits physically in the topology, not because it is a special type of device."
+      },
+      {
+        "type": "single",
+        "prompt": "In a 3-stage spine-leaf design, what happens if one spine fails?",
+        "options": [
+          "The entire fabric stops forwarding traffic.",
+          "Traffic must use five hops instead of two.",
+          "Available bandwidth is reduced, potentially causing congestion.",
+          "All pods become isolated."
+        ],
+        "correct": 2,
+        "explanation": "If one spine fails in a 3-stage design, traffic can still flow through remaining spines, but available bandwidth is reduced, which may lead to congestion."
+      },
+      {
+        "type": "single",
+        "prompt": "Which statement best describes the purpose of a 5-stage (pod-based) design?",
+        "options": [
+          "To eliminate the need for spines",
+          "To reduce hop count within a pod",
+          "To support scalability and modular growth",
+          "To limit traffic between leaves"
+        ],
+        "correct": 2,
+        "explanation": "The 5-stage pod-based design is built for scalability and modular growth by dividing the network into pods connected through a super spine layer."
+      },
+      {
+        "type": "multi",
+        "prompt": "Which characteristics apply to a 3-stage spine-leaf design? (Select all that apply.)",
+        "options": [
+          "Leaf → spine → leaf traffic flow",
+          "Two-hop communication between servers",
+          "Super spine layer required",
+          "Number of spines depends on bandwidth needs"
+        ],
+        "correct": [0, 1, 3],
+        "explanation": "A 3-stage design follows leaf → spine → leaf traffic flow, resulting in two-hop communication between servers. The number of spines depends on leaf count and bandwidth requirements. It does not include a super spine layer."
+      },
+      {
+        "type": "multi",
+        "prompt": "Which statements are true about a 5-stage (pod-based) design? (Select all that apply.)",
+        "options": [
+          "Each pod acts as its own 3-stage fabric.",
+          "Pods are connected through a super spine layer.",
+          "All traffic must pass through the super spine.",
+          "Between pods, traffic passes through five stages."
+        ],
+        "correct": [0, 1, 3],
+        "explanation": "In a 5-stage design, each pod is its own 3-stage fabric, and pods connect through a super spine layer. Traffic between pods passes through five stages. Traffic within a pod stays inside and does not use the super spine."
+      },
+      {
+        "type": "multi",
+        "prompt": "Which benefits result from multiple equal-cost paths in an IP fabric? (Select all that apply.)",
+        "options": [
+          "Redundancy",
+          "Load balancing",
+          "Elimination of all congestion",
+          "Improved resilience"
+        ],
+        "correct": [0, 1, 3],
+        "explanation": "Multiple equal-cost paths provide redundancy, load balancing, and improved resilience. They do not eliminate all congestion, especially if bandwidth is reduced due to failures."
+      },
+      {
+        "type": "tf",
+        "prompt": "True or False: From the super spine’s perspective, each pod behaves like a leaf.",
+        "tfCorrect": true,
+        "explanation": "True. In a 5-stage design, each pod appears as a leaf to the super spine layer."
+      },
+      {
+        "type": "tf",
+        "prompt": "True or False: In a 5-stage design, traffic within a pod must pass through the super spine layer.",
+        "tfCorrect": false,
+        "explanation": "False. Traffic within a pod stays inside its own 3-stage fabric and does not pass through the super spine."
+      },
+      {
+        "type": "match",
+        "prompt": "Match the design concept to its correct description.",
+        "match": {
+          "statements": [
+            "3-Stage Spine-Leaf",
+            "5-Stage (Pod-Based)",
+            "Super Spine",
+            "Pod"
+          ],
+          "answers": [
+            "Leaf → spine → leaf architecture",
+            "Connects multiple pods together",
+            "Scalable design with modular growth",
+            "Independent 3-stage fabric within a larger network"
+          ],
+          "mapping": ["A", "C", "B", "D"]
+        },
+        "explanation": "The 3-stage design follows leaf → spine → leaf architecture. The 5-stage design supports scalable modular growth. The super spine connects pods. Each pod is an independent 3-stage fabric."
+      },
+      {
+        "type": "single",
+        "prompt": "What best describes the underlay in a data centre IP fabric?",
+        "options": [
+          "A virtual Layer 2 network built on top of the IP fabric",
+          "A Layer 3 routed fabric connecting switches using ECMP",
+          "A control-plane protocol for MAC distribution",
+          "A tunnelling mechanism using UDP port 4789"
+        ],
+        "correct": 1,
+        "explanation": "The underlay is the Layer 3 routed fabric that connects all switches using multiple equal-cost paths (ECMP)."
+      },
+      {
+        "type": "single",
+        "prompt": "Which protocol is commonly used as the underlay routing protocol in modern IP fabrics?",
+        "options": [
+          "OSPF",
+          "RIP",
+          "eBGP",
+          "STP"
+        ],
+        "correct": 2,
+        "explanation": "eBGP is often used as the underlay routing protocol in IP fabrics, and no IGP is required in this design."
+      },
+      {
+        "type": "single",
+        "prompt": "What is the primary function of VXLAN in an overlay network?",
+        "options": [
+          "To provide MAC address learning through flooding",
+          "To encapsulate Ethernet frames inside UDP",
+          "To act as the underlay routing protocol",
+          "To replace EVPN as the control plane"
+        ],
+        "correct": 1,
+        "explanation": "VXLAN encapsulates Ethernet frames inside UDP (port 4789), enabling Layer 2 traffic to traverse a Layer 3 IP fabric."
+      },
+      {
+        "type": "single",
+        "prompt": "What role does EVPN serve in a VXLAN-based overlay?",
+        "options": [
+          "Data-plane encapsulation mechanism",
+          "UDP transport protocol",
+          "Control-plane technology for MAC and route distribution",
+          "WAN extension protocol"
+        ],
+        "correct": 2,
+        "explanation": "EVPN is the control-plane technology that provides scalable MAC and route distribution for Layer 2 and Layer 3 VPN services."
+      },
+      {
+        "type": "multi",
+        "prompt": "Which statements correctly describe the underlay? (Select all that apply.)",
+        "options": [
+          "It is a Layer 3 routed fabric.",
+          "It connects switches using ECMP.",
+          "It carries Ethernet frames using VXLAN encapsulation.",
+          "It can extend across a WAN."
+        ],
+        "correct": [0, 1, 3],
+        "explanation": "The underlay is a Layer 3 routed fabric that uses ECMP and can extend across a WAN. VXLAN encapsulation is part of the overlay, not the underlay."
+      },
+      {
+        "type": "multi",
+        "prompt": "Which characteristics apply to the overlay network? (Select all that apply.)",
+        "options": [
+          "Built on top of the underlay",
+          "Carries Ethernet frames across the IP fabric",
+          "Uses VXLAN encapsulation",
+          "Replaces the need for a routed fabric"
+        ],
+        "correct": [0, 1, 2],
+        "explanation": "The overlay is built on top of the underlay, carries Ethernet frames across the IP fabric, and uses VXLAN encapsulation. It does not replace the routed underlay."
+      },
+      {
+        "type": "multi",
+        "prompt": "Which statements are true about VXLAN? (Select all that apply.)",
+        "options": [
+          "It uses UDP port 4789.",
+          "It enables large-scale network virtualisation.",
+          "It uses VTEPs to encapsulate and decapsulate traffic.",
+          "It serves as the control plane for route distribution."
+        ],
+        "correct": [0, 1, 2],
+        "explanation": "VXLAN uses UDP port 4789, enables large-scale network virtualisation, and relies on VTEPs to encapsulate and decapsulate traffic. EVPN provides the control plane."
+      },
+      {
+        "type": "tf",
+        "prompt": "True or False: The overlay network carries Ethernet frames across the IP fabric.",
+        "tfCorrect": true,
+        "explanation": "True. The overlay is a virtual Layer 2 network that carries Ethernet frames across the IP fabric."
+      },
+      {
+        "type": "tf",
+        "prompt": "True or False: EVPN can only work with VXLAN and not with MPLS.",
+        "tfCorrect": false,
+        "explanation": "False. EVPN works with VXLAN or MPLS to provide Layer 2 and Layer 3 VPN services."
+      },
+      {
+        "type": "match",
+        "prompt": "Match the term to its correct description.",
+        "match": {
+          "statements": [
+            "Underlay",
+            "Overlay",
+            "VXLAN",
+            "EVPN"
+          ],
+          "answers": [
+            "Layer 3 routed fabric using ECMP",
+            "Virtual Layer 2 network built on top of the underlay",
+            "Encapsulates Ethernet frames inside UDP",
+            "Control-plane technology for scalable MAC and route distribution"
+          ],
+          "mapping": ["A", "B", "C", "D"]
+        },
+        "explanation": "The underlay is the Layer 3 routed fabric. The overlay is the virtual Layer 2 network built on top of it. VXLAN provides encapsulation inside UDP. EVPN is the control-plane technology for MAC and route distribution."
+      },
+      {
+        "type": "single",
+        "prompt": "Which term describes traffic entering a device or interface?",
+        "options": [
+          "Egress",
+          "Ingress",
+          "Forwarding",
+          "Encapsulation"
+        ],
+        "correct": 1,
+        "explanation": "Ingress refers to traffic entering a device, network, or interface. For example, packets coming into a router from a switch are ingress traffic."
+      },{
+        "type": "single",
+        "prompt": "Which term describes traffic entering a device or interface?",
+        "options": [
+          "Egress",
+          "Ingress",
+          "Forwarding",
+          "Encapsulation"
+        ],
+        "correct": 1,
+        "explanation": "Ingress refers to traffic entering a device, network, or interface. For example, packets coming into a router from a switch are ingress traffic."
+      },
+      {
+        "type": "single",
+        "prompt": "Which statement correctly describes egress traffic?",
+        "options": [
+          "Traffic entering a device from any interface",
+          "Traffic forwarded between internal processes only",
+          "Traffic leaving a device or interface",
+          "Traffic dropped by the device"
+        ],
+        "correct": 2,
+        "explanation": "Egress traffic is traffic leaving a device, network, or interface."
+      },
+      {
+        "type": "multi",
+        "prompt": "Which considerations should be evaluated when choosing spine nodes? (Select all that apply.)",
+        "options": [
+          "Type of WAN or gateway router required",
+          "Connectivity or peering arrangements with other providers",
+          "Number and speed of uplink ports",
+          "Desktop operating system compatibility"
+        ],
+        "correct": [0, 1, 2],
+        "explanation": "Spine node selection should consider WAN or gateway requirements, provider connectivity or peering, and uplink port capacity. Desktop operating systems are not relevant."
+      },
+      {
+        "type": "multi",
+        "prompt": "Which factors should be evaluated when selecting leaf nodes? (Select all that apply.)",
+        "options": [
+          "Type of server or host connectivity",
+          "Layer 3 VXLAN gateway placement",
+          "Number and speed of uplink ports",
+          "Desktop user login policies"
+        ],
+        "correct": [0, 1, 2],
+        "explanation": "Leaf selection should consider server or host connectivity, VXLAN gateway placement, and uplink port capacity. Desktop login policies are not relevant."
+      },
+      {
+        "type": "single",
+        "prompt": "What type of traffic does an IP fabric handle?",
+        "options": [
+          "Only Layer 2 Ethernet frames",
+          "Only IP data traffic",
+          "Only multicast traffic",
+          "Both IP and non-IP legacy protocols"
+        ],
+        "correct": 1,
+        "explanation": "An IP fabric handles only IP data traffic. It is a Layer 3 routed environment designed for IP forwarding."
+      },
+      {
+        "type": "single",
+        "prompt": "In an IP fabric environment, what role does each node perform?",
+        "options": [
+          "Layer 2 bridge",
+          "Firewall appliance",
+          "IP router",
+          "Load balancer"
+        ],
+        "correct": 2,
+        "explanation": "Each node in an IP fabric acts as an IP router, participating in routing and forwarding IP packets."
+      },
+      {
+        "type": "single",
+        "prompt": "Why must devices in an IP fabric exchange IP routes?",
+        "options": [
+          "To perform MAC address learning",
+          "To determine the best path for forwarding packets",
+          "To enable STP convergence",
+          "To create VLAN trunk links"
+        ],
+        "correct": 1,
+        "explanation": "Devices must exchange IP routes so they can determine the best path and correctly forward packets across the fabric."
+      },
+      {
+        "type": "single",
+        "prompt": "What is an important requirement when selecting a routing protocol for an IP fabric?",
+        "options": [
+          "It must support only static routes",
+          "It must be efficient and adapt to future changes",
+          "It must rely on broadcast-based discovery",
+          "It must operate only within a single VLAN"
+        ],
+        "correct": 1,
+        "explanation": "The routing protocol must be efficient and capable of adapting to future changes to support scalability and growth in the IP fabric."
+      },
+      {
+        "type": "multi",
+        "prompt": "Which statements describe routing in an IP fabric environment? (Select all that apply.)",
+        "options": [
+          "Each node acts as an IP router.",
+          "Nodes exchange IP routes to forward traffic.",
+          "The fabric handles only IP traffic.",
+          "Layer 2 switching is the primary forwarding method."
+        ],
+        "correct": [0, 1, 2],
+        "explanation": "In an IP fabric, each node acts as an IP router, exchanges IP routes, and handles only IP data traffic. Layer 2 switching is not the primary method."
+      },
+      {
+        "type": "multi",
+        "prompt": "What are key characteristics of IP routing in a fabric? (Select all that apply.)",
+        "options": [
+          "Sharing information about the best path",
+          "Exchanging IP routes between devices",
+          "Relying on STP for convergence",
+          "Forwarding packets based on routing decisions"
+        ],
+        "correct": [0, 1, 3],
+        "explanation": "IP routing involves sharing best-path information, exchanging IP routes, and forwarding packets based on routing decisions. It does not rely on STP."
+      },
+      {
+        "type": "multi",
+        "prompt": "Which considerations apply when choosing a routing protocol in an IP fabric? (Select all that apply.)",
+        "options": [
+          "It must be efficient.",
+          "It must adapt to future changes.",
+          "It must operate only as an IGP.",
+          "It must support non-IP traffic."
+        ],
+        "correct": [0, 1],
+        "explanation": "The routing protocol must be efficient and adaptable to future changes. The content does not require it to operate only as an IGP or support non-IP traffic."
+      },
+      {
+        "type": "tf",
+        "prompt": "True or False: OSPF is used as the routing protocol in modern IP fabric environments according to the provided content.",
+        "tfCorrect": false,
+        "explanation": "False. The content states that OSPF is not used anymore in this context."
+      },
+      {
+        "type": "tf",
+        "prompt": "True or False: In an IP fabric, forwarding decisions are based on exchanged IP routing information.",
+        "tfCorrect": true,
+        "explanation": "True. Nodes exchange IP routes to determine the best path and forward packets accordingly."
+      },
+      {
+        "type": "match",
+        "prompt": "Match the concept to its correct description.",
+        "match": {
+          "statements": [
+            "IP Fabric",
+            "IP routing",
+            "Node role",
+            "Routing protocol requirement"
+          ],
+          "answers": [
+            "Handles only IP data traffic",
+            "Sharing information about the best path",
+            "Acts as an IP router",
+            "Must be efficient and adapt to change"
+          ],
+          "mapping": ["A", "B", "C", "D"]
+        },
+        "explanation": "An IP fabric handles only IP traffic. IP routing involves sharing best-path information. Each node acts as an IP router, and the routing protocol must be efficient and adaptable."
+      },
+      
+    {
+        "type": "single",
+        "prompt": "Why should all uplinks in an IP fabric be the same speed?",
+        "options": [
+          "To reduce power consumption",
+          "To ensure predictable traffic distribution and load balancing",
+          "To eliminate the need for ECMP",
+          "To increase MAC address table size"
+        ],
+        "correct": 1,
+        "explanation": "Using the same uplink speed ensures predictable traffic distribution and effective load balancing. Different speeds can prevent some paths from being used."
+      },
+      {
+        "type": "single",
+        "prompt": "What can happen if uplinks operate at different speeds in an IP fabric?",
+        "options": [
+          "All paths will be used equally",
+          "Some paths may not be used",
+          "Routing protocols stop functioning",
+          "Spines become Layer 2 switches"
+        ],
+        "correct": 1,
+        "explanation": "Different uplink speeds can prevent some paths from being used, which affects traffic distribution."
+      },
+      {
+        "type": "single",
+        "prompt": "Which statement correctly compares IGP and EBGP in relation to bandwidth consideration?",
+        "options": [
+          "Both IGP and EBGP consider interface bandwidth for load balancing.",
+          "IGP does not consider bandwidth, but EBGP does.",
+          "IGP considers bandwidth, while EBGP does not take interface bandwidth into account for load balancing.",
+          "Neither IGP nor EBGP considers bandwidth."
+        ],
+        "correct": 2,
+        "explanation": "IGP takes bandwidth into consideration when calculating paths, whereas EBGP load balancing does not consider interface bandwidth."
+      },
+      {
+        "type": "multi",
+        "prompt": "Which practices help achieve consistent and predictable traffic distribution? (Select all that apply.)",
+        "options": [
+          "All spines should be the same model.",
+          "All leaves should be the same model.",
+          "All uplinks should be the same speed.",
+          "Each leaf connects to only one spine."
+        ],
+        "correct": [0, 1, 2],
+        "explanation": "Using the same spine and leaf models and keeping uplink speeds consistent supports predictable traffic distribution. Each leaf should connect to every spine, not just one."
+      },
+      {
+        "type": "multi",
+        "prompt": "Which best practices help prevent bottlenecks in an IP fabric? (Select all that apply.)",
+        "options": [
+          "Every leaf should have an uplink to every spine.",
+          "All uplinks should be the same speed.",
+          "Using different spine models for redundancy.",
+          "Standardising spine hardware."
+        ],
+        "correct": [0, 1, 3],
+        "explanation": "Connecting every leaf to every spine, keeping uplinks the same speed, and standardising spine hardware help avoid bottlenecks. Using different spine models is not listed as a best practice."
+      },
+      {
+        "type": "multi",
+        "prompt": "Which goals define IP fabric best practices? (Select all that apply.)",
+        "options": [
+          "No bottlenecks",
+          "Consistent and predictable traffic distribution",
+          "Maximum Layer 2 flooding",
+          "Uneven traffic utilisation"
+        ],
+        "correct": [0, 1],
+        "explanation": "The stated goals are to avoid bottlenecks and ensure traffic distribution is consistent and predictable."
+      },
+      {
+        "type": "tf",
+        "prompt": "True or False: Every leaf should have an uplink to every spine as a best practice in an IP fabric.",
+        "tfCorrect": true,
+        "explanation": "True. Having every leaf connected to every spine ensures full mesh connectivity and supports ECMP and load balancing."
+      },
+      {
+        "type": "tf",
+        "prompt": "True or False: EBGP load balancing considers interface bandwidth when distributing traffic.",
+        "tfCorrect": false,
+        "explanation": "False. EBGP load balancing does not take interface bandwidth into account."
+      },
+      {
+        "type": "single",
+        "prompt": "How is Juniper Apstra primarily positioned in data centre environments?",
+        "options": [
+          "A manual configuration tool for brownfield networks",
+          "A turnkey, intent-based data centre automation platform",
+          "A Layer 2 switching protocol",
+          "A hardware-based routing appliance"
+        ],
+        "correct": 1,
+        "explanation": "Juniper Apstra is described as a turnkey, intent-based data centre automation platform."
+      },
+      {
+        "type": "single",
+        "prompt": "For which type of deployment is Juniper Apstra mainly designed?",
+        "options": [
+          "Legacy WAN-only environments",
+          "Campus access networks",
+          "Greenfield deployments with factory-default devices",
+          "Home office setups"
+        ],
+        "correct": 2,
+        "explanation": "Apstra is designed mainly for greenfield deployments, meaning factory-default devices with no existing configuration."
+      },
+      {
+        "type": "single",
+        "prompt": "Which feature enables devices to be automatically provisioned without manual configuration?",
+        "options": [
+          "Maintenance mode",
+          "Zero-touch provisioning (ZTP)",
+          "Data centre interconnect (DCI)",
+          "Intent Time Voyager"
+        ],
+        "correct": 1,
+        "explanation": "Zero-touch provisioning (ZTP) allows devices to be automatically provisioned without manual intervention."
+      },
+      {
+        "type": "multi",
+        "prompt": "Which capabilities are provided by Juniper Apstra? (Select all that apply.)",
+        "options": [
+          "Zero-touch provisioning (ZTP)",
+          "Automated lifecycle management",
+          "Intent-based analytics and telemetry",
+          "Mandatory single-vendor hardware support"
+        ],
+        "correct": [0, 1, 2],
+        "explanation": "Apstra provides ZTP, automated lifecycle management, and intent-based analytics and telemetry. It is vendor-agnostic, not limited to a single vendor."
+      },
+      {
+        "type": "multi",
+        "prompt": "Which benefits are associated with using Juniper Apstra? (Select all that apply.)",
+        "options": [
+          "Faster deployment",
+          "Faster issue resolution",
+          "Reduced operational expenditure",
+          "Increased manual configuration effort"
+        ],
+        "correct": [0, 1, 2],
+        "explanation": "Apstra provides approximately 90% faster deployment, 70% faster issue resolution, and reduced operational expenditure. It minimises manual configuration effort."
+      },
+      {
+        "type": "tf",
+        "prompt": "True or False: Juniper Apstra provides network rollback capabilities through a feature called Intent Time Voyager.",
+        "tfCorrect": true,
+        "explanation": "True. Intent Time Voyager allows network rollbacks as part of Apstra’s capabilities."
+      }
+]

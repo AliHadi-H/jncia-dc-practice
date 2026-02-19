@@ -1,0 +1,235 @@
+[
+    {
+      "type": "single",
+      "prompt": "What is a primary advantage of a switched LAN compared to a hub-based LAN?",
+      "options": [
+        "It increases the size of the collision domain.",
+        "It reduces collisions by dividing the network into smaller collision domains.",
+        "It eliminates the need for MAC addresses.",
+        "It forwards all traffic to every connected device."
+      ],
+      "correct": 1,
+      "explanation": "A switched LAN divides the network into smaller collision domains, making collisions less likely compared to a hub-based LAN. Module 3: Ethernet Switching Overview"
+    },
+    {
+      "type": "single",
+      "prompt": "What table does a switch use to make forwarding decisions?",
+      "options": [
+        "Routing Information Base (RIB)",
+        "Address Resolution Protocol (ARP) table",
+        "Forwarding Information Base (FIB)",
+        "Spanning Tree table"
+      ],
+      "correct": 2,
+      "explanation": "Switches use a Forwarding Information Base (FIB), also known as a bridge table, to decide where to send traffic. Module 3: Ethernet Switching Overview"
+    },
+    {
+      "type": "single",
+      "prompt": "How does a switch initially build its bridge table?",
+      "options": [
+        "By analysing destination MAC addresses only",
+        "By examining source MAC addresses of incoming frames",
+        "By using static manual configuration only",
+        "By querying a routing protocol"
+      ],
+      "correct": 1,
+      "explanation": "A switch fills its bridge table by examining the source MAC address of incoming frames and associating them with the ingress port. Module 3: Ethernet Switching Overview"
+    },
+    {
+      "type": "single",
+      "prompt": "What action does a switch take if the destination MAC address is not found in the table?",
+      "options": [
+        "Drops the frame immediately",
+        "Sends the frame back to the sender",
+        "Floods the frame out all ports except the ingress port",
+        "Forwards the frame to a default gateway"
+      ],
+      "correct": 2,
+      "explanation": "If the destination MAC is unknown, the switch floods the frame out all ports except the one it was received on. Module 3: Ethernet Switching Overview"
+    },
+    {
+      "type": "multi",
+      "prompt": "Which statements describe bridging? (Select all that apply.)",
+      "options": [
+        "Divides one large collision domain into smaller ones",
+        "Allows different interface types and speeds in the same LAN",
+        "Maintains a forwarding table for intelligent forwarding",
+        "Eliminates the need for VLAN separation"
+      ],
+      "correct": [0, 1, 2],
+      "explanation": "Bridging divides large collision domains, allows different interface types and speeds, and maintains a forwarding table for intelligent forwarding. Module 3: Ethernet Switching Overview"
+    },
+    {
+      "type": "multi",
+      "prompt": "Which statements are true about MAC learning? (Select all that apply.)",
+      "options": [
+        "The switch stores MAC addresses and associated port information",
+        "A timestamp helps keep the bridge table up to date",
+        "Port information is used for forwarding decisions",
+        "MAC learning only applies to broadcast frames"
+      ],
+      "correct": [0, 1, 2],
+      "explanation": "MAC learning stores MAC and port information, uses timestamps to keep entries updated, and uses port info for forwarding. It applies to frames in general, not only broadcast frames. Module 3: Ethernet Switching Overview"
+    },
+    {
+      "type": "multi",
+      "prompt": "In which situations does flooding occur? (Select all that apply.)",
+      "options": [
+        "Destination MAC address is unknown",
+        "Broadcast traffic is received",
+        "Multicast traffic is received",
+        "Destination MAC address is already known"
+      ],
+      "correct": [0, 1, 2],
+      "explanation": "Flooding occurs when the destination MAC is unknown or when handling broadcast and multicast traffic. Module 3: Ethernet Switching Overview"
+    },
+    {
+      "type": "tf",
+      "prompt": "True or False: Switches organise their bridge table by VLAN to ensure traffic stays within the same VLAN.",
+      "tfCorrect": true,
+      "explanation": "True. Switches organise the bridge table by VLAN to ensure frames are forwarded within the correct VLAN. Module 3: Ethernet Switching Overview"
+    },
+    {
+      "type": "tf",
+      "prompt": "True or False: If a switch generates traffic itself, it does not flood it.",
+      "tfCorrect": false,
+      "explanation": "False. If the switch generates traffic itself, it floods it out all relevant ports. Module 3: Ethernet Switching Overview"
+    },
+    {
+      "type": "match",
+      "prompt": "Match the switching concept to its correct description.",
+      "match": {
+        "statements": [
+          "MAC Learning",
+          "Flooding",
+          "Forwarding decision (known MAC)",
+          "Bridging"
+        ],
+        "answers": [
+          "Stores MAC address and port information in a table",
+          "Sends frame out all ports except ingress",
+          "Forwards frame only to the correct port",
+          "Divides one large collision domain into smaller ones"
+        ],
+        "mapping": ["A", "B", "C", "D"]
+      },
+      "explanation": "MAC learning stores MAC and port information. Flooding sends frames out all ports except ingress. Known MAC forwarding sends frames only to the correct port. Bridging divides large collision domains. Module 3: Ethernet Switching Overview"
+    },
+    {
+        "type": "single",
+        "prompt": "What architectural design is used in EX Series switches?",
+        "options": [
+          "Combined control and forwarding plane",
+          "Separate control and forwarding planes",
+          "Layer 2 only switching plane",
+          "Software-only forwarding plane"
+        ],
+        "correct": 1,
+        "explanation": "EX Series switches separate the control plane from the forwarding plane, improving performance and operational efficiency. Module 3: Ethernet Switching Overview"
+      },
+      {
+        "type": "single",
+        "prompt": "Which component is considered the brain of the EX Series platform?",
+        "options": [
+          "Packet Forwarding Engine (PFE)",
+          "ASIC",
+          "Routing Engine",
+          "Bridge Domain"
+        ],
+        "correct": 2,
+        "explanation": "The Routing Engine is the brain of the platform and performs protocol updates and system management tasks. Module 3: Ethernet Switching Overview"
+      },
+      {
+        "type": "single",
+        "prompt": "Which tables are maintained by the Routing Engine?",
+        "options": [
+          "MAC table only",
+          "RIB, Bridging Table, and Primary Forwarding Table",
+          "ARP table only",
+          "Firewall filter table"
+        ],
+        "correct": 1,
+        "explanation": "The Routing Engine maintains the RIB, the Bridging Table, and the Primary Forwarding Table. Module 3: Ethernet Switching Overview"
+      },
+      {
+        "type": "single",
+        "prompt": "What is the primary function of the Packet Forwarding Engine (PFE)?",
+        "options": [
+          "Perform system management tasks",
+          "Store configuration backups",
+          "Forward frames and packets",
+          "Generate routing protocols"
+        ],
+        "correct": 2,
+        "explanation": "The Packet Forwarding Engine is responsible for forwarding frames, packets, or both. Module 3: Ethernet Switching Overview"
+      },
+      {
+        "type": "multi",
+        "prompt": "Which statements correctly describe the Routing Engine? (Select all that apply.)",
+        "options": [
+          "Performs protocol updates",
+          "Handles system management tasks",
+          "Built using ASICs for high-speed forwarding",
+          "Maintains RIB and bridging tables"
+        ],
+        "correct": [0, 1, 3],
+        "explanation": "The Routing Engine performs protocol updates, system management tasks, and maintains the RIB and bridging tables. It is not built using ASICs for forwarding. Module 3: Ethernet Switching Overview"
+      },
+      {
+        "type": "multi",
+        "prompt": "Which statements apply to the Packet Forwarding Engine (PFE)? (Select all that apply.)",
+        "options": [
+          "Built using ASICs",
+          "Responsible for forwarding frames and packets",
+          "Maintains the RIB directly",
+          "Receives L2 and L3 forwarding tables from the Routing Engine"
+        ],
+        "correct": [0, 1, 3],
+        "explanation": "The PFE is built using ASICs, forwards frames and packets, and receives L2 and L3 forwarding tables from the Routing Engine. Module 3: Ethernet Switching Overview"
+      },
+      {
+        "type": "multi",
+        "prompt": "Which statements describe performance and protection characteristics of EX Series switches? (Select all that apply.)",
+        "options": [
+          "Separating control and forwarding improves performance",
+          "The internal link is rate limited to protect against DDoS attacks",
+          "The number of PFEs is identical across all EX models",
+          "The Junos kernel gives forwarding table updates top priority"
+        ],
+        "correct": [0, 1, 3],
+        "explanation": "Performance improves due to separation of control and forwarding. The internal link is rate limited for DDoS protection, and the Junos kernel prioritises forwarding table updates. The number of PFEs varies by model. Module 3: Ethernet Switching Overview"
+      },
+      {
+        "type": "tf",
+        "prompt": "True or False: The Routing Engine forwards frames directly using ASIC hardware.",
+        "tfCorrect": false,
+        "explanation": "False. The Packet Forwarding Engine, built with ASICs, handles frame and packet forwarding, not the Routing Engine. Module 3: Ethernet Switching Overview"
+      },
+      {
+        "type": "tf",
+        "prompt": "True or False: The internal link between the Routing Engine and PFE is rate limited for protection purposes.",
+        "tfCorrect": true,
+        "explanation": "True. The internal link is rate limited to protect the system from DDoS attacks. Module 3: Ethernet Switching Overview"
+      },
+      {
+        "type": "match",
+        "prompt": "Match the component to its function.",
+        "match": {
+          "statements": [
+            "Routing Engine",
+            "Packet Forwarding Engine",
+            "Internal link",
+            "ASIC"
+          ],
+          "answers": [
+            "Performs protocol updates and system management",
+            "Forwards frames and packets",
+            "Connects control and forwarding planes",
+            "Hardware used for high-speed forwarding"
+          ],
+          "mapping": ["A", "B", "C", "D"]
+        },
+        "explanation": "The Routing Engine handles control functions, the PFE forwards traffic, the internal link connects them, and ASICs enable high-speed forwarding. Module 3: Ethernet Switching Overview"
+      }
+  ]
+  

@@ -1,0 +1,1721 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>JNCIA-DC Practice Builder</title>
+  <style>
+    :root{
+      --bg:#0b1020;
+      --card:#111a33;
+      --muted:#93a4c7;
+      --text:#e9efff;
+      --accent:#7aa2ff;
+      --accent2:#8affc1;
+      --danger:#ff6b6b;
+      --warn:#ffd166;
+      --ok:#2dd4bf;
+      --border:rgba(255,255,255,.12);
+      --shadow: 0 12px 40px rgba(0,0,0,.35);
+      --radius: 18px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:var(--sans);
+      background: radial-gradient(1200px 800px at 20% -10%, rgba(122,162,255,.35), transparent 60%),
+                  radial-gradient(900px 700px at 100% 10%, rgba(138,255,193,.18), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+    }
+    header{
+      padding:24px 18px 8px;
+      max-width:1100px;
+      margin:0 auto;
+    }
+    h1{margin:0 0 8px;font-size:24px;letter-spacing:.2px}
+    .subtitle{color:var(--muted);margin:0 0 14px;line-height:1.4}
+    .tabs{
+      display:flex;gap:10px;flex-wrap:wrap;
+      margin:12px 0 0;
+    }
+    .tabbtn{
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.04);
+      color:var(--text);
+      padding:10px 12px;
+      border-radius:999px;
+      cursor:pointer;
+      transition:.15s ease;
+      font-weight:600;
+    }
+    .tabbtn:hover{transform:translateY(-1px);border-color:rgba(122,162,255,.5)}
+    .tabbtn.active{background:rgba(122,162,255,.16);border-color:rgba(122,162,255,.7)}
+    main{
+      max-width:1100px;
+      margin:0 auto;
+      padding:10px 18px 40px;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:14px;
+    }
+    @media (max-width: 980px){
+      .grid{grid-template-columns:1fr}
+    }
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:14px;
+    }
+    .card h2{
+      font-size:16px;
+      margin:2px 0 10px;
+      color:rgba(233,239,255,.95)
+    }
+    .row{display:flex;gap:10px;flex-wrap:wrap}
+    .row > *{flex:1}
+    label{
+      display:block;
+      font-size:12px;
+      color:var(--muted);
+      margin:10px 0 6px;
+    }
+    input[type="text"], textarea, select, input[type="number"]{
+      width:100%;
+      padding:10px 10px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      background:rgba(0,0,0,.18);
+      color:var(--text);
+      outline:none;
+    }
+    textarea{min-height:92px;resize:vertical}
+    input[type="number"]{max-width:170px}
+    .btn{
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.05);
+      color:var(--text);
+      padding:10px 12px;
+      border-radius:12px;
+      cursor:pointer;
+      font-weight:700;
+      transition:.15s ease;
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      justify-content:center;
+      user-select:none;
+    }
+    .btn:hover{transform:translateY(-1px);border-color:rgba(122,162,255,.55)}
+    .btn.primary{background:rgba(122,162,255,.18);border-color:rgba(122,162,255,.75)}
+    .btn.good{background:rgba(45,212,191,.14);border-color:rgba(45,212,191,.7)}
+    .btn.danger{background:rgba(255,107,107,.14);border-color:rgba(255,107,107,.7)}
+    .btn.warn{background:rgba(255,209,102,.14);border-color:rgba(255,209,102,.7)}
+    .btn:disabled{opacity:.55;cursor:not-allowed;transform:none}
+    .hint{
+      font-size:12px;color:var(--muted);margin:8px 0 0;line-height:1.4
+    }
+    .pill{
+      display:inline-block;
+      font-size:12px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.04);
+      color:rgba(233,239,255,.95);
+      margin:6px 6px 0 0;
+    }
+    .list{
+      display:flex;flex-direction:column;gap:10px;
+      max-height: 520px;
+      overflow:auto;
+      padding-right:4px;
+    }
+    .qitem{
+      border:1px solid var(--border);
+      border-radius:14px;
+      background:rgba(0,0,0,.14);
+      padding:10px;
+    }
+    .qitem .top{
+      display:flex;justify-content:space-between;gap:10px;align-items:flex-start
+    }
+    .qtitle{
+      margin:0;
+      font-size:13px;
+      line-height:1.35;
+      color:rgba(233,239,255,.95);
+      overflow:hidden;
+      display:-webkit-box;
+      -webkit-line-clamp:2;
+      -webkit-box-orient:vertical;
+    }
+    .qmeta{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+    .smallbtn{
+      padding:8px 10px;border-radius:12px;font-weight:800;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.04);
+      color:var(--text);
+      cursor:pointer;
+    }
+    .smallbtn:hover{border-color:rgba(122,162,255,.55)}
+    .divider{height:1px;background:var(--border);margin:12px 0}
+    .toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    .toolbar .spacer{flex:1}
+    .mono{font-family:var(--mono)}
+    .practiceWrap{display:grid;grid-template-columns: 1fr .9fr;gap:14px}
+    @media (max-width: 980px){
+      .practiceWrap{grid-template-columns:1fr}
+    }
+    .qbox{
+      border:1px solid var(--border);
+      border-radius:16px;
+      background:rgba(0,0,0,.14);
+      padding:12px;
+    }
+    .qbox h3{margin:0 0 8px;font-size:16px}
+    .opt{
+      display:flex;gap:10px;align-items:flex-start;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.03);
+      border-radius:14px;
+      padding:10px;
+      margin:10px 0;
+    }
+    .opt input{margin-top:2px}
+    .opt label{margin:0;color:rgba(233,239,255,.92);font-size:14px;line-height:1.35}
+    .feedback{
+      border-radius:14px;
+      border:1px solid var(--border);
+      padding:10px;
+      background:rgba(0,0,0,.16);
+      margin-top:10px;
+    }
+    .feedback.good{border-color:rgba(45,212,191,.75);background:rgba(45,212,191,.08)}
+    .feedback.bad{border-color:rgba(255,107,107,.75);background:rgba(255,107,107,.08)}
+    .matchGrid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+    }
+    .matchRow{
+      display:flex;gap:10px;align-items:center;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.03);
+      border-radius:14px;
+      padding:10px;
+    }
+    .matchRow .left{flex:1; font-size:14px; line-height:1.35}
+    .matchRow select{flex:1}
+    .muted{color:var(--muted)}
+    .rightCard .card{height:100%}
+    .codebox{
+      width:100%;
+      min-height:120px;
+      font-family:var(--mono);
+      font-size:12px;
+      white-space:pre;
+      overflow:auto;
+    }
+    .badge{
+      font-size:12px;
+      padding:3px 8px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.04);
+      color:rgba(233,239,255,.9);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>JNCIA-DC Practice Builder</h1>
+    <p class="subtitle">
+      Build your own question bank and run practice tests. Everything saves locally in your browser (localStorage).
+    </p>
+    <div class="tabs">
+      <button class="tabbtn active" data-tab="build">Build Question Bank</button>
+      <button class="tabbtn" data-tab="practice">Practice Test</button>
+      <button class="tabbtn" data-tab="importexport">Import / Export</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- BUILD TAB -->
+    <section id="tab-build">
+      <div class="grid">
+        <div class="card">
+          <div class="toolbar">
+            <h2 style="margin:0">Add / Edit Question</h2>
+            <span class="spacer"></span>
+            <span class="badge" id="editState">New</span>
+          </div>
+
+          <label for="qType">Question type</label>
+          <select id="qType">
+            <option value="single">Pick 1 of 4 (single choice)</option>
+            <option value="multi">Select all that apply (up to 4)</option>
+            <option value="tf">True / False</option>
+            <option value="match">Match pairs (4 ↔ 4)</option>
+          </select>
+
+          <label for="qPrompt">Question prompt</label>
+          <textarea id="qPrompt" placeholder="Paste your question text here..."></textarea>
+
+          <div id="singleMultiBlock">
+            <div class="row">
+              <div>
+                <label>Option A</label>
+                <input type="text" id="optA" placeholder="Option A" />
+              </div>
+              <div>
+                <label>Option B</label>
+                <input type="text" id="optB" placeholder="Option B" />
+              </div>
+            </div>
+            <div class="row">
+              <div>
+                <label>Option C</label>
+                <input type="text" id="optC" placeholder="Option C" />
+              </div>
+              <div>
+                <label>Option D</label>
+                <input type="text" id="optD" placeholder="Option D" />
+              </div>
+            </div>
+
+            <label id="answerLabel">Correct answer</label>
+            <div class="row" id="answerControls"></div>
+
+            <p class="hint" id="multiHint" style="display:none">
+              For “Select all that apply”, tick all correct options (can be 1–4).
+            </p>
+          </div>
+
+          <div id="tfBlock" style="display:none">
+            <label>Correct answer</label>
+            <div class="row">
+              <button class="btn" id="tfTrueBtn" type="button">True</button>
+              <button class="btn" id="tfFalseBtn" type="button">False</button>
+            </div>
+            <p class="hint">Choose which one is correct.</p>
+          </div>
+
+          <div id="matchBlock" style="display:none">
+            <p class="hint" style="margin-top:0">
+              Add 4 statements (left) and 4 answers (right). Then set the correct mapping.
+            </p>
+
+            <div class="divider"></div>
+            <div class="matchGrid">
+              <div>
+                <h2 style="margin:0 0 8px;font-size:14px">Statements (Left)</h2>
+                <label>1</label><input type="text" id="mS1" placeholder="Statement 1" />
+                <label>2</label><input type="text" id="mS2" placeholder="Statement 2" />
+                <label>3</label><input type="text" id="mS3" placeholder="Statement 3" />
+                <label>4</label><input type="text" id="mS4" placeholder="Statement 4" />
+              </div>
+              <div>
+                <h2 style="margin:0 0 8px;font-size:14px">Answers (Right)</h2>
+                <label>A</label><input type="text" id="mA" placeholder="Answer A" />
+                <label>B</label><input type="text" id="mB" placeholder="Answer B" />
+                <label>C</label><input type="text" id="mC" placeholder="Answer C" />
+                <label>D</label><input type="text" id="mD" placeholder="Answer D" />
+              </div>
+            </div>
+
+            <div class="divider"></div>
+            <h2 style="margin:0 0 8px;font-size:14px">Correct mapping</h2>
+            <div class="matchGrid">
+              <div class="matchRow">
+                <div class="left muted">Statement 1 maps to</div>
+                <select id="map1">
+                  <option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option>
+                </select>
+              </div>
+              <div class="matchRow">
+                <div class="left muted">Statement 2 maps to</div>
+                <select id="map2">
+                  <option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option>
+                </select>
+              </div>
+              <div class="matchRow">
+                <div class="left muted">Statement 3 maps to</div>
+                <select id="map3">
+                  <option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option>
+                </select>
+              </div>
+              <div class="matchRow">
+                <div class="left muted">Statement 4 maps to</div>
+                <select id="map4">
+                  <option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option>
+                </select>
+              </div>
+            </div>
+            <p class="hint">Tip: For best practice, keep mappings one-to-one (A,B,C,D all used once).</p>
+          </div>
+
+          <label for="qExplain">Explanation (optional)</label>
+          <textarea id="qExplain" placeholder="Why is this the correct answer?"></textarea>
+
+          <div class="row" style="margin-top:12px">
+            <button class="btn primary" id="saveBtn" type="button">Save question</button>
+            <button class="btn" id="resetBtn" type="button">Reset form</button>
+            <button class="btn danger" id="deleteBtn" type="button" disabled>Delete</button>
+          </div>
+
+          <p class="hint">
+            Your questions are stored in your browser only. Use Import/Export to back them up.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="toolbar">
+            <h2 style="margin:0">Question Bank</h2>
+            <span class="spacer"></span>
+            <span class="badge" id="countBadge">0</span>
+          </div>
+
+          <div class="row" style="margin-top:8px">
+            <div>
+              <label for="filterType">Filter by type</label>
+              <select id="filterType">
+                <option value="all">All</option>
+                <option value="single">Single choice</option>
+                <option value="multi">Select all</option>
+                <option value="tf">True/False</option>
+                <option value="match">Match</option>
+              </select>
+            </div>
+            <div>
+              <label for="searchText">Search</label>
+              <input type="text" id="searchText" placeholder="Search prompt or options..." />
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="list" id="qList"></div>
+
+          <div class="divider"></div>
+          <div class="row">
+            <button class="btn warn" id="loadDemoBtn" type="button">Load demo questions</button>
+            <button class="btn danger" id="clearAllBtn" type="button">Clear all</button>
+          </div>
+          <p class="hint">
+            Click a question to edit it. Use Practice Test tab to quiz yourself.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRACTICE TAB -->
+    <section id="tab-practice" style="display:none">
+      <div class="practiceWrap">
+        <div class="card">
+          <div class="toolbar">
+            <h2 style="margin:0">Practice Test</h2>
+            <span class="spacer"></span>
+            <span class="badge" id="testStatus">Not started</span>
+          </div>
+
+          <div class="row">
+            <div>
+              <label for="testCount">Number of questions</label>
+              <input type="number" id="testCount" min="1" value="10" />
+            </div>
+            <div>
+              <label for="testFilter">Include types</label>
+              <select id="testFilter">
+                <option value="all">All</option>
+                <option value="single">Single choice only</option>
+                <option value="multi">Select all only</option>
+                <option value="tf">True/False only</option>
+                <option value="match">Match only</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row" style="margin-top:10px">
+            <button class="btn good" id="startTestBtn" type="button">Start test</button>
+            <button class="btn warn" id="startMissedBtn" type="button">Missed questions (<span id="missedCount">0</span>)</button>
+            <button class="btn" id="resumeBtn" type="button" disabled>Resume</button>
+            <button class="btn danger" id="endTestBtn" type="button" disabled>End test</button>
+          </div>
+          
+          <div class="row" style="margin-top:10px">
+            <button class="btn danger" id="clearMissedBtn" type="button">Clear missed</button>
+          </div>
+          
+
+          <div class="divider"></div>
+
+          <div id="practiceArea" style="display:none">
+            <div class="qbox">
+              <div class="toolbar" style="align-items:flex-start">
+                <div>
+                  <div class="muted" id="progressText">Question 1 / 1</div>
+                  <h3 id="pPrompt">Prompt</h3>
+                  <div class="qmeta" id="pMeta"></div>
+                </div>
+                <div class="badge mono" id="scoreBadge">0/0</div>
+              </div>
+
+              <div id="pBody"></div>
+
+              <div class="row" style="margin-top:10px">
+                <button class="btn primary" id="submitBtn" type="button">Submit</button>
+                <button class="btn" id="nextBtn" type="button" disabled>Next</button>
+              </div>
+
+              <div id="feedback" class="feedback" style="display:none"></div>
+            </div>
+          </div>
+
+          <div id="testSummary" style="display:none;margin-top:12px">
+            <div class="qbox">
+              <h3 style="margin:0 0 6px">Results</h3>
+              <div id="summaryText" class="muted"></div>
+              <div class="divider"></div>
+              <div id="reviewList"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card rightCard">
+          <h2>How it works</h2>
+          <div class="pill">Randomised order</div>
+          <div class="pill">Instant feedback</div>
+          <div class="pill">Review incorrect answers</div>
+          <div class="divider"></div>
+          <p class="hint" style="margin-top:0">
+            Start a test using the buttons. The test pulls from your Question Bank.
+            If there aren’t enough questions, lower the number or add more in the Build tab.
+          </p>
+          <div class="divider"></div>
+          <p class="hint">
+            Match questions: you’ll pick which answer (A–D) matches each statement.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- IMPORT/EXPORT TAB -->
+    <section id="tab-importexport" style="display:none">
+      <div class="grid">
+        <div class="card">
+          <h2>Export</h2>
+          <p class="hint" style="margin-top:0">
+            Copy the JSON below to back up your question bank.
+          </p>
+          <button class="btn primary" id="exportBtn" type="button">Generate export</button>
+          <label for="exportBox">Export JSON</label>
+          <textarea id="exportBox" class="codebox" placeholder="Click 'Generate export'..."></textarea>
+        </div>
+
+        <div class="card">
+          <h2>Import</h2>
+          <p class="hint" style="margin-top:0">
+            Paste your JSON export here to restore or merge a question bank.
+          </p>
+          <label for="importBox">Import JSON</label>
+          <textarea id="importBox" class="codebox" placeholder='Paste JSON here...'></textarea>
+          <div class="row" style="margin-top:10px">
+            <button class="btn good" id="importMergeBtn" type="button">Import (merge)</button>
+            <button class="btn warn" id="importReplaceBtn" type="button">Import (replace)</button>
+          </div>
+          <p class="hint">
+            Merge keeps your current questions and adds new ones. Replace overwrites everything.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    /**********************
+     * Data model
+     **********************/
+    // Question schema:
+    // {
+    //   id: string,
+    //   type: "single" | "multi" | "tf" | "match",
+    //   prompt: string,
+    //   options?: [A,B,C,D],             // for single/multi
+    //   correct?: number | number[],     // single: index, multi: indexes
+    //   tfCorrect?: boolean,             // tf
+    //   match?: { statements:[4], answers:[4], mapping:["A"|"B"|"C"|"D", ...] } // mapping per statement index
+    //   explanation?: string
+    // }
+
+    const STORAGE_KEY = "jncia_dc_qbank_v1";
+
+    const MISSED_KEY = "jncia_dc_missed_v1";
+
+    function loadMissedSet(){
+    try{
+        const raw = localStorage.getItem(MISSED_KEY);
+        if(!raw) return new Set();
+        const arr = JSON.parse(raw);
+        if(!Array.isArray(arr)) return new Set();
+        return new Set(arr.filter(x => typeof x === "string"));
+    }catch{
+        return new Set();
+    }
+    }
+
+    function saveMissedSet(set){
+    localStorage.setItem(MISSED_KEY, JSON.stringify(Array.from(set)));
+    }
+
+
+    const $ = (sel) => document.querySelector(sel);
+    const $$ = (sel) => Array.from(document.querySelectorAll(sel));
+
+    function uid(){
+      return "q_" + Math.random().toString(16).slice(2) + "_" + Date.now().toString(16);
+    }
+
+    function loadBank(){
+      try{
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if(!raw) return [];
+        const parsed = JSON.parse(raw);
+        if(!Array.isArray(parsed)) return [];
+        return parsed;
+      }catch(e){
+        console.warn("Failed to load bank:", e);
+        return [];
+      }
+    }
+
+    function saveBank(bank){
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(bank));
+    }
+
+    let bank = loadBank();
+    let missed = loadMissedSet();
+    let editingId = null;
+
+    /**********************
+     * Tabs
+     **********************/
+    $$(".tabbtn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        $$(".tabbtn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        const tab = btn.dataset.tab;
+        $("#tab-build").style.display = tab === "build" ? "" : "none";
+        $("#tab-practice").style.display = tab === "practice" ? "" : "none";
+        $("#tab-importexport").style.display = tab === "importexport" ? "" : "none";
+        if(tab === "practice") refreshPracticeButtons();
+        if(tab === "importexport") $("#exportBox").value = "";
+      });
+    });
+
+    /**********************
+     * Build form wiring
+     **********************/
+    const qType = $("#qType");
+    const qPrompt = $("#qPrompt");
+    const qExplain = $("#qExplain");
+
+    const singleMultiBlock = $("#singleMultiBlock");
+    const tfBlock = $("#tfBlock");
+    const matchBlock = $("#matchBlock");
+
+    const optA = $("#optA"), optB = $("#optB"), optC = $("#optC"), optD = $("#optD");
+
+    const answerControls = $("#answerControls");
+    const answerLabel = $("#answerLabel");
+    const multiHint = $("#multiHint");
+
+    let tfCorrect = null;
+
+    function renderAnswerControls(){
+      answerControls.innerHTML = "";
+      const type = qType.value;
+
+      if(type === "single"){
+        multiHint.style.display = "none";
+        answerLabel.textContent = "Correct answer";
+        ["A","B","C","D"].forEach((letter, idx) => {
+          const wrap = document.createElement("div");
+          wrap.style.flex = "unset";
+          wrap.style.minWidth = "120px";
+          wrap.innerHTML = `
+            <label style="margin:0 0 6px"> </label>
+            <button class="btn" type="button" data-single="${idx}">Answer ${letter}</button>
+          `;
+          answerControls.appendChild(wrap);
+        });
+        // selection state handled by data attr on container
+        answerControls.dataset.single = answerControls.dataset.single ?? "0";
+        updateSingleButtons();
+        answerControls.querySelectorAll("button[data-single]").forEach(btn => {
+          btn.addEventListener("click", () => {
+            answerControls.dataset.single = btn.dataset.single;
+            updateSingleButtons();
+          });
+        });
+      }
+
+      if(type === "multi"){
+        multiHint.style.display = "";
+        answerLabel.textContent = "Correct answers";
+        ["A","B","C","D"].forEach((letter, idx) => {
+          const div = document.createElement("div");
+          div.style.flex = "unset";
+          div.style.minWidth = "120px";
+          div.innerHTML = `
+            <label style="margin:0 0 6px"> </label>
+            <button class="btn" type="button" data-multi="${idx}">Toggle ${letter}</button>
+          `;
+          answerControls.appendChild(div);
+        });
+        const selected = new Set((answerControls.dataset.multi || "").split(",").filter(x=>x!=="" ).map(Number));
+        updateMultiButtons(selected);
+        answerControls.querySelectorAll("button[data-multi]").forEach(btn => {
+          btn.addEventListener("click", () => {
+            const idx = Number(btn.dataset.multi);
+            if(selected.has(idx)) selected.delete(idx); else selected.add(idx);
+            answerControls.dataset.multi = Array.from(selected).sort((a,b)=>a-b).join(",");
+            updateMultiButtons(selected);
+          });
+        });
+      }
+    }
+
+    function updateSingleButtons(){
+      const v = Number(answerControls.dataset.single || 0);
+      answerControls.querySelectorAll("button[data-single]").forEach(btn => {
+        const idx = Number(btn.dataset.single);
+        btn.classList.toggle("primary", idx === v);
+      });
+    }
+
+    function updateMultiButtons(selectedSet){
+      answerControls.querySelectorAll("button[data-multi]").forEach(btn => {
+        const idx = Number(btn.dataset.multi);
+        btn.classList.toggle("primary", selectedSet.has(idx));
+      });
+    }
+
+    function updateTypeUI(){
+      const type = qType.value;
+      singleMultiBlock.style.display = (type === "single" || type === "multi") ? "" : "none";
+      tfBlock.style.display = (type === "tf") ? "" : "none";
+      matchBlock.style.display = (type === "match") ? "" : "none";
+
+      if(type === "tf"){
+        tfCorrect = tfCorrect ?? true;
+        updateTfButtons();
+      }
+      if(type === "single" || type === "multi"){
+        renderAnswerControls();
+      }
+    }
+
+    function updateTfButtons(){
+      $("#tfTrueBtn").classList.toggle("primary", tfCorrect === true);
+      $("#tfFalseBtn").classList.toggle("primary", tfCorrect === false);
+    }
+
+    $("#tfTrueBtn").addEventListener("click", ()=>{ tfCorrect = true; updateTfButtons(); });
+    $("#tfFalseBtn").addEventListener("click", ()=>{ tfCorrect = false; updateTfButtons(); });
+
+    qType.addEventListener("change", updateTypeUI);
+
+    /**********************
+     * Bank list UI
+     **********************/
+    const qList = $("#qList");
+    const filterType = $("#filterType");
+    const searchText = $("#searchText");
+    const countBadge = $("#countBadge");
+
+    filterType.addEventListener("change", renderBankList);
+    searchText.addEventListener("input", renderBankList);
+
+    function typeLabel(t){
+      switch(t){
+        case "single": return "Single choice";
+        case "multi": return "Select all";
+        case "tf": return "True/False";
+        case "match": return "Match";
+        default: return t;
+      }
+    }
+
+    function summariseQuestion(q){
+      const base = q.prompt?.trim() || "(no prompt)";
+      return base.length > 140 ? base.slice(0, 140) + "…" : base;
+    }
+
+    function matchesSearch(q, s){
+      if(!s) return true;
+      const hay = JSON.stringify(q).toLowerCase();
+      return hay.includes(s.toLowerCase());
+    }
+
+    function renderBankList(){
+      const ft = filterType.value;
+      const s = searchText.value.trim();
+      qList.innerHTML = "";
+      const visible = bank
+        .filter(q => ft === "all" ? true : q.type === ft)
+        .filter(q => matchesSearch(q, s));
+
+      countBadge.textContent = String(bank.length);
+
+      if(visible.length === 0){
+        const empty = document.createElement("div");
+        empty.className = "muted";
+        empty.style.padding = "8px";
+        empty.textContent = bank.length === 0 ? "No questions yet. Load demo or add your own." : "No matches for this filter/search.";
+        qList.appendChild(empty);
+        return;
+      }
+
+      visible
+        .slice()
+        .reverse()
+        .forEach(q => {
+          const item = document.createElement("div");
+          item.className = "qitem";
+          item.innerHTML = `
+            <div class="top">
+              <p class="qtitle">${escapeHtml(summariseQuestion(q))}</p>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end">
+                <button class="smallbtn" data-edit="${q.id}">Edit</button>
+              </div>
+            </div>
+            <div class="qmeta">
+              <span class="pill">${typeLabel(q.type)}</span>
+              <span class="pill mono">${q.id}</span>
+            </div>
+          `;
+          qList.appendChild(item);
+        });
+
+      qList.querySelectorAll("button[data-edit]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const id = btn.dataset.edit;
+          loadQuestionIntoForm(id);
+          window.scrollTo({top:0, behavior:"smooth"});
+        });
+      });
+    }
+
+    function escapeHtml(str){
+      return (str ?? "")
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+    }
+
+    /**********************
+     * Form load/reset/save/delete
+     **********************/
+    const editState = $("#editState");
+    const saveBtn = $("#saveBtn");
+    const resetBtn = $("#resetBtn");
+    const deleteBtn = $("#deleteBtn");
+
+    function resetForm(){
+      editingId = null;
+      editState.textContent = "New";
+      deleteBtn.disabled = true;
+
+      qType.value = "single";
+      qPrompt.value = "";
+      qExplain.value = "";
+
+      optA.value = "";
+      optB.value = "";
+      optC.value = "";
+      optD.value = "";
+
+      answerControls.dataset.single = "0";
+      answerControls.dataset.multi = "";
+      tfCorrect = true;
+
+      $("#mS1").value = ""; $("#mS2").value = ""; $("#mS3").value = ""; $("#mS4").value = "";
+      $("#mA").value = ""; $("#mB").value = ""; $("#mC").value = ""; $("#mD").value = "";
+      $("#map1").value = "A"; $("#map2").value = "B"; $("#map3").value = "C"; $("#map4").value = "D";
+
+      updateTypeUI();
+    }
+
+    resetBtn.addEventListener("click", resetForm);
+
+    function loadQuestionIntoForm(id){
+      const q = bank.find(x => x.id === id);
+      if(!q) return;
+      editingId = id;
+      editState.textContent = "Editing";
+      deleteBtn.disabled = false;
+
+      qType.value = q.type;
+      qPrompt.value = q.prompt || "";
+      qExplain.value = q.explanation || "";
+
+      if(q.type === "single" || q.type === "multi"){
+        optA.value = q.options?.[0] ?? "";
+        optB.value = q.options?.[1] ?? "";
+        optC.value = q.options?.[2] ?? "";
+        optD.value = q.options?.[3] ?? "";
+      }
+
+      if(q.type === "single"){
+        answerControls.dataset.single = String(q.correct ?? 0);
+      }
+
+      if(q.type === "multi"){
+        const arr = Array.isArray(q.correct) ? q.correct : [];
+        answerControls.dataset.multi = arr.join(",");
+      }
+
+      if(q.type === "tf"){
+        tfCorrect = !!q.tfCorrect;
+      }
+
+      if(q.type === "match"){
+        $("#mS1").value = q.match?.statements?.[0] ?? "";
+        $("#mS2").value = q.match?.statements?.[1] ?? "";
+        $("#mS3").value = q.match?.statements?.[2] ?? "";
+        $("#mS4").value = q.match?.statements?.[3] ?? "";
+
+        $("#mA").value = q.match?.answers?.[0] ?? "";
+        $("#mB").value = q.match?.answers?.[1] ?? "";
+        $("#mC").value = q.match?.answers?.[2] ?? "";
+        $("#mD").value = q.match?.answers?.[3] ?? "";
+
+        $("#map1").value = q.match?.mapping?.[0] ?? "A";
+        $("#map2").value = q.match?.mapping?.[1] ?? "B";
+        $("#map3").value = q.match?.mapping?.[2] ?? "C";
+        $("#map4").value = q.match?.mapping?.[3] ?? "D";
+      }
+
+      updateTypeUI();
+      // refresh button states
+      if(q.type === "single") updateSingleButtons();
+      if(q.type === "multi"){
+        const selected = new Set((answerControls.dataset.multi || "").split(",").filter(x=>x!=="").map(Number));
+        updateMultiButtons(selected);
+      }
+      if(q.type === "tf") updateTfButtons();
+    }
+
+    function validateAndBuildQuestion(){
+      const type = qType.value;
+      const prompt = qPrompt.value.trim();
+      const explanation = qExplain.value.trim();
+
+      if(!prompt){
+        alert("Please add a question prompt.");
+        return null;
+      }
+
+      const base = {
+        id: editingId ?? uid(),
+        type,
+        prompt,
+        explanation: explanation || ""
+      };
+
+      if(type === "single" || type === "multi"){
+        const options = [optA.value.trim(), optB.value.trim(), optC.value.trim(), optD.value.trim()];
+        if(options.some(o => !o)){
+          alert("Please fill in all 4 options (A–D).");
+          return null;
+        }
+        base.options = options;
+
+        if(type === "single"){
+          const correct = Number(answerControls.dataset.single ?? 0);
+          if(Number.isNaN(correct) || correct < 0 || correct > 3){
+            alert("Please choose the correct answer (A–D).");
+            return null;
+          }
+          base.correct = correct;
+        }else{
+          const arr = (answerControls.dataset.multi || "")
+            .split(",").filter(x => x !== "").map(Number)
+            .filter(n => !Number.isNaN(n) && n >= 0 && n <= 3);
+          const uniq = Array.from(new Set(arr)).sort((a,b)=>a-b);
+          if(uniq.length === 0){
+            alert("Please select at least one correct answer for 'Select all that apply'.");
+            return null;
+          }
+          base.correct = uniq;
+        }
+      }
+
+      if(type === "tf"){
+        base.tfCorrect = !!tfCorrect;
+      }
+
+      if(type === "match"){
+        const statements = [$("#mS1").value.trim(), $("#mS2").value.trim(), $("#mS3").value.trim(), $("#mS4").value.trim()];
+        const answers = [$("#mA").value.trim(), $("#mB").value.trim(), $("#mC").value.trim(), $("#mD").value.trim()];
+        if(statements.some(x => !x) || answers.some(x => !x)){
+          alert("Please fill in all 4 statements and all 4 answers.");
+          return null;
+        }
+        const mapping = [$("#map1").value, $("#map2").value, $("#map3").value, $("#map4").value];
+        base.match = { statements, answers, mapping };
+      }
+
+      return base;
+    }
+
+    saveBtn.addEventListener("click", () => {
+      const q = validateAndBuildQuestion();
+      if(!q) return;
+
+      const idx = bank.findIndex(x => x.id === q.id);
+      if(idx >= 0) bank[idx] = q;
+      else bank.push(q);
+
+      saveBank(bank);
+      renderBankList();
+      resetForm();
+      alert("Saved.");
+    });
+
+    deleteBtn.addEventListener("click", () => {
+      if(!editingId) return;
+      if(!confirm("Delete this question?")) return;
+      bank = bank.filter(q => q.id !== editingId);
+      saveBank(bank);
+      renderBankList();
+      resetForm();
+    });
+
+    $("#clearAllBtn").addEventListener("click", () => {
+      if(!confirm("Clear ALL questions? This cannot be undone unless you exported a backup.")) return;
+      bank = [];
+      saveBank(bank);
+      renderBankList();
+      resetForm();
+      alert("Cleared.");
+    });
+
+    /**********************
+     * Demo questions
+     **********************/
+    const demo = [
+      {
+        id: uid(),
+        type: "single",
+        prompt: "Which Junos command shows LACP operational status for aggregated Ethernet interfaces?",
+        options: [
+          "show interfaces extensive",
+          "show lacp interfaces",
+          "show chassis hardware",
+          "show ethernet-switching table"
+        ],
+        correct: 1,
+        explanation: "show lacp interfaces displays LACP operational status for AE/member links."
+      },
+      {
+        id: uid(),
+        type: "multi",
+        prompt: "Select all that apply: What are valid benefits of Link Aggregation (LAG) on Junos?",
+        options: [
+          "Higher throughput by combining physical links",
+          "Redundancy if a member link fails",
+          "Eliminates the need for VLANs",
+          "Provides a single logical interface for configuration"
+        ],
+        correct: [0,1,3],
+        explanation: "LAG increases bandwidth, improves resiliency, and presents one logical AE interface; it does not replace VLANs."
+      },
+      {
+        id: uid(),
+        type: "tf",
+        prompt: "True or False: An Ethernet switch floods frames when the destination MAC address is unknown.",
+        tfCorrect: true,
+        explanation: "Unknown unicast frames are flooded out all ports in the broadcast domain except the ingress port."
+      },
+      {
+        id: uid(),
+        type: "match",
+        prompt: "Match the term to the best description.",
+        match: {
+          statements: [
+            "LAG (ae interface)",
+            "LACP",
+            "Flooding",
+            "Bridge table"
+          ],
+          answers: [
+            "Protocol that negotiates and maintains aggregated links",
+            "Sends frames out multiple ports when destination is unknown/broadcast/multicast",
+            "Combines multiple physical links into one logical interface",
+            "Stores learned MAC addresses to guide forwarding decisions"
+          ],
+          mapping: ["C","A","B","D"]
+        },
+        explanation: "These are standard switching and aggregation definitions."
+      }
+    ];
+
+    $("#loadDemoBtn").addEventListener("click", () => {
+      if(bank.length > 0 && !confirm("Load demo questions? This will ADD them to your current bank.")) return;
+      bank = bank.concat(demo.map(q => ({...q, id: uid()})));
+      saveBank(bank);
+      renderBankList();
+      alert("Demo questions added.");
+    });
+
+    /**********************
+     * Practice test engine
+     **********************/
+    let test = null;
+    // test structure:
+    // {
+    //   ids: [questionId...],
+    //   order: [questionId...],
+    //   idx: number,
+    //   score: number,
+    //   answers: { [id]: userAnswerPayload },
+    //   results: { [id]: { correct:boolean, details:string } }
+    // }
+
+    const startTestBtn = $("#startTestBtn");
+    const resumeBtn = $("#resumeBtn");
+    const endTestBtn = $("#endTestBtn");
+    const startMissedBtn = $("#startMissedBtn");
+    const clearMissedBtn = $("#clearMissedBtn");
+    const missedCountEl = $("#missedCount");
+
+    function updateMissedCount(){
+    // Only count missed questions that still exist in the bank
+    const idsInBank = new Set(bank.map(q => q.id));
+    const count = Array.from(missed).filter(id => idsInBank.has(id)).length;
+    missedCountEl.textContent = String(count);
+    startMissedBtn.disabled = (count === 0) || (bank.length === 0);
+    }
+
+
+    const practiceArea = $("#practiceArea");
+    const testSummary = $("#testSummary");
+
+    const pPrompt = $("#pPrompt");
+    const pBody = $("#pBody");
+    const feedback = $("#feedback");
+    const submitBtn = $("#submitBtn");
+    const nextBtn = $("#nextBtn");
+    const progressText = $("#progressText");
+    const scoreBadge = $("#scoreBadge");
+    const testStatus = $("#testStatus");
+    const pMeta = $("#pMeta");
+
+    function getFilteredBank(type){
+      return bank.filter(q => type === "all" ? true : q.type === type);
+    }
+
+    function shuffle(arr){
+      const a = arr.slice();
+      for(let i=a.length-1;i>0;i--){
+        const j = Math.floor(Math.random()*(i+1));
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+      return a;
+    }
+
+    function getOptionOrderForQuestion(questionId){
+        if(!test) return [0,1,2,3];
+        if(!test.optionOrders) test.optionOrders = {};
+
+        if(!test.optionOrders[questionId]){
+            test.optionOrders[questionId] = shuffle([0,1,2,3]);
+        }
+        return test.optionOrders[questionId];
+    }
+
+
+    function refreshPracticeButtons(){
+    const available = bank.length;
+    resumeBtn.disabled = !test || test.done;
+    startTestBtn.disabled = available === 0;
+
+    updateMissedCount();
+    }
+
+
+    function startTest(){
+      const count = Math.max(1, Number($("#testCount").value || 1));
+      const filter = $("#testFilter").value;
+      const pool = getFilteredBank(filter);
+
+      if(pool.length === 0){
+        alert("No questions available for that filter.");
+        return;
+      }
+
+      const pickN = Math.min(count, pool.length);
+      const picked = shuffle(pool).slice(0, pickN).map(q => q.id);
+
+      test = {
+        ids: picked,
+        order: shuffle(picked),
+        idx: 0,
+        score: 0,
+        answers: {},
+        results: {},
+        done: false,
+        optionOrders: {} // questionId -> [originalIndex...]
+        };
+
+
+      practiceArea.style.display = "";
+      testSummary.style.display = "none";
+
+      endTestBtn.disabled = false;
+      resumeBtn.disabled = true;
+      testStatus.textContent = "In progress";
+
+      renderCurrentQuestion();
+    }
+
+    function startMissedTest(){
+    const filter = $("#testFilter").value;
+
+    // Missed IDs that still exist
+    const idsInBank = new Set(bank.map(q => q.id));
+    let poolIds = Array.from(missed).filter(id => idsInBank.has(id));
+
+    // Apply type filter if set
+    if(filter !== "all"){
+        const allowed = new Set(bank.filter(q => q.type === filter).map(q => q.id));
+        poolIds = poolIds.filter(id => allowed.has(id));
+    }
+
+    if(poolIds.length === 0){
+        alert("No missed questions available for that filter.");
+        return;
+    }
+
+    const count = Math.max(1, Number($("#testCount").value || 1));
+    const pickN = Math.min(count, poolIds.length);
+    const picked = shuffle(poolIds).slice(0, pickN);
+
+    test = {
+        ids: picked,
+        order: shuffle(picked),
+        idx: 0,
+        score: 0,
+        answers: {},
+        results: {},
+        done: false,
+        mode: "missed",
+        optionOrders: {} // questionId -> [originalIndex...]
+        };
+
+
+    practiceArea.style.display = "";
+    testSummary.style.display = "none";
+
+    endTestBtn.disabled = false;
+    resumeBtn.disabled = true;
+    testStatus.textContent = "Missed mode";
+
+    renderCurrentQuestion();
+    }
+
+    startMissedBtn.addEventListener("click", startMissedTest);
+
+    clearMissedBtn.addEventListener("click", () => {
+    if(!confirm("Clear your missed questions history?")) return;
+    missed = new Set();
+    saveMissedSet(missed);
+    updateMissedCount();
+    alert("Missed questions cleared.");
+    });
+
+
+    startTestBtn.addEventListener("click", startTest);
+
+    resumeBtn.addEventListener("click", () => {
+      if(!test || test.done) return;
+      practiceArea.style.display = "";
+      testSummary.style.display = "none";
+      renderCurrentQuestion();
+    });
+
+    endTestBtn.addEventListener("click", () => {
+      if(!test) return;
+      if(!confirm("End the test now?")) return;
+      finishTest();
+    });
+
+    function renderCurrentQuestion(){
+      if(!test) return;
+      const id = test.order[test.idx];
+      const q = bank.find(x => x.id === id);
+      if(!q){
+        // if question deleted mid-test, skip
+        test.idx++;
+        if(test.idx >= test.order.length) return finishTest();
+        return renderCurrentQuestion();
+      }
+
+      feedback.style.display = "none";
+      feedback.className = "feedback";
+      feedback.textContent = "";
+
+      nextBtn.disabled = true;
+      submitBtn.disabled = false;
+
+      progressText.textContent = `Question ${test.idx + 1} / ${test.order.length}`;
+      scoreBadge.textContent = `${test.score}/${test.order.length}`;
+      pPrompt.textContent = q.prompt;
+
+      pMeta.innerHTML = "";
+      const pill = document.createElement("span");
+      pill.className = "pill";
+      pill.textContent = typeLabel(q.type);
+      pMeta.appendChild(pill);
+
+      pBody.innerHTML = "";
+      
+      
+      if(q.type === "single"){
+        const group = document.createElement("div");
+        const chosen = (test.answers[id]?.choice ?? null);
+
+        const order = getOptionOrderForQuestion(id); // shuffled UI order
+
+        order.forEach((origIdx) => {
+            const opt = q.options[origIdx];
+            const wrap = document.createElement("div");
+            wrap.className = "opt";
+            wrap.innerHTML = `
+            <input type="radio" name="single" value="${origIdx}" ${chosen===origIdx?"checked":""} />
+            <label>${escapeHtml(opt)}</label>
+            `;
+            group.appendChild(wrap);
+        });
+
+        pBody.appendChild(group);
+        }
+
+
+        if(q.type === "multi"){
+        const chosen = new Set(test.answers[id]?.choices ?? []);
+
+        const order = getOptionOrderForQuestion(id); // shuffled UI order
+
+        order.forEach((origIdx) => {
+            const opt = q.options[origIdx];
+            const wrap = document.createElement("div");
+            wrap.className = "opt";
+            wrap.innerHTML = `
+            <input type="checkbox" value="${origIdx}" ${chosen.has(origIdx)?"checked":""} />
+            <label>${escapeHtml(opt)}</label>
+            `;
+            pBody.appendChild(wrap);
+        });
+        }
+
+
+      if(q.type === "tf"){
+        const chosen = test.answers[id]?.value;
+        const wrap = document.createElement("div");
+        wrap.innerHTML = `
+          <div class="opt">
+            <input type="radio" name="tf" value="true" ${chosen===true?"checked":""} />
+            <label>True</label>
+          </div>
+          <div class="opt">
+            <input type="radio" name="tf" value="false" ${chosen===false?"checked":""} />
+            <label>False</label>
+          </div>
+        `;
+        pBody.appendChild(wrap);
+      }
+
+      if(q.type === "match"){
+        const userMap = test.answers[id]?.mapping || ["A","B","C","D"];
+        const answers = q.match.answers;
+        const letters = ["A","B","C","D"];
+        const wrap = document.createElement("div");
+        wrap.className = "matchGrid";
+
+        q.match.statements.forEach((st, i) => {
+          const row = document.createElement("div");
+          row.className = "matchRow";
+          const sel = document.createElement("select");
+          letters.forEach(L => {
+            const opt = document.createElement("option");
+            opt.value = L;
+            opt.textContent = `${L}: ${answers[letters.indexOf(L)]}`;
+            sel.appendChild(opt);
+          });
+          sel.value = userMap[i] || "A";
+          row.innerHTML = `<div class="left">${escapeHtml(st)}</div>`;
+          row.appendChild(sel);
+          wrap.appendChild(row);
+        });
+
+        pBody.appendChild(wrap);
+        const note = document.createElement("div");
+        note.className = "hint";
+        note.textContent = "Choose the best answer (A–D) for each statement.";
+        pBody.appendChild(note);
+      }
+    }
+
+    function normaliseSet(arr){
+      return Array.from(new Set(arr)).sort((a,b)=>a-b);
+    }
+
+    function letterToIndex(L){
+      return ["A","B","C","D"].indexOf(L);
+    }
+
+    function submitAnswer(){
+      if(!test) return;
+      const id = test.order[test.idx];
+      const q = bank.find(x => x.id === id);
+      if(!q) return;
+
+      let user = null;
+
+      if(q.type === "single"){
+        const picked = pBody.querySelector('input[type="radio"][name="single"]:checked');
+        if(!picked){ alert("Pick an answer."); return; }
+        user = { choice: Number(picked.value) };
+        test.answers[id] = user;
+
+        const ok = user.choice === q.correct;
+        recordResult(id, ok, buildSingleDetail(q, user.choice));
+      }
+
+      if(q.type === "multi"){
+        const checks = Array.from(pBody.querySelectorAll('input[type="checkbox"]:checked'));
+        if(checks.length === 0){ alert("Select at least one option."); return; }
+        const choices = normaliseSet(checks.map(x => Number(x.value)));
+        user = { choices };
+        test.answers[id] = user;
+
+        const correct = normaliseSet(q.correct);
+        const ok = choices.length === correct.length && choices.every((v,i)=>v===correct[i]);
+        recordResult(id, ok, buildMultiDetail(q, choices));
+      }
+
+      if(q.type === "tf"){
+        const picked = pBody.querySelector('input[type="radio"][name="tf"]:checked');
+        if(!picked){ alert("Pick True or False."); return; }
+        const val = picked.value === "true";
+        user = { value: val };
+        test.answers[id] = user;
+
+        const ok = val === !!q.tfCorrect;
+        recordResult(id, ok, buildTfDetail(q, val));
+      }
+
+      if(q.type === "match"){
+        const selects = Array.from(pBody.querySelectorAll("select"));
+        if(selects.length !== 4){ alert("Match selections missing."); return; }
+        const mapping = selects.map(s => s.value);
+        user = { mapping };
+        test.answers[id] = user;
+
+        const correct = q.match.mapping;
+        const ok = mapping.length === 4 && mapping.every((v,i)=>v===correct[i]);
+        recordResult(id, ok, buildMatchDetail(q, mapping));
+      }
+
+      // show feedback and lock submit
+      submitBtn.disabled = true;
+      nextBtn.disabled = false;
+    }
+
+    function recordResult(id, ok, detailHtml){
+      if(!(id in test.results)){
+        if(ok) test.score++;
+      }else{
+        // if resubmitting (shouldn't happen in UI), adjust
+        if(test.results[id].correct && !ok) test.score--;
+        if(!test.results[id].correct && ok) test.score++;
+      }
+      test.results[id] = { correct: ok, detail: detailHtml };
+
+      feedback.style.display = "";
+      feedback.classList.toggle("good", ok);
+      feedback.classList.toggle("bad", !ok);
+      feedback.innerHTML = ok
+        ? `<strong>Correct.</strong><div style="margin-top:6px">${detailHtml}</div>`
+        : `<strong>Incorrect.</strong><div style="margin-top:6px">${detailHtml}</div>`;
+
+      scoreBadge.textContent = `${test.score}/${test.order.length}`;
+    }
+
+    function buildSingleDetail(q, choiceIdx){
+        const correct = q.correct;
+        const exp = q.explanation
+            ? `<div class="muted" style="margin-top:8px">Explanation: ${escapeHtml(q.explanation)}</div>`
+            : "";
+
+        return `
+            Your answer: <span class="mono">${escapeHtml(q.options[choiceIdx] ?? "")}</span><br/>
+            Correct answer: <span class="mono">${escapeHtml(q.options[correct] ?? "")}</span>
+            ${exp}
+        `;
+        }
+
+
+        function buildMultiDetail(q, choices){
+            const correct = normaliseSet(q.correct);
+
+            const fmt = (arr) =>
+                arr.map(i => q.options[i]).filter(Boolean).map(x => escapeHtml(x)).join("<br/>• ");
+
+            const exp = q.explanation
+                ? `<div class="muted" style="margin-top:8px">Explanation: ${escapeHtml(q.explanation)}</div>`
+                : "";
+
+            return `
+                Your answers:<br/>• <span class="mono">${fmt(choices)}</span><br/><br/>
+                Correct answers:<br/>• <span class="mono">${fmt(correct)}</span>
+                ${exp}
+            `;
+        }
+
+
+    function buildTfDetail(q, val){
+      const exp = q.explanation ? `<div class="muted" style="margin-top:8px">Explanation: ${escapeHtml(q.explanation)}</div>` : "";
+      return `
+        Your answer: <span class="mono">${val ? "True" : "False"}</span><br/>
+        Correct answer: <span class="mono">${q.tfCorrect ? "True" : "False"}</span>
+        ${exp}
+      `;
+    }
+
+    function buildMatchDetail(q, userMap){
+      const letters = ["A","B","C","D"];
+      const correct = q.match.mapping;
+      const answers = q.match.answers;
+      const exp = q.explanation ? `<div class="muted" style="margin-top:8px">Explanation: ${escapeHtml(q.explanation)}</div>` : "";
+      const rows = q.match.statements.map((st,i) => {
+        const uL = userMap[i];
+        const cL = correct[i];
+        const uIdx = letterToIndex(uL);
+        const cIdx = letterToIndex(cL);
+        const ok = uL === cL;
+        return `
+          <div style="margin:6px 0;padding:8px;border:1px solid var(--border);border-radius:12px;background:rgba(255,255,255,.03)">
+            <div><strong>${escapeHtml(st)}</strong></div>
+            <div class="muted">Your: <span class="mono">${uL}</span> — ${escapeHtml(answers[uIdx] ?? "")}</div>
+            <div class="muted">Correct: <span class="mono">${cL}</span> — ${escapeHtml(answers[cIdx] ?? "")}</div>
+            <div style="margin-top:4px">${ok ? "✅" : "❌"}</div>
+          </div>
+        `;
+      }).join("");
+
+      return rows + exp;
+    }
+
+    submitBtn.addEventListener("click", submitAnswer);
+
+    nextBtn.addEventListener("click", () => {
+      if(!test) return;
+      test.idx++;
+      if(test.idx >= test.order.length) return finishTest();
+      renderCurrentQuestion();
+    });
+
+    function finishTest(){
+      if(!test) return;
+      test.done = true;
+      testStatus.textContent = "Finished";
+      endTestBtn.disabled = true;
+      resumeBtn.disabled = true;
+
+      practiceArea.style.display = "none";
+      testSummary.style.display = "";
+
+      const total = test.order.length;
+      const score = test.score;
+      const pct = Math.round((score/total)*100);
+
+      $("#summaryText").innerHTML = `
+        Score: <strong>${score}/${total}</strong> (<strong>${pct}%</strong>)<br/>
+        <span class="muted">Review below shows your result for each question.</span>
+      `;
+
+      const review = $("#reviewList");
+      review.innerHTML = "";
+
+      test.order.forEach((id, i) => {
+        const q = bank.find(x => x.id === id);
+        const r = test.results[id];
+        const card = document.createElement("div");
+        card.className = "qitem";
+        const status = r?.correct ? "✅ Correct" : "❌ Incorrect";
+        card.innerHTML = `
+          <div class="top">
+            <p class="qtitle">${escapeHtml((i+1)+". "+(q?.prompt ?? "(missing question)"))}</p>
+            <div class="pill">${status}</div>
+          </div>
+          <div class="qmeta">
+            <span class="pill">${typeLabel(q?.type ?? "unknown")}</span>
+            <span class="pill mono">${id}</span>
+          </div>
+          <div class="divider"></div>
+          <div class="muted">${r?.detail ?? "No result recorded."}</div>
+        `;
+        review.appendChild(card);
+      });
+      // Update missed set: add incorrect, remove correct (for questions attempted this test)
+        for(const id of test.order){
+        const r = test.results[id];
+        if(!r) continue;
+        if(r.correct) missed.delete(id);
+        else missed.add(id);
+        }
+        saveMissedSet(missed);
+
+      refreshPracticeButtons();
+    }
+
+    /**********************
+     * Import/Export
+     **********************/
+    $("#exportBtn").addEventListener("click", () => {
+      $("#exportBox").value = JSON.stringify(bank, null, 2);
+    });
+
+    function parseImport(){
+      const raw = $("#importBox").value.trim();
+      if(!raw){
+        alert("Paste JSON first.");
+        return null;
+      }
+      try{
+        const parsed = JSON.parse(raw);
+        if(!Array.isArray(parsed)) throw new Error("JSON must be an array");
+        return parsed;
+      }catch(e){
+        alert("Import failed: " + e.message);
+        return null;
+      }
+    }
+
+    function sanitiseImported(arr){
+      const out = [];
+      for(const q of arr){
+        if(!q || typeof q !== "object") continue;
+        if(!["single","multi","tf","match"].includes(q.type)) continue;
+        if(typeof q.prompt !== "string" || !q.prompt.trim()) continue;
+
+        const clean = {
+          id: typeof q.id === "string" && q.id ? q.id : uid(),
+          type: q.type,
+          prompt: q.prompt.trim(),
+          explanation: typeof q.explanation === "string" ? q.explanation : ""
+        };
+
+        if(q.type === "single" || q.type === "multi"){
+          if(!Array.isArray(q.options) || q.options.length !== 4) continue;
+          clean.options = q.options.map(x => String(x ?? ""));
+          if(clean.options.some(x => !x.trim())) continue;
+
+          if(q.type === "single"){
+            const c = Number(q.correct);
+            if(Number.isNaN(c) || c < 0 || c > 3) continue;
+            clean.correct = c;
+          }else{
+            if(!Array.isArray(q.correct)) continue;
+            const choices = normaliseSet(q.correct.map(Number).filter(n => !Number.isNaN(n) && n>=0 && n<=3));
+            if(choices.length === 0) continue;
+            clean.correct = choices;
+          }
+        }
+
+        if(q.type === "tf"){
+          clean.tfCorrect = !!q.tfCorrect;
+        }
+
+        if(q.type === "match"){
+          const m = q.match;
+          if(!m || !Array.isArray(m.statements) || !Array.isArray(m.answers) || !Array.isArray(m.mapping)) continue;
+          if(m.statements.length !== 4 || m.answers.length !== 4 || m.mapping.length !== 4) continue;
+          clean.match = {
+            statements: m.statements.map(x => String(x ?? "")),
+            answers: m.answers.map(x => String(x ?? "")),
+            mapping: m.mapping.map(x => ["A","B","C","D"].includes(x) ? x : "A")
+          };
+          if(clean.match.statements.some(x=>!x.trim()) || clean.match.answers.some(x=>!x.trim())) continue;
+        }
+
+        out.push(clean);
+      }
+      return out;
+    }
+
+    $("#importMergeBtn").addEventListener("click", () => {
+      const parsed = parseImport();
+      if(!parsed) return;
+      const clean = sanitiseImported(parsed);
+      if(clean.length === 0){
+        alert("No valid questions found in that JSON.");
+        return;
+      }
+      // Merge by id; if id collides, create new id to avoid overwrite
+      const existingIds = new Set(bank.map(q => q.id));
+      const merged = clean.map(q => existingIds.has(q.id) ? ({...q, id: uid()}) : q);
+      bank = bank.concat(merged);
+      saveBank(bank);
+      renderBankList();
+      refreshPracticeButtons();
+      alert(`Imported ${merged.length} questions (merged).`);
+      $("#importBox").value = "";
+    });
+
+    $("#importReplaceBtn").addEventListener("click", () => {
+      const parsed = parseImport();
+      if(!parsed) return;
+      const clean = sanitiseImported(parsed);
+      if(clean.length === 0){
+        alert("No valid questions found in that JSON.");
+        return;
+      }
+      if(!confirm(`Replace your current bank with ${clean.length} imported questions?`)) return;
+      bank = clean;
+      saveBank(bank);
+      renderBankList();
+      refreshPracticeButtons();
+      resetForm();
+      alert(`Imported ${clean.length} questions (replaced).`);
+      $("#importBox").value = "";
+    });
+
+    /**********************
+     * Init
+     **********************/
+    function boot(){
+      resetForm();
+      updateTypeUI();
+      renderBankList();
+      refreshPracticeButtons();
+      testStatus.textContent = bank.length ? "Not started" : "Add questions first";
+      countBadge.textContent = String(bank.length);
+      updateMissedCount();
+    }
+    boot();
+  </script>
+</body>
+</html>

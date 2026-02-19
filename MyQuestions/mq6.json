@@ -56,7 +56,7 @@
       "The IRB must be assigned to a trunk port",
       "The end-user device must use the IRB IP as its default gateway"
     ],
-    "correct": [0, 1, 3],
+    "correct": [0, 1],
     "explanation": "Each IRB must be associated with a VLAN, the VLAN must have at least one active Layer 2 interface, and end-user devices must use the IRB IP as their default gateway. Module 6: Configuring Virtual Networks"
   },
   {

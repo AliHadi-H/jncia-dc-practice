@@ -88,11 +88,5 @@
     "prompt": "True or False: Without an IRB interface, devices in different VLANs can communicate directly at Layer 2.",
     "tfCorrect": false,
     "explanation": "False. VLANs are separate Layer 2 domains and require a Layer 3 interface such as an IRB for inter-VLAN communication. Module 6: Configuring Virtual Networks"
-  },
-  {
-    "type": "tf",
-    "prompt": "True or False: All EX Series switches are capable of performing IRB and other Layer 3 routing tasks.",
-    "tfCorrect": true,
-    "explanation": "True. All EX Series switches are equipped to handle IRB and other Layer 3 routing functions. Module 6: Configuring Virtual Networks"
   }
 ]
